@@ -84,7 +84,9 @@ fieldset {
 	width: 15em;
 	margin: 0 auto;
 }
-
+b{
+	color: red;
+}
 legend {
 	color: #fff;
 	background: #303030;

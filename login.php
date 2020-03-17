@@ -117,15 +117,19 @@
 		<div id="contenido">
 			<div id="formularios">
 				<form action="procesarLogin.php" id="form_session" method="post">
+					<?php
+						if(isset($_SESSION['errorLogin'])){
+							echo $_SESSION['errorLogin'];
+							unset($_SESSION['errorLogin']);
+						}
+					?>
 					<p>Nombre o correo:</p>
-					<div class="field-container">
-						<i class="fa fa-envelope-o fa-lg" aria-hidden="true"></i>	
+					<div class="center-content">	
 						<input name="username" type="text" class="field" placeholder="user@example.com"> <br/>
 					</div>
 
 					<p>Contraseña:</p>
-					<div class="field-container">
-						<i class="fa fa-key fa-lg" aria-hidden="true"></i>	
+					<div class="center-content">
 						<input name="password" type="password" class="field" placeholder="*******"> <br/>
 					</div>
 					<p class="center-content">
@@ -135,6 +139,7 @@
 				</form>	
 			</div>
 		</div>
+
 		<?php
 			include"sidebarright.php";
 			include"pie.php";

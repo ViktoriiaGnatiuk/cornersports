@@ -3,36 +3,38 @@
     <head>
         <title>TITULO</title>
         <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="estilo.css" />
     </head>
     <body>
     <?php
         session_start();
-        $username = $_REQUEST["username"];
-        //Obtiene el nombre y usuario
-        //trim elimina los espacios en blanco del principio y el final
-        //htmlspecialchar convierte caracteres especiales a html
-        $username = htmlspecialchars(trim(strip_tags($_REQUEST["username"])));
-        $password = htmlspecialchars(trim(strip_tags($_REQUEST["password"])));
-        $_SESSION["username"]=$username;
-        $_SESSION["password"]=$password;
-        if ($username == "user" && $password == "userpass") {
-            $_SESSION["login"] = true;
-            $_SESSION["nombre"] = "Usuario";
-            echo "Validación correcta\n";
+        $host_db = "localhost";
+        $user_db = "root";
+        $pass_db = "";
+        $db_name = "cornersports";
+        $conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
+
+        if ($conexion->connect_error) {
+        die("La conexion falló: " . $conexion->connect_error);
+        }
+        // Elimina posibles secuencias de escape
+        $user = $conexion->real_escape_string($_POST['username']);      
+        $pass = $conexion->real_escape_string($_POST['password']);
+
+        //Comprueba si el usuario existe
+        $query = "SELECT * FROM usuarios WHERE username = '$user' AND password = '$pass'";
+        $result = $conexion->query($query);
+        $count = mysqli_num_rows($result); 
+        if ($count == 1) 
+        {
+            $_SESSION['username']=$user;
             header('Location: index.php');//Redirecciona al home
         }
-        else if ($username == "admin" && $password == "adminpass") {
-            $_SESSION["login"] = true;
-            $_SESSION["nombre"] = "Administrador";
-            $_SESSION["esAdmin"] = true;
-            echo "Validación correcta\n";
-            header('Location: index.php');//Redirecciona al home
+        else{
+            $_SESSION['errorLogin']="<b>Usuario o contraseña incorrectos\n</b>";
+            header('Location: login.php');
         }
-        else {
-            echo "<h1>ERROR</h1>";
-            echo "<p>El usuario o contraseña no son válidos.</p>";
-            echo "<form action=\"login.php\" method=\"POST\"><button type=\"submit\">Reintentar</button></form>";
-        }
+        mysqli_close($conexion);
     ?>
         
     </body>
