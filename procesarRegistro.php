@@ -78,28 +78,31 @@
                 }
                 else{
                         $buscarUsuario = "SELECT * FROM $tbl_name
-                        WHERE username = '$_POST[username]' ";
-                        echo $buscarUsuario;
+                        WHERE username = '$_POST[usuario]' ";
                         $result = $conexion->query($buscarUsuario);
                         $count = mysqli_num_rows($result);
                         
                         if ($count == 1) {
-                            echo "<br />" . "El Nombre de Usuario ya ha sido usado" . "<br />";
-                            // echo "<a href='index.html'>Por favor escoga otro Nombre</a>";
+                            $_SESSION['errorRegistro']="El nombre de usuario ya existe";
+                            header('Location: registro.php');
                         }
                         else{
                             $form_pass = $_POST['password'];
                             $hash = password_hash($form_pass, PASSWORD_BCRYPT);
-                            $query = "INSERT INTO usuarios (username, password)
-                                    VALUES ('$_POST[username]', '$hash')";
+
+                            $query="INSERT INTO usuarios (username, password, nombre, apellidos, 
+                            email, provincia, localidad, calle, codPostal, portal) VALUES 
+                            ('$_POST[usuario]', '$hash', '$_POST[nombre]', '$_POST[apellidos]', '$_POST[email]', 
+                            '$_POST[provincia]', '$_POST[localidad]', '$_POST[calle]', '$_POST[codPostal]', '$_POST[portal]')";
+
                             if ($conexion->query($query) === TRUE) {
-                                echo "<br />" . "<h2>" . "Usuario Creado" . "</h2>";
-                                echo "<h4>" . "Bienvenido: " . $_POST['username'] . "</h4>" . "\n\n";
+                                echo "<h2>" . "Usuario Creado" . "</h2>";
+                                echo "<h4>" . "Bienvenido: " . $_POST['usuario'] . "</h4>" . "\n\n";
                                 echo "<h5>" . "Hacer Login: " . "<a href='login.html'>Login</a>" . "</h5>";
                             }
-                        else {
-                            echo "Error al crear el usuario." . $query . "<br>" . $conexion->error;
-                        }
+                            else {
+                                echo "Error al crear el usuario." . $query . "<br>" . $conexion->error;
+                            }
                         }
                         mysqli_close($conexion);
             }            

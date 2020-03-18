@@ -119,7 +119,9 @@
             <div id="formularios">
 				<form action="procesarRegistro.php" id="form_session" method="post">
 					<?php
-					
+						if(isset($_SESSION['loged'])){
+							header('Location: index.php');
+						}
 						if(isset($_SESSION['errorRegistro'])){
 							echo "<div class='error'>";
 							echo $_SESSION['errorRegistro'];
@@ -174,7 +176,7 @@
 					<p>Confirmar contraseña:</p>
 					<div class="">
 						<input name="passwordConf" type="password" class="field" placeholder="*******"> <br/>
-					</div>
+					</div></br>
 					<p class="">
 						<input type="submit" class="btn btn-green" value="Registrarse"> <br/><br/>
 					</p>

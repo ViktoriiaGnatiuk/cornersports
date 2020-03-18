@@ -121,6 +121,9 @@
 			<div id="formularios">
 				<form action="procesarLogin.php" id="form_session" method="post">
 					<?php
+						if(isset($_SESSION['loged'])){
+							header('Location: index.php');
+						}
 						if(isset($_SESSION['errorLogin'])){
 							echo "<div class='error'>";
 							echo $_SESSION['errorLogin'];
@@ -137,6 +140,7 @@
 					<div class="center-content">
 						<input name="password" type="password" class="field" placeholder="*******"> <br/>
 					</div>
+					</br>
 					<p class="center-content">
 						<input type="submit" class="btn btn-green" value="Iniciar sesión"> <br/><br/>
 						<a href="registro.php">Registra cuenta</a>

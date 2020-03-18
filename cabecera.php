@@ -16,8 +16,8 @@
 					include "menu.php";
 				?>
 				<?php
-					if(isset($_SESSION['username'])){
-						echo "Bienvenido " . $_SESSION['username'];
+					if(isset($_SESSION['nombre'])){
+						echo "Bienvenido " . $_SESSION['nombre'];
 						echo "<br>";
 						echo '<a href="logout.php">Logout</a>';
 					}else{

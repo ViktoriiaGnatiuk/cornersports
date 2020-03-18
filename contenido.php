@@ -7,7 +7,7 @@
     </head>
     <body>
         <?php
-            if(isset($_SESSION['username'])){
+            if(isset($_SESSION['loged'])){
                 echo "<h1> Contenido exclusivo para usuarios<h1>";
                 echo "<form action=\"index.php\" method=\"POST\">
                     <button type=\"submit\">HOME</button>

@@ -22,7 +22,7 @@
                     <li><a href="">Usuario</a>
                         <ul>
                             <li><a href="login.php">Login</a></li>
-                            <li><a href="">Registrarse</a></li>
+                            <li><a href="registro.php">Registrarse</a></li>
                         </ul>
                     </li>
                 </ul>
