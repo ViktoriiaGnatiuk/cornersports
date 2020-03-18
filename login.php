@@ -6,7 +6,6 @@
 	<meta charset="utf-8">
 	<title>Login</title>
 	<link rel="stylesheet" href="boton.css">
-	<link rel="stylesheet" href="font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="estilo.css" />
 	<style>
 		body{font-family: Arial; background-color: #256999; box-sizing: border-box; padding: 100px;}
@@ -104,7 +103,11 @@
 		#form_register{
 			display: none;
 		}
-
+		.error{
+			color: #FF9185;
+			font-size: 12px;
+			padding: 10px;
+		}
 	</style>
 </head>
 
@@ -119,8 +122,10 @@
 				<form action="procesarLogin.php" id="form_session" method="post">
 					<?php
 						if(isset($_SESSION['errorLogin'])){
+							echo "<div class='error'>";
 							echo $_SESSION['errorLogin'];
 							unset($_SESSION['errorLogin']);
+							echo "</div>";
 						}
 					?>
 					<p>Nombre o correo:</p>
@@ -134,7 +139,7 @@
 					</div>
 					<p class="center-content">
 						<input type="submit" class="btn btn-green" value="Iniciar sesión"> <br/><br/>
-						<a href="recibir_get.php?tipo_usuario=nuevo&navegador=chrome">Registra cuenta</a>
+						<a href="registro.php">Registra cuenta</a>
 					</p>
 				</form>	
 			</div>
