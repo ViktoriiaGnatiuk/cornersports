@@ -34,6 +34,12 @@
                 $result = $conexion->query($query);
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION['nombre']=$row['nombre'];
+
+                $query = "SELECT perfil FROM usuarios WHERE username = '$user'";
+                $result = $conexion->query($query);
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION['perfil']=$row['perfil'];
+
                 $_SESSION['loged']=true;
                 header('Location: index.php');
             }
