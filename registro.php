@@ -4,8 +4,8 @@
     <head>
         <title>Registro</title>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" href="boton.css">
-	<link rel="stylesheet" type="text/css" href="estilo.css" />
+        <link rel="stylesheet" href="estilos/boton.css">
+	<link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
 	<style>
 		body{font-family: Arial; background-color: #256999; box-sizing: border-box; padding: 100px;}
 

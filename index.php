@@ -4,14 +4,13 @@
 <meta charset="utf-8">
 	<head>
 		<title>Index</title>
-		<link rel="stylesheet" type="text/css" href="estilo.css" />
+		<link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
 	</head>
 
 	<body>
 		<div id="contenedor">
 			<?php
 				include "cabecera.php";
-				include "sidebarleft.php";
 			?>
 			<div id="contenido">
 				<h1>Página principal</h1>

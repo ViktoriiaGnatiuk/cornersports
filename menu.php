@@ -21,8 +21,19 @@
                     <li><a href="">Contacto</a></li>
                     <li><a href="">Usuario</a>
                         <ul>
-                            <li><a href="login.php">Login</a></li>
-                            <li><a href="registro.php">Registrarse</a></li>
+                            <?php
+                                if(isset($_SESSION['nombre'])){
+                                    echo "<li><a href=\"perfil.php\">Perfil</a></li>";
+                                    echo "<li><a href=\"pedidos.php\">Pedidos</a></li>";
+                                    echo "<li><a href=\"entrenamientos.php\">Entrenamientos</a></li>";
+                                    echo "<li><a href=\"logout.php\">Salir</a></li>";
+                                }
+                                else
+                                {
+                                    echo "<li><a href=\"login.php\">Login</a></li>";
+                                    echo "<li><a href=\"registro.php\">Registrarse</a></li>";
+                                }
+                            ?>
                         </ul>
                     </li>
                 </ul>

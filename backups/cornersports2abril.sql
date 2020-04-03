@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2020 a las 23:17:24
+-- Tiempo de generación: 02-04-2020 a las 19:52:03
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `cornersports`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `entrenamientos`
+--
+
+CREATE TABLE `entrenamientos` (
+  `Nombre` varchar(50) NOT NULL,
+  `Precio` double NOT NULL,
+  `Entrenador` varchar(50) NOT NULL,
+  `Usuario` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -48,6 +61,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`username`, `password`, `nombre`, `apellidos`, `email`, `provincia`, `localidad`, `calle`, `codPostal`, `portal`, `perfil`) VALUES
 ('admin', '$2y$10$MTwLq7RS.AAPoBeHx0tH7ufP406mN1aVe7GwJgG8xPnxS3aoJrjrK', 'admin', 'admin', 'adasd@', 'sadas', 'dasd', 'dsds', 'fsdsd', 'dasda', 'admin'),
+('Sergio', '$2y$10$kOvIruo0D2c/zDzbfUod5OVPtN4sEaM7DROQb7/hJnIrwTDmlgLh2', 'Sergio', 'Morales', 'crespillo.sergio@gma', 'Madrid', 'Madrid', 'calle Rodio', '28040', '4A, 5ºC', 'usuario'),
 ('vicky', '$2y$10$IqkfN1PkF9cdhix7UJd2.Oz8yT3NRTTs/nutHxW3tF.a574cLpOjq', 'Viktoriia', 'Gnatiuk', 'adas#¡@adasa.com', 'adas', 'adasa', 'daasdad', 'dasda', 'dada', 'usuario');
 
 --

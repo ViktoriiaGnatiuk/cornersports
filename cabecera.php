@@ -2,7 +2,7 @@
 <html>
 <meta charset="utf-8">
 	<head>
-		<link rel="stylesheet" type="text/css" href="estilo.css" />
+		<link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
 	</head>
 	
 	<body>
@@ -19,10 +19,7 @@
 					if(isset($_SESSION['nombre'])){
 						echo "Bienvenido " . $_SESSION['nombre'];
 						echo "<br>";
-						echo '<a href="logout.php">Logout</a>';
-					}else{
-						echo '<a href="login.php">Login</a>';
-					}	
+					}
 				?>
 			</div>
 		</div>

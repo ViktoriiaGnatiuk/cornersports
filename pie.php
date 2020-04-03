@@ -2,7 +2,7 @@
 <html>
 <meta charset="utf-8">
 	<head>
-		<link rel="stylesheet" type="text/css" href="estilo.css" />
+		<link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
 	</head>
 	
 	<body>

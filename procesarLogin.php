@@ -30,6 +30,7 @@
             $registro = $result->fetch_assoc();
             if (password_verify($pass, $registro["password"]))
             {
+                $_SESSION['username']=$user;
                 $query = "SELECT nombre FROM usuarios WHERE username = '$user'";
                 $result = $conexion->query($query);
                 $row = mysqli_fetch_assoc($result);
