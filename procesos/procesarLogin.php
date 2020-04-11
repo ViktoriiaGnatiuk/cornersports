@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/includes/config.php';
-require_once __DIR__.'/includes/aplicacion.php';
+require_once __DIR__.'/../includes/config.php';
+require_once __DIR__.'/../includes/aplicacion.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,16 +42,16 @@ require_once __DIR__.'/includes/aplicacion.php';
                     $_SESSION['perfil']=$row['perfil'];
 
                     $_SESSION['loged']=true;
-                    header('Location: index.php');
+                    header('Location: ../index.php');
                 }
                 else{
                     $_SESSION['errorLogin']="La contraseña es incorrecta";
-                    header('Location: login.php');
+                    header('Location: ../login.php');
                 }
             }
             else{
                 $_SESSION['errorLogin']="No existe ningún usuario registrado con ese nombre de usuario";
-                header('Location: login.php');
+                header('Location: ../login.php');
             }
         }
     ?>

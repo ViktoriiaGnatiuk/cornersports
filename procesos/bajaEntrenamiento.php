@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/includes/config.php';
-require_once __DIR__ .'/includes/aplicacion.php';
+require_once __DIR__.'/../includes/config.php';
+require_once __DIR__ .'/../includes/aplicacion.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@ require_once __DIR__ .'/includes/aplicacion.php';
     <body>
         <div id="contenedor">
         <?php
-            include __DIR__.'/includes/estructura/cabecera.php';
+            include __DIR__.'/../includes/estructura/cabecera.php';
         ?>
         <div id="contenido2">
             <?php
@@ -35,7 +35,7 @@ require_once __DIR__ .'/includes/aplicacion.php';
                     if ($result == TRUE) {
                         echo"<center/>";
                         echo "Se ha dado de baja el entrenamiento correctamente.<br/>";
-                        echo "<a href=\"entrenamiento.php\">Volver a entrenamientos</a>";
+                        echo "<a href=\"http://localhost/cornersports/entrenamiento.php\">Volver a entrenamientos</a>";
                     }else{
                         echo "Error al dar de baja el entrenamiento." . $query . "<br>" . $conexion->error;
                     }
@@ -46,7 +46,7 @@ require_once __DIR__ .'/includes/aplicacion.php';
             ?>
         </div>
         <?php
-            include __DIR__.'/includes/estructura/pie.php';
+            include __DIR__.'/../includes/estructura/pie.php';
         ?>
         </div>
     </body>

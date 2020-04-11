@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/includes/config.php';
-require_once __DIR__.'/includes/aplicacion.php';
+require_once __DIR__.'/../includes/config.php';
+require_once __DIR__.'/../includes/aplicacion.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +11,7 @@ require_once __DIR__.'/includes/aplicacion.php';
     <body>
         <div id="contenedor">
             <?php
-                include __DIR__.'/includes/estructura/cabecera.php';
+                include __DIR__.'/../includes/estructura/cabecera.php';
             ?>
             <div id="contenido">
                 <div id="interior">
@@ -53,7 +53,7 @@ require_once __DIR__.'/includes/aplicacion.php';
                 </div>
             </div>
             <?php
-                include __DIR__.'/includes/estructura/pie.php';
+                include __DIR__.'/../includes/estructura/pie.php';
             ?>
         </div>
     </body>

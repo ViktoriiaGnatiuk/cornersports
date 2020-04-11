@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/includes/config.php';
-require_once __DIR__ . '/includes/aplicacion.php';
+require_once __DIR__.'/../includes/config.php';
+require_once __DIR__ . '/../includes/aplicacion.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@ require_once __DIR__ . '/includes/aplicacion.php';
     <body>
         <div id="contenedor">
 		<?php
-			include __DIR__."/includes/estructura/cabecera.php";
+			include __DIR__."/../includes/estructura/cabecera.php";
 		?>
 		<div id="contenido2">
 		<center>
@@ -30,7 +30,7 @@ require_once __DIR__ . '/includes/aplicacion.php';
 					$result = $conexion->query($query);
 					$row = mysqli_fetch_assoc($result);
 					if($row['entrenamiento_activo'] == NULL){
-						echo "<center/>No es posible ver la lista de entrenamientos contratados ya que no tiene ninguno. Por favor dirijase al listado de <a href=\"entrenamiento.php\">entrenamientos disponibles</a>.<br/>";
+						echo "<center/>No es posible ver la lista de entrenamientos contratados ya que no tiene ninguno. Por favor dirijase al listado de <a href=\"http://localhost/cornersports/entrenamiento.php\">entrenamientos disponibles</a>.<br/>";
 					}else{
 						echo "<center/><br/><strong>ENTRENAMIENTOS CONTRATADOS POR EL USUARIO '$usuario'</strong><br/><br/>";
 						//Busca el entrenamiento seleccionado
@@ -58,7 +58,7 @@ require_once __DIR__ . '/includes/aplicacion.php';
 		</center>
 		</div>
 		<?php
-			include __DIR__.'/includes/estructura/pie.php';
+			include __DIR__.'/../includes/estructura/pie.php';
 		?>
 		</div>
     </body>

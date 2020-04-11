@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__.'/includes/config.php';
-require_once __DIR__ .'/includes/aplicacion.php';
+require_once __DIR__.'/../includes/config.php';
+require_once __DIR__ .'/../includes/aplicacion.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,7 +12,7 @@ require_once __DIR__ .'/includes/aplicacion.php';
     <body>
         <div id="contenedor">
         <?php
-            include __DIR__.'/includes/estructura/cabecera.php';
+            include __DIR__.'/../includes/estructura/cabecera.php';
         ?>
         <div id="contenido">
             <?php
@@ -82,14 +82,14 @@ require_once __DIR__ .'/includes/aplicacion.php';
                     }
                     else{
                         echo "<center/>Por favor identifiquese antes de contratar un entrenamiento<br/>";
-                        echo "<center><a href=\"login.php\">Identificarse</a></center>";
+                        echo "<center><a href=\"http://localhost/cornersports/login.php\">Identificarse</a></center>";
                     }
                 }           
             ?>
             
         </div>
         <?php
-            include __DIR__.'/includes/estructura/pie.php';
+            include __DIR__.'/../includes/estructura/pie.php';
         ?>
         </div>
     </body>

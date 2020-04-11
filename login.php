@@ -20,7 +20,7 @@ require_once __DIR__.'/includes/config.php';
 			<div id="contenido2">
 					<div id="formularios">
 						<center/>
-						<form action="procesarLogin.php" id="form_session" method="post">
+						<form action="procesos/procesarLogin.php" id="form_session" method="post">
 							<?php
 								if(isset($_SESSION['loged'])){
 									header('Location: index.php');
