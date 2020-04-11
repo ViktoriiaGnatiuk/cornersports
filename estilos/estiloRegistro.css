@@ -1,19 +1,15 @@
-		#formularios{
+	form{
 			background-color: white;
 			border-radius: 0 0 3px 3px;
 			color: #999;
 			font-size: 0.8em;
 			padding: 20px;
 			margin: 0 auto;
-			width: 300px;
-			margin: 0 auto;
-			align-content: center;
+			width: 800px;
 		}
 		input, textarea{
 			border: 0;
 			outline: none;
-
-			width: 280px;
 		}
 
 		.field{
@@ -92,7 +88,7 @@
 		#form_register{
 			display: none;
 		}
-		.error{
+        .error{
 			color: #FF9185;
 			font-size: 12px;
 			padding: 10px;

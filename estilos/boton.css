@@ -5,11 +5,12 @@
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.3); 
+	
 }
 
 .btn-green{
 	color: white;
-	background-color: #3CC93F;
+	background-color: goldenrod;
 }
 
 .btn-black{
@@ -17,8 +18,8 @@
 	background-color: #222;
 }
 .btn-green:hover{
-	background-color: #37B839;	
+	background-color: gold;	
 }
 .btn-green:active{
-	background-color: #29962A;
+	background-color: gold;
 }

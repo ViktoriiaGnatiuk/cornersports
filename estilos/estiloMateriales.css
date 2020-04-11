@@ -1,0 +1,22 @@
+.material1 {
+	position: relative;
+	display: block;
+}
+.material2 {
+	position: relative;
+	display: block;
+}
+.material3 {
+	position: relative;
+	display: block;
+}
+
+.contenido
+{
+	position: relative;
+	bottom:10px;
+	color:red;
+	background-color:black;
+	padding:2px 5px;
+	font-weight:bold;
+}

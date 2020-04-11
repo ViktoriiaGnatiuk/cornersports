@@ -1,29 +1,27 @@
+<?php
+require_once __DIR__.'/includes/config.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TITULO</title>
+        <title>Procesar registro</title>
         <meta charset="UTF-8"/>
     
     </head>
     <body>
         <div id="contenedor">
         <?php
-            include"cabecera.php";
-            include"sidebarleft.php";
+            include"includes/cabecera.php";
         ?>
-        <div id="contenido">
+        <div id="contenido2">
             <?php
-                session_start();
-                $host_db = "localhost";
-                $user_db = "root";
-                $pass_db = "";
-                $db_name = "cornersports";
+                $app = aplicacion::getSingleton();
+                $conexion = $app->conexionBd();
                 $tbl_name = "usuarios";
-                $conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-                
                 if ($conexion->connect_error) {
-                die("La conexion falló: " . $conexion->connect_error);
+                    die("La conexion falló: " . $conexion->connect_error);
                 }
+				else{
                     $_SESSION['nombre']=$_POST['nombre'];
                     $_SESSION['apellidos']=$_POST['apellidos'];
                     $_SESSION['email']=$_POST['email'];
@@ -111,13 +109,12 @@
                                     echo "Error al crear el usuario." . $query . "<br>" . $conexion->error;
                                 }
                             }
-                            mysqli_close($conexion);
+                        }
                 }            
             ?>
         </div>
         <?php
-            include"sidebarright.php";
-            include"pie.php";
+            include"includes/pie.php";
         ?>
         </div>
     </body>

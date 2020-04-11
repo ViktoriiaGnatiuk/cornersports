@@ -1,0 +1,70 @@
+{
+	// Place your snippets for html here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"php":{
+		"prefix": "p",
+		"body": [
+			"<?php\n\n?>"
+		],
+		"description": "php tag"
+	},
+	"html":{
+		"prefix": "html",
+		"body": [
+			"<?php\nrequire_once __DIR__.'/includes/config.php';\nrequire_once __DIR__.'/includes/aplicacion.php';\n?>\n<!DOCTYPE html>\n<html>\n\t<head>\n\t\t<title>TITULO</title>\n\t\t<meta charset=\"UTF-8\"/>\n\t</head>\n\t<body>\n\t</body>\n</html>"
+		],
+		"description": "html5 tag"
+	},
+	"form":{
+		"prefix": "form",
+		"body":[
+			"<form action=\"introducirLINK\" method=\"POST\">\n\t<button type=\"submit\">NombreBoton</button>\n</form>"
+		],
+		"description": "Estructura del formulario con un boton"
+	},
+	"link":{
+		"prefix": "link",
+		"body": [
+			"<a href=\"index.php\">HOME\n</a>\n"
+		],
+		"description": "Introduce un link a una página"
+	},
+	"start":{
+		"prefix": "start",
+		"body": [
+			"<?php session_start(); ?>\n"
+		],
+		"description": "Mantiene la sesión iniciada"
+	},
+	"estructura":{
+		"prefix": "estructura",
+		"body": [
+			"<div id=\"contenedor\">\n<?php\n\tinclude\"includes/cabecera.php\";\n\tinclude\"includes/sidebarleft.php\";\n?>\n<div id=\"contenido\">\n\t<h1>COSAS AQUI</h1>\n</div>\n<?php\n\tinclude\"includes/sidebarright.php\";\n\tinclude\"includes/pie.php\";\n?>\n</div>"
+		],
+		"description": "Construye la estructura de la página"
+	},
+	"list":{
+		"prefix": "list",
+		"body": [
+				"<ul class=\"nav\">\n<li><a href=\"index.php\">Home</a></li>\n<li><a href=\"\">Ofertas</a></li>\n<li><a href=\"\">Equipo</a>\n\t<ul>\n\t\t<li><a href=\"\">Máquinas</a></li>\n\t\t<li><a href=\"\">Deportes</a></li>\n\t\t<li><a href=\"\">Mujer</a></li>\n\t\t<li><a href=\"\">Hombre</a></li>\n\t</ul>\n</li>\n<li><a href=\"\">Entrenar</a></li>\n</ul>"
+		],
+		"description": "Construye una lista"
+	},
+	"includes":{
+		"prefix": "includes",
+		"body": [
+			"<?php\nrequire_once __DIR__.'/includes/config.php';\nrequire_once __DIR__.'/includes/aplicacion.php';\n?>"
+		],
+		"description": "Incluye config y aplicacion"
+	}

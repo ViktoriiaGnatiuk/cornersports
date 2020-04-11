@@ -1,26 +1,56 @@
-<?php session_start(); ?>
+<?php
+require_once __DIR__.'/includes/config.php';
+?>
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8">
 	<head>
-		<title>Index</title>
-		<link rel="stylesheet" type="text/css" href="estilos/estilo.css" />
+		<title>HOME</title>
+		<meta charset="utf-8">
 	</head>
-
 	<body>
-		<div id="contenedor">
-			<?php
-				include "cabecera.php";
-			?>
-			<div id="contenido">
-				<h1>Página principal</h1>
-				<p> Aquí está el contenido público, visible para todos los usuarios.</p>
+	<div id="contenedor">
+		<?php
+			include __DIR__.'/includes/estructura/cabecera.php';
+		?>
+		<div id="contenido">
+			<div id="interior">
+					<?php 
+						include __DIR__.'/includes/scripts/script_mas_vendido.php';
+					?>
+				<div id="novedades">
+					<center><h2>NUESTROS PRODUCTOS</h2></center>
+					<?php
+						$_SESSION['producto']=5;
+						include __DIR__.'/includes/scripts/script_producto_min.php';
+						$_SESSION['producto']=6;
+						include __DIR__.'/includes/scripts/script_producto_min.php';
+						$_SESSION['producto']=7;
+						include __DIR__.'/includes/scripts/script_producto_min.php';
+						$_SESSION['producto']=5;
+						include __DIR__.'/includes/scripts/script_producto_min.php';
+					?>
+				</div>
 			</div>
-			<?php
-				include "sidebarright.php";
-				include "pie.php";	
-			?>
-
+		</div>
+		<?php
+			include __DIR__.'/includes/estructura/barraOfertas.php';	
+		?>
+		<div id="contenido2">
+			<div id="entrenamientos_home">
+				<center><h2>ENTRENA CON NOSOTROS</h2></center>
+				<?php
+					$_SESSION['entrenamiento']=1;
+					include __DIR__.'/includes/scripts/script_entrenamiento.php';
+				?>
+				<?php
+					$_SESSION['entrenamiento']=2;
+					include __DIR__.'/includes/scripts/script_entrenamiento.php';
+				?>
+			</div>
+		</div>
+		<?php 
+			include __DIR__.'/includes/estructura/pie.php';
+		?>
 		</div>
 	</body>
 	

@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__.'/includes/config.php';
+require_once __DIR__ .'/includes/aplicacion.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,20 +11,14 @@
     <body>
         <div id="contenedor">
         <?php
-            include"cabecera.php";
+            include __DIR__.'/includes/estructura/cabecera.php';
         ?>
-        <div id="contenido">
+        <div id="contenido2">
             <?php
-                session_start();
-                $host_db = "localhost";
-                $user_db = "root";
-                $pass_db = "";
-                $db_name = "cornersports";
+                $app = aplicacion::getSingleton();
+                $conexion = $app->conexionBd();
                 $tbl_name = "usuarios";
-                $conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
-                if ($conexion->connect_error) {
-                    die("La conexion falló: " . $conexion->connect_error);
-                }
+
                 $usuario=$_SESSION['username'];
                 //Obtener el id del entrenamiento activo
                 $query = "SELECT entrenamiento_activo FROM usuarios WHERE username = '$usuario'";
@@ -35,7 +33,8 @@
                     $query="DELETE FROM entrenamientos WHERE id='$id'";
                     $result = $conexion->query($query);
                     if ($result == TRUE) {
-                        echo "Se ha dado de baja el entrenamiento correctamente.";
+                        echo"<center/>";
+                        echo "Se ha dado de baja el entrenamiento correctamente.<br/>";
                         echo "<a href=\"entrenamiento.php\">Volver a entrenamientos</a>";
                     }else{
                         echo "Error al dar de baja el entrenamiento." . $query . "<br>" . $conexion->error;
@@ -47,8 +46,7 @@
             ?>
         </div>
         <?php
-            include"sidebarright.php";
-            include"pie.php";
+            include __DIR__.'/includes/estructura/pie.php';
         ?>
         </div>
     </body>

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php
+require_once __DIR__.'/includes/config.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,10 +10,9 @@
     <body>
         <div id="contenedor">
         <?php
-            include"cabecera.php";
-            include"sidebarleft.php";
+            include __DIR__.'includes/estructura/cabecera.php';
         ?>
-        <div id="contenido">
+        <div id="contenido2">
             <?php
                 if(isset($_SESSION['loged'])){
                     echo "<h1> Bienvenido ".$_SESSION['nombre']."</h1><br>";
@@ -27,8 +28,7 @@
             ?>
         </div>
         <?php
-            include"sidebarright.php";
-            include"pie.php";
+            include __DIR__.'/includes/estructura/pie.php';
         ?>
         </div>
         
