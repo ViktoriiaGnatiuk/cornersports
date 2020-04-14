@@ -20,8 +20,8 @@ require_once __DIR__.'/includes/config.php';
 					<h2>FORMULARIO DE REGISTRO</h2>
 					<form action="procesarRegistro.php" id="form_session" method="post">
 						<?php
-							if(isset($_SESSION['loged'])){
-								header('Location: index.php');
+							if(isset($_SESSION['loged']) && !($_SESSION['perfil']=="admin")){
+								header('Location: http://localhost/cornersports/index.php');
 							}
 							if(isset($_SESSION['errorRegistro'])){
 								echo "<div class='error'>";

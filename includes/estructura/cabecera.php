@@ -25,7 +25,7 @@
                 <li><a href="http://localhost/cornersports/entrenamiento.php">ENTRENAR</a></li>
                 <li><a href="http://localhost/cornersports/contacto.php">CONTACTO</a></li>
                         <?php
-                            if(isset($_SESSION['nombre'])){
+                            if(isset($_SESSION['loged'])){
                                 echo"<li><a href=\"http://localhost/cornersports/vistasUsuario/perfil.php\">USUARIO</a>";
                                 echo"<ul>";
                                 echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/perfil.php\">PERFIL</a></li>";
