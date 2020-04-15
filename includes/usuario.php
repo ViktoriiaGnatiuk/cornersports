@@ -34,8 +34,7 @@ class Usuario
                     $fila['calle'],
                     $fila['codPostal'],
                     $fila['portal'],
-                    $fila['perfil'],
-                    $fila['entrenamiento_activo']);
+                    $fila['perfil']);
                 $result = $user;
             }
             $rs->free();
@@ -57,8 +56,7 @@ class Usuario
         $calle,
         $codPostal,
         $portal,
-        $perfil,
-        $entrenamiento_activo)
+        $perfil)
     {
         $user = self::buscaUsuario($username);
         if ($user) {
@@ -75,8 +73,7 @@ class Usuario
                 $calle,
                 $codPostal,
                 $portal,
-                $perfil,
-                $entrenamiento_activo);
+                $perfil);
         return self::guarda($user);
     }
     
@@ -98,7 +95,7 @@ class Usuario
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf("INSERT INTO usuarios(username, password, nombre, apellidos, email, provincia, localidad, 
-        calle, codPostal, portal, perfil, entrenamiento_activo) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+        calle, codPostal, portal, perfil) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
             , $conn->real_escape_string($usuario->username)
             , $conn->real_escape_string($usuario->password)
             , $conn->real_escape_string($usuario->nombre)
@@ -109,8 +106,7 @@ class Usuario
             , $conn->real_escape_string($usuario->calle)
             , $conn->real_escape_string($usuario->codPostal)
             , $conn->real_escape_string($usuario->portal)
-            , $conn->real_escape_string($usuario->perfil)
-            , $conn->real_escape_string($usuario->entrenamiento_activo));
+            , $conn->real_escape_string($usuario->perfil));
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
         } else {
@@ -178,8 +174,7 @@ class Usuario
         $calle,
         $codPostal,
         $portal,
-        $perfil,
-        $entrenamiento_activo)
+        $perfil)
     {
         $this->username= $username;
         $this->password= $password;
@@ -192,7 +187,6 @@ class Usuario
         $this->codPostal= $codPostal;
         $this->portal= $portal;
         $this->perfil= $perfil;
-        $this->entrenamiento_activo= $entrenamiento_activo;
     }
 
     public function id()

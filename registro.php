@@ -18,7 +18,7 @@ require_once __DIR__.'/includes/config.php';
         <div id="contenido2">
 				<div id="formularios">
 					<h2>FORMULARIO DE REGISTRO</h2>
-					<form action="procesarRegistro.php" id="form_session" method="post">
+					<form action="procesos/procesarRegistro.php" id="form_session" method="post">
 						<?php
 							if(isset($_SESSION['loged']) && !($_SESSION['perfil']=="admin")){
 								header('Location: http://localhost/cornersports/index.php');

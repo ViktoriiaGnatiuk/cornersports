@@ -11,6 +11,11 @@
     <body>
         <nav>
             <label class="logo" ><img src="http://localhost/cornersports/img/logo.png" width="320" height="30"></label>
+            <?php
+                if(isset($_SESSION['loged'])){
+                    echo "Bienvenid@ ".$_SESSION['nombre'];
+                }
+            ?>
             <ul>
                 <li><a class ="activar" href="http://localhost/cornersports/index.php">HOME</a></li>
                 <li><a href="http://localhost/cornersports/ofertas.php">OFERTAS</a></li>
