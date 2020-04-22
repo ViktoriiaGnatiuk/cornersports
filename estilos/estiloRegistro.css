@@ -1,26 +1,30 @@
 	form{
 			background-color: white;
-			border-radius: 0 0 3px 3px;
 			color: #999;
 			font-size: 0.8em;
 			padding: 20px;
 			margin: 0 auto;
-			width: 800px;
+			text-align: center;
+		}
+		fieldset{
+			border: none;
 		}
 		input, textarea{
 			border: 0;
 			outline: none;
+			text-align: center;
 		}
 
 		.field{
 			border: solid 1px #ccc;
-			border-radius: 0 4px 4px 0; 
+			border-radius: 3px; 
 			padding: 10px;
-			width: 240px;
+			width: 300px;
+			text-align: center;
 		}
 
 		.field:focus{
-			border-color: #18A383;
+			border-color: gold;
 		}
 
 		.center-content{
@@ -30,6 +34,7 @@
 		.field-container div{
 			display: inline-block;
 			vertical-align: top;
+			border-radius: 3px;
 		}
 
 		.field-container i{
@@ -90,6 +95,11 @@
 		}
         .error{
 			color: #FF9185;
-			font-size: 12px;
+			font-size: 20px;
 			padding: 10px;
+			text-align: left;
+			width: 800px;
+		}
+		h2{
+			font-size: 30px;
 		}
