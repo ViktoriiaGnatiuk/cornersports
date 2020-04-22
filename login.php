@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__.'/includes/config.php';
+require_once __DIR__.'/includes/formularioLogin.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,36 +19,16 @@ require_once __DIR__.'/includes/config.php';
 				include __DIR__.'/includes/estructura/cabecera.php';
 			?>
 			<div id="contenido2">
-					<div id="formularios">
-						<center/>
-						<form action="procesos/procesarLogin.php" id="form_session" method="post">
-							<?php
-								if(isset($_SESSION['loged'])){
-									header('Location: index.php');
-								}
-								if(isset($_SESSION['errorLogin'])){
-									echo "<div class='error'>";
-									echo $_SESSION['errorLogin'];
-									unset($_SESSION['errorLogin']);
-									echo "</div>";
-								}
-							?>
-							<p>Nombre o correo:</p>
-							<div class="center-content">	
-								<input name="username" type="text" class="field" placeholder="user@example.com"> <br/>
-							</div>
-
-							<p>Contraseña:</p>
-							<div class="center-content">
-								<input name="password" type="password" class="field" placeholder="*******"> <br/>
-							</div>
-							</br>
-							<p class="center-content">
-								<input type="submit" class="btn btn-green" value="Iniciar sesión"> <br/><br/>
-								<a href="registro.php" id="registrar">Registra cuenta</a>
-							</p>
-						</form>	
-					</div>
+				<div id="formularios">
+					<center/>
+					<?php 
+						if(isset($_SESSION['loged'])){
+							header('Location: index.php');
+						}
+						$form = new FormularioLogin(); 
+						$form->gestiona();
+					?>
+				</div>
 			</div>
 			<?php
 				include __DIR__.'/includes/estructura/pie.php';
