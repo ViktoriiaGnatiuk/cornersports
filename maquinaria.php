@@ -21,8 +21,8 @@ require_once __DIR__.'/includes/config.php';
 					<div class="precio">622,75€</div>
 					<div class="precio_mes">25,95€/Mes</div>
 					<div class="entrenador">Máquina musculación
-						<button><a href="">COMPRAR</a>
-						<button><a href="">ALQUILAR</a></button>
+						<button><a href="procesos/procesarMaquina.php?id=1">COMPRAR</a>
+						<button><a href="procesos/procesarMaquina.php?id=1">ALQUILAR</a></button>
 					</div>
 				</div>
 				
@@ -31,8 +31,8 @@ require_once __DIR__.'/includes/config.php';
 					<div class="precio_2">399,99€</div>
 					<div class="precio_mes_2">16,65€/Mes</div>
 					<div class="entrenador">Máquina remo
-						<button><a href="">COMPRAR</a>
-						<button><a href="">ALQUILAR</a></button>
+						<button><a href="procesos/procesarMaquina.php?id=2">COMPRAR</a>
+						<button><a href="procesos/procesarMaquina.php?id=2">ALQUILAR</a></button>
 					</div>
 				</div>
 			</div>
