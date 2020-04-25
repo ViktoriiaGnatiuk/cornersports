@@ -17,20 +17,70 @@ require_once __DIR__.'/includes/config.php';
         <div id="contenido">
 			<div id="interior">
 				<div class="producto_1">
-					<center><img src="https://www.corpomachine.com/Files/48757/Img/17/maquina-de-gimnasio-multigimnasio-ATX-multiplex-00001-zoom.png" width="325" height="300"></center>
-					<div class="precio">622,75€</div>
-					<div class="precio_mes">25,95€/Mes</div>
-					<div class="entrenador">Máquina musculación
+					<?php 
+                        $app = aplicacion::getSingleton();
+                        $conexion = $app->conexionBd();
+                        $tabla = "productos_disponibles";
+                        if ($conexion->connect_error) {
+                            die("La conexion falló: " . $conexion->connect_error);
+                        }
+                        else{
+                            $query = "SELECT * FROM $tabla WHERE id = 1";
+                            $result = $conexion->query($query);
+                            $row = mysqli_fetch_assoc($result);
+                            $_SESSION['nombre_producto']=$row['nombre'];
+							$_SESSION['precio']=$row['precio'];
+                            $_SESSION['imagen']=$row['imagen'];
+                        }
+						$img=$_SESSION['imagen'];
+						echo "<img src=\"/cornersports/img/$img\" width=\"325\" height=\"300\">";
+					?>
+					<div class="precio_mes">
+						<?php
+							$precio=$_SESSION['precio'];
+							echo "$precio €/Mes";
+						?>
+					</div>
+					<div class="entrenador">
+						<?php
+							$nombre=$_SESSION['nombre_producto'];
+							echo "$nombre";
+						?>
 						<button><a href="procesos/procesarMaquina.php?id=1">COMPRAR</a>
 						<button><a href="procesos/procesarMaquina.php?id=1">ALQUILAR</a></button>
 					</div>
 				</div>
 				
 				<div class="producto_2">
-					<center><img src="https://maquinasderemo.com/wp-content/uploads/2018/11/movimiento-entrenamiento.jpg" width="350" height="300"></center>
-					<div class="precio_2">399,99€</div>
-					<div class="precio_mes_2">16,65€/Mes</div>
-					<div class="entrenador">Máquina remo
+					<?php 
+                        $app = aplicacion::getSingleton();
+                        $conexion = $app->conexionBd();
+                        $tabla = "productos_disponibles";
+                        if ($conexion->connect_error) {
+                            die("La conexion falló: " . $conexion->connect_error);
+                        }
+                        else{
+                            $query = "SELECT * FROM $tabla WHERE id = 2";
+                            $result = $conexion->query($query);
+                            $row = mysqli_fetch_assoc($result);
+                            $_SESSION['nombre_producto']=$row['nombre'];
+							$_SESSION['precio']=$row['precio'];
+                            $_SESSION['imagen']=$row['imagen'];
+                        }
+						$img=$_SESSION['imagen'];
+						echo "<img src=\"/cornersports/img/$img\" width=\"325\" height=\"300\">";
+					?>
+					<div class="precio_mes_2">
+						<?php
+							$precio=$_SESSION['precio'];
+							echo "$precio €/Mes";
+						?>
+					</div>
+					<div class="entrenador">
+						<?php
+							$nombre=$_SESSION['nombre_producto'];
+							echo "$nombre";
+						?>
 						<button><a href="procesos/procesarMaquina.php?id=2">COMPRAR</a>
 						<button><a href="procesos/procesarMaquina.php?id=2">ALQUILAR</a></button>
 					</div>
