@@ -13,7 +13,6 @@ require_once __DIR__.'/../includes/aplicacion.php';
             <?php
                 include __DIR__.'/../includes/estructura/cabecera.php';
             ?>
-
             <div id="contenido">
                 <div id="interior">
 					<center>		
@@ -25,7 +24,7 @@ require_once __DIR__.'/../includes/aplicacion.php';
 						<div class="ya-card-row">
 							
 							<div class="ya-card-cell">
-								<a href="" class="ya-card__whole-card-link">
+								<a href="editar_perfil.php" class="ya-card__whole-card-link">
 								<div data-card-identifier="SignInAndSecurity" class="a-box ya-card--rich"><div class="a-box-inner">
 								<div class="a-row">
 								<div class="a-column a-span3">
@@ -46,7 +45,7 @@ require_once __DIR__.'/../includes/aplicacion.php';
 						<div class="ya-card-row">
 							
 								<div class="ya-card-cell">
-									<a href="" class="ya-card__whole-card-link">
+									<a href="editar_perfil.php" class="ya-card__whole-card-link">
 									<div data-card-identifier="AddressesAnd1Click" class="a-box ya-card--rich"><div class="a-box-inner">
 									<div class="a-row">
 										<div class="a-column a-span3">
@@ -65,7 +64,7 @@ require_once __DIR__.'/../includes/aplicacion.php';
 								</div>
 								
 							<div class="ya-card-cell">
-								<a href="" class="ya-card__whole-card-link">
+								<a href="editar_perfil.php" class="ya-card__whole-card-link">
 								<div data-card-identifier="PaymentOptions" class="a-box ya-card--rich"><div class="a-box-inner">
 									<div class="a-row">
 										<div class="a-column a-span3">
@@ -86,7 +85,7 @@ require_once __DIR__.'/../includes/aplicacion.php';
 
 						<div class="ya-card-row">
 							<div class="ya-card-cell">
-								<a href="" class="ya-card__whole-card-link">
+								<a href="http://localhost/cornersports/contacto.php" class="ya-card__whole-card-link">
 								<div data-card-identifier="HelpGateway" class="a-box ya-card--rich"><div class="a-box-inner">
 									<div class="a-row">
 										<div class="a-column a-span3">
@@ -96,7 +95,7 @@ require_once __DIR__.'/../includes/aplicacion.php';
 											<h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
 												Ayuda
 											</h2>
-											<div><span class="a-color-secondary">Examinar los temas de ayuda disponibles</span></div>
+											<div><span class="a-color-secondary">Contacta con nosotros. Evaluación, Sugerencias, Críticas</span></div>
 											
 										</div>
 									</div>
