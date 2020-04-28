@@ -35,7 +35,7 @@ require_once __DIR__.'/../aplicacion.php';
             <div id="ol-centro">
                 <?php
                     $img=$_SESSION['imagen'];
-                    echo "<img src=\"/cornersports/img/$img\" width=\"250\" height=\"140\">";
+                    echo "<img src=\"$img\" width=\"250\" height=\"140\">";
                 ?>
             </div>
             <div id="ol-titulo">

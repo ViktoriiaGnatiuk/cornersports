@@ -5,7 +5,7 @@ require_once __DIR__.'/../aplicacion.php';
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8"/>
+       
     </head>
     <body>
         <div id="producto-min">
@@ -24,15 +24,16 @@ require_once __DIR__.'/../aplicacion.php';
                         $row = mysqli_fetch_assoc($result);
                         $_SESSION['nombre_producto']=$row['nombre'];
                         $img=$row['imagen'];
-                        echo "<img src=\"/cornersports/img/$img\" width=\"220\" height=\"220\">";
+                        echo "<img src=\"$img\" width=\"220\" height=\"220\">";
                     }
                 ?>
             </div>
             <div id="titulo-producto-min">
                 <?php
                     $nombre=$_SESSION['nombre_producto'];
-                    echo "<center/><a href=\"maquinaria.php\" class=\"button\">$nombre</a>";
-                ?>
+                    $id=$_SESSION['producto'];
+                    echo "<center/><a href=\"procesos/addItem.php?id=$id\" class=\"botonProdMin\" onclick=\"addCarro()\">$nombre</a>";
+               ?>
             </div>
         </div>
     </body>
