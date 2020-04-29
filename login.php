@@ -7,10 +7,8 @@ require_once __DIR__.'/includes/formularioLogin.php';
 <head>
 	<meta charset="utf-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="estilos/boton.css?v=<?php echo(rand()); ?>" />
-    <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
-	<link rel="stylesheet" href="estilos/estiloLogin.css?v=<?php echo(rand()); ?>" />
-    <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+	<link rel="stylesheet" href="estilos/boton.css?">;
+	<link rel="stylesheet" href="estilos/estiloLogin.css">;
 </head>
 
 <body>	
@@ -24,6 +22,12 @@ require_once __DIR__.'/includes/formularioLogin.php';
 					<?php 
 						if(isset($_SESSION['loged'])){
 							header('Location: index.php');
+						}
+						if(isset($_SESSION['error'])){
+							echo "<div class=error>";
+							$error=$_SESSION['error'];
+							echo "$error";
+							echo "</div>";
 						}
 						$form = new FormularioLogin(); 
 						$form->gestiona();

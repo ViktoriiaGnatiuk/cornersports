@@ -5,7 +5,6 @@ require_once __DIR__.'/includes/config.php';
 <html>
 	<head>
 		<title>HOME</title>
-		<meta charset="utf-8">
 	</head>
 	<body>
 	<div id="contenedor">

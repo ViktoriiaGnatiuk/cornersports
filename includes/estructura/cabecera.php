@@ -6,6 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="stylesheet" href="http://localhost/cornersports/estilos/menuStyle.css?v=<?php echo(rand()); ?>" />
         <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+        <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarro.css?v=<?php echo(rand()); ?>" />
+        <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
     </head>
     <body>
         <nav>
@@ -16,14 +18,14 @@
                 }
             ?>
             <ul>
-                <li><a class ="activar" href="http://localhost/cornersports/index.php">HOME</a></li>
+                <li><a href="http://localhost/cornersports/index.php">HOME</a></li>
                 <li><a href="http://localhost/cornersports/ofertas.php">OFERTAS</a></li>
-                <li><a href="http://localhost/cornersports/maquinaria.php">EQUIPO</a>
+                <li><a href="http://localhost/cornersports/productos.php?tipo=maquina">EQUIPO</a>
                     <ul>
-                        <li><a href="http://localhost/cornersports/maquinaria.php">MÁQUINAS</a></li>
-                        <li><a href="http://localhost/cornersports/materiales.php">MATERIAL</a></li>
-                        <li><a href="">MUJER</a></li>
-                        <li><a href="">HOMBRE</a></li>
+                        <li><a href="http://localhost/cornersports/productos.php?tipo=maquina">MÁQUINAS</a></li>
+                        <li><a href="http://localhost/cornersports/productos.php?tipo=deporte">DEPORTE</a></li>
+                        <li><a href="http://localhost/cornersports/productos.php?tipo=prendaMujer">MUJER</a></li>
+                        <li><a href="http://localhost/cornersports/productos.php?tipo=prendaHombre">HOMBRE</a></li>
                     </ul>
                 </li>
                 <li><a href="http://localhost/cornersports/entrenamiento.php">ENTRENAR</a></li>
@@ -47,8 +49,9 @@
                         ?>
                     </ul>
                 </li>
+                <li><a id="boton-carro" href="http://localhost/cornersports/includes/carroCompra.php"><img src="http://localhost/cornersports/img/carro24.png" width="30" height="30"></a></li>
                 <?php
-                    include __DIR__.'/carroCompra.php';
+                    //include __DIR__.'/carroCompra.php';
                 ?>
              </ul>
         </nav>

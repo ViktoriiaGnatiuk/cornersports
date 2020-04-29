@@ -88,7 +88,7 @@ div#top_ventas {
 	min-height: 400px;
 	width: 1000px;
 	margin-bottom: 10px;
-	border: goldenrod solid 2px;
+	border: black solid 1px;
 }
 
 div#imagen-mas-vendido {
@@ -99,7 +99,7 @@ div#imagen-mas-vendido {
 }
 
 div#titulo-mas-vendido {
-	background-color:goldenrod;
+	background-color:gold;
 	min-height: 20px;
 	max-width: 1000px;
 	
@@ -112,7 +112,7 @@ div#novedades {
 	min-height: 240px;
 	width: 1000px;
 	margin-bottom: 10px;
-	border: goldenrod solid 2px;
+	border: black solid 1px;
 }
 
 div#producto-min {
@@ -130,7 +130,7 @@ div#imagen-producto-min {
 	border-bottom: none;
 }
 div#titulo-producto-min {
-	background-color: goldenrod;
+	background-color: gold;
 	min-height: 20px;
 	width: 240px;
 }
@@ -148,7 +148,7 @@ div#entrenamiento-home {
 	font-size: 28px;
 }
 div#titulo-entrenamientos{
-	background-color: linen;
+	background-color: whitesmoke;
 }
 div#pie {
 	clear: both;
@@ -178,7 +178,7 @@ a.button {
     appearance: button;
     text-decoration: none;
 	color: initial;
-	background-color: goldenrod;
+	background-color: gold;
 	font-weight:bold;
 }
 a.button2 {
@@ -188,5 +188,5 @@ a.button2 {
     text-decoration: none;
 	color: initial;
 	font-weight:bold;
-	background-color: linen;
+	background-color: whitesmoke;
 }

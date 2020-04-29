@@ -26,7 +26,7 @@ require_once __DIR__.'/../aplicacion.php';
                         $row = mysqli_fetch_assoc($result);
                         $_SESSION['nombre_producto']=$row['nombre'];
                         $img=$row['imagen'];
-                        echo "<img src=\"/cornersports/img/$img\" width=\"1000\" height=\"350\">";
+                        echo "<img src=\"$img\" width=\"1000\" height=\"350\">";
                     }
                 ?>
             </div>
