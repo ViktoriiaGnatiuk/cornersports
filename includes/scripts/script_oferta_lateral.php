@@ -41,7 +41,7 @@ require_once __DIR__.'/../aplicacion.php';
             <div id="ol-titulo">
                 <?php 
                     $nombre=$_SESSION['nombre_producto'];
-                    echo "<center/><a href=\"maquinaria.php\" class=\"button2\">$nombre</a>";
+                    echo "<center/><a href=\"ofertas.php\" class=\"button2\">$nombre</a>";
                 ?>
             </div>
         </div>

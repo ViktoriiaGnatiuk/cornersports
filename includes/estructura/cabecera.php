@@ -20,12 +20,12 @@
             <ul>
                 <li><a href="http://localhost/cornersports/index.php">HOME</a></li>
                 <li><a href="http://localhost/cornersports/ofertas.php">OFERTAS</a></li>
-                <li><a href="http://localhost/cornersports/maquinaria.php">EQUIPO</a>
+                <li><a href="http://localhost/cornersports/productos.php?tipo=maquina">EQUIPO</a>
                     <ul>
-                        <li><a href="http://localhost/cornersports/maquinaria.php">MÁQUINAS</a></li>
-                        <li><a href="http://localhost/cornersports/materiales.php">MATERIAL</a></li>
-                        <li><a href="">MUJER</a></li>
-                        <li><a href="">HOMBRE</a></li>
+                        <li><a href="http://localhost/cornersports/productos.php?tipo=maquina">MÁQUINAS</a></li>
+                        <li><a href="http://localhost/cornersports/productos.php?tipo=deporte">DEPORTE</a></li>
+                        <li><a href="http://localhost/cornersports/productos.php?tipo=prendaMujer">MUJER</a></li>
+                        <li><a href="http://localhost/cornersports/productos.php?tipo=prendaHombre">HOMBRE</a></li>
                     </ul>
                 </li>
                 <li><a href="http://localhost/cornersports/entrenamiento.php">ENTRENAR</a></li>

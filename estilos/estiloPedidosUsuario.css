@@ -1,0 +1,11 @@
+
+.tabla{
+    border: 2px solid black;
+}
+.casilla{
+    font-family: Arial;
+    font-size: 15px;
+    padding: 10px;
+    border: 1px solid gray;
+    text-align: center;
+}

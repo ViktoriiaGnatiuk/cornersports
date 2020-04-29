@@ -18,28 +18,35 @@
                 <p class="tituloCarro"> Carro de la compra</p>
                 <?php
                 
-                    $carrito = carrito::getSingleton();
+                    $carrito = new carrito();
+                    $items=$carrito->getItems();
                     $i=0;
                     $size=$carrito->getSize();
                     while($i < $size){
+                        $nombre = $items[$i]['nombre'];
+                        $precio = $items[$i]['precio'];
+                        $precio_alquiler = $items[$i]['precio_alquiler'];
+                        $descripcion = $items[$i]['descripcion'];
+                        $imagen = $items[$i]['imagen'];
+                        $cantidad = $items[$i]['cantidad'];
                         $html = <<<EOF
                         <div class="item">
-                            <img src="img/productos/guantes_boxeo1.jpg" width="60" height="60">
+                            <img src="$imagen" width="60" height="60">
                             <div class="datosItem">
-                                <div class="nombreItem"> <p>Nombre</p> </div>
-                                <div class="descripcionItem"> <p>Descripcion.........................</p></div>
-                                <div class="precioItem"> <p>20$</p></div>
+                                <div class="nombreItem"><p>$nombre</p> </div>
+                                <div class="descripcionItem"><p>$descripcion</p></div>
+                                <div class="precioItem"><p>$precio</p></div>
                             </div> 
                             <div class="botonesCarro">
                                 <button class="restarItem">-</button>
-                                <p class="cantidadItem">4</p>
+                                <p class="cantidadItem">$cantidad</p>
                                 <button class="sumaItem">+</button>
                                 <button class="eliminaItem">Eliminar</button>
                             </div>
                         </div>
                         EOF;
                         echo "$html";
-                        $i=$i+1;
+                        ++$i;
                     }
                 ?>
             </div>

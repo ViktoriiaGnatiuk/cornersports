@@ -1,106 +1,154 @@
 <?php
     require_once __DIR__.' /config.php';
     require_once __DIR__ . '/aplicacion.php';
-    require_once __DIR__ . '/producto.php';
     
     class carrito
     {
-        private static $instancia;
-        public $total=0;
-        public  $numeroElementos=0;
-        public  $items=array();
-
-        private function __construct() {
-        }
-        
-        public static function getSingleton() {
-            global $instancia;
-            if (  !self::$instancia instanceof self) {
-                self::$instancia = new self;
-    
-            }
-            return self::$instancia;
-        }
-
-        /**Añade un elemento al carrito, si el elemento ya estaba añadido aumenta la cantidad
-         * Devuelve la posición en el array de items en la que se almacenara el producto.
-         */
-        public  function addItem($id){
-            $pos=-1;
-            $existe=false;
-            $indice=0;
-            $pos=$this->numeroElementos;
-            foreach ($this->items as $i => $value) {
-                if($this->items[$i]->getId() == $id){
-                    $existe=true;
-                    $indice=$i;
-                }
-            }
-            if($existe){
-                $pos=$indice;
-                $this->items[$indice]->aumentarCantidad();
-                $this->total=$this->total + $this->items[$indice]->getPrecio();
+        public function addItem($id, $usuario){
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
             }
             else{
-                $pos=$this->numeroElementos;
-                $this->items[$this->numeroElementos]= new producto($id);
-                $this->total=$this->total + $this->items[$this->numeroElementos]->getPrecio();
-                $this->numeroElementos++;
-            }
-            return $pos;
-        }
-
-        public function removeItem($id){
-            $existe=false;
-            $indice=0;
-            foreach ($this->items as $i => $value) {
-                if($this->items[$i]->getId() == $id){
-                    $existe=true;
-                    $indice=$i;
-                }
-            }
-            if($existe){
-                $this->items[$indice]->disminuirCantidad();
-                $this->total=$this->total - $items[$indice]->getPrecio();
-                if($this->items[$indice]->getCantidad() == 0){
-                    unset($this->items[$indice]); 
-                    $this->numeroElementos--;
-                }
-            }
-        }
-
-        public function getNombre($pos){
-            return $this->items[$pos]->getNombre();
-        }
-
-        public function getPrecio($pos){
-            return $this->items[$pos]->getPrecio();
-        }
+                $idPedido=0;
+                $query = "SELECT pedido_activo FROM usuarios WHERE username=$usuario";
+                $result = $conexion->query($query);
+                $row = mysqli_fetch_assoc($result);
+                $idPedido=$row['pedido_actual'];
         
-        public function getImagen($pos){
-            return $this->items[$pos]->getImagen();
-        }
+                //Creamos un pedido
+                if($idPedido==NULL){
+                    $query="INSERT INTO pedidos (usuario) VALUES ($usuario)";
+                    $result = $conexion->query($query);
+                    if ($result == TRUE) {
+                        //Obtener el id del pedido
+                        $idPedido=$conexion->insert_id;
+                    }
+                    else{
+                        die("La inserción fallo: " . $conexion->connect_error);
+                    }
+                }
 
-        public function getCantidad($pos){
-           return $this->items[$pos]->getCantidad();
-        }
+                //Extraemos la información de los productos ofertados
+                $query = "SELECT * FROM productos_disponibles WHERE id=$id";
+                $result = $conexion->query($query);
+                $row = mysqli_fetch_assoc($result);
+                $nombre = $row['nombre'];
+                $tipo = $row['tipo'];
+                $imagen = $row['imagen'];
+                $descripcion = $row['descripcion'];
+                $precio = $row['precio'];
+                $precio_alquiler = $row['precio_alquiler'];
 
-        public function getSize(){
-            return $this->numeroElementos;
-        }
-
-        public function getTotal(){
-            return $this->total;
-        }
-        public function tramitarCarrito(){
-            //crear pedido
-            //añadir todos los elementos a pedido
-            //eliminar todos los elementos del carrito
-            foreach ($this->items as $i => $value) {
-                unset($this->items[$i]); 
+                //Vemos si el pedido tiene un producto con ese id
+                $query = "SELECT * FROM productos WHERE pedido=$idPedido AND nombre=$nombre";
+                $result = $conexion->query($query);
+                if($result->num_rows > 0){
+                    $row = mysqli_fetch_assoc($result);
+                    $idProducto=$row['id'];
+                    $cantidad=$row['cantidad']+1;
+                    $query="UPDATE productos SET cantidad = '$cantidad' WHERE id = '$idProducto'";
+                    $result = $conexion->query($query);
+                    if ($result == FALSE) {
+                        die("La actualización falló: " . $conexion->connect_error);
+                    }
+                }
+                else{
+                    //Creamos un nuevo producto y lo asociamos al pedido
+                    $query="INSERT INTO productos (nombre, precio, tipo, precio_alquiler, descripcion, 
+                        imagen, pedido) VALUES ($nombre, $precio, $tipo, $precio_alquiler, $descripcion,
+                        $imagen, $idPedido)";
+                    $result = $conexion->query($query);
+                    if ($result == FALSE) {
+                        die("La inserción falló: " . $conexion->connect_error);
+                    }
+                }
             }
-            $this->numeroElementos=0;
         }
 
+        public function removeItem($usuario, $nombre){
+
+        }
+        public function getSize(){
+            $usuario=$_SESSION['username'];
+            $idPedido=0;
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                $idPedido=0;
+                $query = "SELECT pedido_activo FROM usuarios WHERE username=$usuario";
+                $result = $conexion->query($query);
+                $row = mysqli_fetch_assoc($result);
+                if($row['pedido_activo'==NULL]){
+                    return 0;
+                }
+                $idPedido=$row['pedido_activo'];
+
+                //Buscar todos los productos que esten asociados con el numero de pedido
+                $query = "SELECT * FROM productos WHERE pedido=$idPedido";
+                $result = $conexion->query($query);
+                return $result->num_rows;
+            }
+
+        }
+
+        public function getCarrito(){
+            $usuario=$_SESSION['username'];
+            $idPedido=0;
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                $idPedido=0;
+                $query = "SELECT pedido_activo FROM usuarios WHERE username=$usuario";
+                $result = $conexion->query($query);
+                $row = mysqli_fetch_assoc($result);
+                $idPedido=$row['pedido_activo'];
+
+                //Creamos un pedido
+                if($idPedido==NULL){
+                    $query="INSERT INTO pedidos (usuario) VALUES ($usuario)";
+                    $result = $conexion->query($query);
+                    if ($result == TRUE) {
+                        //Obtener el id del pedido
+                        $idPedido=$conexion->insert_id;
+                    }
+                    else{
+                        die("La inserción fallo: " . $conexion->connect_error);
+                    }
+                }
+
+                //Buscar todos los productos que esten asociados con el numero de pedido
+                $query = "SELECT * FROM productos WHERE pedido=$idPedido";
+                $result = $conexion->query($query);
+
+                $pedido=[];
+                while($row= $result->fetch(PDO::FETCH_ASSOC)){
+                    $item= [
+                        'nombre' => $row['nombre'],
+                        'precio' => $row['precio'],
+                        'precio_alquiler' => $row['precio_alquiler'],
+                        'descripcion' => $row['descripcion'],
+                        'imagen' => $row['imagen'],
+                        'cantidad' => $row['cantidad']
+                    ];
+                    array_push($pedido, $item);
+                }
+                return $pedido;
+            }
+
+        }
+        public function tramitarPedido(){
+            //Cambiar el estado de los productos a comprados
+            //Cambiar la fecha_entrega y estado en la tabla pedidos.
+            //Eliminar valor del campo pedido_actual en la tabla usuarios.
+        }
     }
+
 ?>
