@@ -21,7 +21,13 @@ require_once __DIR__.'/includes/productos.php';
 			<?php
 				$prd=new productos();
 				$i=0;
-				$tipo=$_GET['tipo'];
+				if(isset($_GET['tipo'])){
+					$tipo=$_GET['tipo'];
+					$_SESSION['tipo']=$tipo;
+				}else{
+					$tipo=$_SESSION['tipo'];
+				}
+					
 				$size=$prd->getSize($tipo);
 				$items=$prd->getItems($tipo);
 
@@ -32,6 +38,7 @@ require_once __DIR__.'/includes/productos.php';
 					$descripcion = $items[$i]['descripcion'];
 					$precio = $items[$i]['precio'];
 					$precio_alquiler = $items[$i]['precio_alquiler'];
+					
 					$html = <<<EOF
 					<div class="producto">
 						<div class="izq">
@@ -45,7 +52,9 @@ require_once __DIR__.'/includes/productos.php';
 							</div>
 							<p>Precio</p>
 							<div class="precio"><p>$precio €</p></div>
-							<button class="comprar">Añadir</button>
+							<form action="procesos/addItem.php?id=$id" id="form_session" method="post">
+							<input type="submit" class="comprar" value="Añadir">
+							</form>
 						</div>
 					</div>
 					EOF;

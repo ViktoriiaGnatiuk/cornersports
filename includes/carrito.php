@@ -12,57 +12,87 @@
             }
             else{
                 $idPedido=0;
-                $query = "SELECT pedido_activo FROM usuarios WHERE username=$usuario";
+                $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username = '%s'", $conexion->real_escape_string($usuario));
                 $result = $conexion->query($query);
-                $row = mysqli_fetch_assoc($result);
-                $idPedido=$row['pedido_actual'];
-        
-                //Creamos un pedido
-                if($idPedido==NULL){
-                    $query="INSERT INTO pedidos (usuario) VALUES ($usuario)";
-                    $result = $conexion->query($query);
-                    if ($result == TRUE) {
-                        //Obtener el id del pedido
-                        $idPedido=$conexion->insert_id;
+                if ($result) {
+                    $row = $result->fetch_assoc();
+                    $idPedido=$row['pedido_activo'];
+            
+                    //Creamos un pedido
+                    if($idPedido==NULL){
+                        $query=sprintf("INSERT INTO pedidos (usuario) VALUES ('%s')", $conexion->real_escape_string($usuario));
+                        $result = $conexion->query($query);
+                        if ($result == TRUE) {
+                            //Obtener el id del pedido
+                            $idPedido=$conexion->insert_id;
+                            //Asignamos el id del pedido al usuario
+                            $query=sprintf("UPDATE usuarios SET pedido_activo='%s' WHERE username='%s'"
+                            , $conexion->real_escape_string($idPedido)
+                            , $conexion->real_escape_string($usuario));
+                            $result = $conexion->query($query);
+                            if($result==FALSE){
+                                echo "Error al consultar en la BD Linea 34: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                            exit();
+                            }
+                        }
+                        else{
+                            echo "Error al consultar en la BD Linea 30: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                            exit();
+                        }
                     }
-                    else{
-                        die("La inserción fallo: " . $conexion->connect_error);
-                    }
-                }
 
-                //Extraemos la información de los productos ofertados
-                $query = "SELECT * FROM productos_disponibles WHERE id=$id";
-                $result = $conexion->query($query);
-                $row = mysqli_fetch_assoc($result);
-                $nombre = $row['nombre'];
-                $tipo = $row['tipo'];
-                $imagen = $row['imagen'];
-                $descripcion = $row['descripcion'];
-                $precio = $row['precio'];
-                $precio_alquiler = $row['precio_alquiler'];
+                    //Extraemos la información de los productos ofertados
+                    $query = sprintf("SELECT * FROM productos_disponibles WHERE id= '%s'", $conexion->real_escape_string($id));
+                    $result = $conexion->query($query);
+                    if($result){
+                        $row = $result->fetch_assoc();
+                        $nombre = $row['nombre'];
+                        $tipo = $row['tipo'];
+                        $imagen = $row['imagen'];
+                        $descripcion = $row['descripcion'];
+                        $precio = $row['precio'];
+                        $precio_alquiler = $row['precio_alquiler'];
 
-                //Vemos si el pedido tiene un producto con ese id
-                $query = "SELECT * FROM productos WHERE pedido=$idPedido AND nombre=$nombre";
-                $result = $conexion->query($query);
-                if($result->num_rows > 0){
-                    $row = mysqli_fetch_assoc($result);
-                    $idProducto=$row['id'];
-                    $cantidad=$row['cantidad']+1;
-                    $query="UPDATE productos SET cantidad = '$cantidad' WHERE id = '$idProducto'";
-                    $result = $conexion->query($query);
-                    if ($result == FALSE) {
-                        die("La actualización falló: " . $conexion->connect_error);
+                        //Vemos si el pedido tiene un producto con ese id
+                        $query = sprintf("SELECT * FROM productos WHERE pedido='%s' AND nombre='%s'",
+                         $conexion->real_escape_string($idPedido), $conexion->real_escape_string($nombre));
+                        $result = $conexion->query($query);
+                        if($result->num_rows > 0){
+                            $row = $result->fetch_assoc();
+                            $idProducto=$row['id'];
+                            $cantidad=$row['cantidad']+1;
+                            $query="UPDATE productos SET cantidad = '$cantidad' WHERE id = '$idProducto'";
+                            $result = $conexion->query($query);
+                            if ($result == FALSE) {
+                                echo "Error al consultar en la BD Linea 58: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                                exit();
+                            }
+                        }
+                        else{
+                            //Creamos un nuevo producto y lo asociamos al pedido
+                            $query=sprintf("INSERT INTO productos (nombre, precio, tipo, precio_alquiler, descripcion, 
+                                imagen, pedido, usuario) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                                $conexion->real_escape_string($nombre),
+                                $conexion->real_escape_string($precio),
+                                $conexion->real_escape_string($tipo),
+                                $conexion->real_escape_string($precio_alquiler),
+                                $conexion->real_escape_string($descripcion),
+                                $conexion->real_escape_string($imagen),
+                                $conexion->real_escape_string($idPedido),
+                                $conexion->real_escape_string($usuario));
+                                $result = $conexion->query($query);
+                            if ($result == FALSE) {
+                                echo "Error al consultar en la BD Linea75: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                                exit();
+                            }
+                        }
+                    } else {
+                        echo "Error al consultar en la BD Linea 81: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                        exit();
                     }
-                }
-                else{
-                    //Creamos un nuevo producto y lo asociamos al pedido
-                    $query="INSERT INTO productos (nombre, precio, tipo, precio_alquiler, descripcion, 
-                        imagen, pedido) VALUES ($nombre, $precio, $tipo, $precio_alquiler, $descripcion,
-                        $imagen, $idPedido)";
-                    $result = $conexion->query($query);
-                    if ($result == FALSE) {
-                        die("La inserción falló: " . $conexion->connect_error);
-                    }
+                } else {
+                    echo "Error al consultar en la BD Linea 85: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                    exit();
                 }
             }
         }
@@ -80,16 +110,16 @@
             }
             else{
                 $idPedido=0;
-                $query = "SELECT pedido_activo FROM usuarios WHERE username=$usuario";
+                $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username='%s'",  $conexion->real_escape_string($usuario));
                 $result = $conexion->query($query);
-                $row = mysqli_fetch_assoc($result);
-                if($row['pedido_activo'==NULL]){
+                $row = $result->fetch_assoc();
+                if($row['pedido_activo']==NULL){
                     return 0;
                 }
                 $idPedido=$row['pedido_activo'];
 
                 //Buscar todos los productos que esten asociados con el numero de pedido
-                $query = "SELECT * FROM productos WHERE pedido=$idPedido";
+                $query = sprintf("SELECT * FROM productos WHERE pedido='%s'",  $conexion->real_escape_string($idPedido));
                 $result = $conexion->query($query);
                 return $result->num_rows;
             }
@@ -106,14 +136,14 @@
             }
             else{
                 $idPedido=0;
-                $query = "SELECT pedido_activo FROM usuarios WHERE username=$usuario";
+                $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username='%s'",  $conexion->real_escape_string($usuario));
                 $result = $conexion->query($query);
-                $row = mysqli_fetch_assoc($result);
+                $row = $result->fetch_assoc();
                 $idPedido=$row['pedido_activo'];
 
                 //Creamos un pedido
                 if($idPedido==NULL){
-                    $query="INSERT INTO pedidos (usuario) VALUES ($usuario)";
+                    $query=sprintf("INSERT INTO pedidos (usuario) VALUES ('%s')",  $conexion->real_escape_string($usuario));
                     $result = $conexion->query($query);
                     if ($result == TRUE) {
                         //Obtener el id del pedido
@@ -125,12 +155,13 @@
                 }
 
                 //Buscar todos los productos que esten asociados con el numero de pedido
-                $query = "SELECT * FROM productos WHERE pedido=$idPedido";
+                $query = sprintf("SELECT * FROM productos WHERE pedido='%s'",  $conexion->real_escape_string($idPedido));
                 $result = $conexion->query($query);
 
                 $pedido=[];
-                while($row= $result->fetch(PDO::FETCH_ASSOC)){
+                while($row= $result->fetch_assoc()){
                     $item= [
+                        'id' => $row['id'],
                         'nombre' => $row['nombre'],
                         'precio' => $row['precio'],
                         'precio_alquiler' => $row['precio_alquiler'],
@@ -144,10 +175,44 @@
             }
 
         }
-        public function tramitarPedido(){
+        public function tramitar(){
+            $usuario=$_SESSION['username'];
             //Cambiar el estado de los productos a comprados
-            //Cambiar la fecha_entrega y estado en la tabla pedidos.
-            //Eliminar valor del campo pedido_actual en la tabla usuarios.
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+            $query=sprintf("UPDATE productos SET estado='%s' WHERE usuario='%s'"
+                , $conexion->real_escape_string("pagado")
+                , $conexion->real_escape_string($usuario));
+                $result = $conexion->query($query);
+                if($result){
+                    //Cambiar la fecha_entrega y estado en la tabla pedidos.
+                    $query=sprintf("UPDATE pedidos SET estado='%s' WHERE usuario='%s'"
+                        , $conexion->real_escape_string("PAGADO")
+                        , $conexion->real_escape_string($usuario));
+                    $result = $conexion->query($query);
+                    if($result){
+                        //Eliminar valor del campo pedido_activo en la tabla usuarios.
+                        $query=sprintf("UPDATE usuarios SET pedido_activo=NULL WHERE username='%s'"
+                            , $conexion->real_escape_string($usuario));
+                         $result = $conexion->query($query);
+                         if(!$result){
+                            echo "Error al consultar en la BD Linea 202: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                            exit();
+                         }
+                    }else{
+                        echo "Error al consultar en la BD Linea 206: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                        exit();
+                    }
+                }
+                else{
+                    echo "Error al consultar en la BD Linea 211: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                    exit();
+                }
+            }
         }
     }
 
