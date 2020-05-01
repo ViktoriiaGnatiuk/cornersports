@@ -10,11 +10,10 @@ require_once __DIR__.'/includes/aplicacion.php';
     <?php
     include __DIR__.'/includes/estructura/cabecera.php';
     ?>
-      <div id="contenido">
-        <div id="interior">
+      <div id="contenido2">
         <center>
         <h1>
-        <p style="color:#FF0000";>CONTACTO</p>
+        <h1>CONTACTO</h1>
         </h1>
           <p> 
           <form method="post" action="mailto:depor@ucm.es">
@@ -40,7 +39,6 @@ require_once __DIR__.'/includes/aplicacion.php';
           
           </p>
           </center>
-        </div>
       </div>
     <?php
     include __DIR__.'/includes/estructura/pie.php';

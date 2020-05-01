@@ -7,8 +7,8 @@ require_once __DIR__.'/includes/formularioLogin.php';
 <head>
 	<meta charset="utf-8">
 	<title>Login</title>
-	<link rel="stylesheet" href="estilos/boton.css?">;
-	<link rel="stylesheet" href="estilos/estiloLogin.css">;
+	<link rel="stylesheet" href="estilos/boton.css?">
+	<link rel="stylesheet" href="estilos/estiloLogin.css">
 </head>
 
 <body>	

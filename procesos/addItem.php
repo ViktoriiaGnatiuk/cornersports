@@ -10,5 +10,5 @@
         $id=$_GET['id'];
         $usuario=$_SESSION['username'];
         $carrito->addItem($id, $usuario);
-    //header('Location: http://localhost/cornersports/index.php');
+        header('Location: http://localhost/cornersports/productos.php');
 ?>

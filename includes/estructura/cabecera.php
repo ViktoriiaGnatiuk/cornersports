@@ -50,9 +50,6 @@
                     </ul>
                 </li>
                 <li><a id="boton-carro" href="http://localhost/cornersports/includes/carroCompra.php"><img src="http://localhost/cornersports/img/carro24.png" width="30" height="30"></a></li>
-                <?php
-                    //include __DIR__.'/carroCompra.php';
-                ?>
              </ul>
         </nav>
     </body>
