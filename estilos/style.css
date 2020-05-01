@@ -12,7 +12,7 @@ div#barra {
 	padding: 10px;
 	float: left;
 	width: 289px;
-	height: 750px;	
+	min-height: 750px;	
 	background-color:white;
 }
 
@@ -72,7 +72,7 @@ div#contenido2{
 	background-color: white;
 	padding: 10px;
 	max-width: 1600px;
-	min-height: 480px;
+	min-height: 580px;
 }
 div#interior {
 	padding: 10px;
@@ -149,13 +149,6 @@ div#entrenamiento-home {
 }
 div#titulo-entrenamientos{
 	background-color: whitesmoke;
-}
-div#pie {
-	clear: both;
-	padding: 20px;
-	background-color: #303030;
-	color: white;
-	text-align: center;
 }
 
 div.saludo {

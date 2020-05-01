@@ -32,7 +32,7 @@
                             $result = $conexion->query($query);
                             if($result==FALSE){
                                 echo "Error al consultar en la BD Linea 34: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
-                            exit();
+                                exit();
                             }
                         }
                         else{
@@ -113,6 +113,7 @@
                 }
             }
         }
+
         public function getSize(){
             $usuario=$_SESSION['username'];
             $idPedido=0;
@@ -161,9 +162,15 @@
                     if ($result == TRUE) {
                         //Obtener el id del pedido
                         $idPedido=$conexion->insert_id;
-                    }
-                    else{
-                        die("La inserción fallo: " . $conexion->connect_error);
+                        //Asignamos el id del pedido al usuario
+                        $query=sprintf("UPDATE usuarios SET pedido_activo='%s' WHERE username='%s'"
+                        , $conexion->real_escape_string($idPedido)
+                        , $conexion->real_escape_string($usuario));
+                        $result = $conexion->query($query);
+                        if($result==FALSE){
+                            echo "Error al consultar en la BD Linea 34: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                            exit();
+                        }
                     }
                 }
 
@@ -188,6 +195,69 @@
             }
 
         }
+
+        public function sumarItem($id){
+            $usuario=$_SESSION['username'];
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                //Obtenemos la cantidad actual de la base de datos
+                $query = sprintf("SELECT cantidad FROM productos WHERE id='%s'",
+                    $conexion->real_escape_string($id));
+                $result = $conexion->query($query);
+                if($result){
+                    $row= $result->fetch_assoc();
+                    $cantidad=$row['cantidad'];
+                    //Aumentamos la cantidad y la almacenamos
+                    $cantidad++;
+                    $query=sprintf("UPDATE productos SET cantidad = '$cantidad' WHERE id ='%s'",
+                        $conexion->real_escape_string($id));
+                    $result = $conexion->query($query);
+                    if ($result == FALSE) {
+                        echo "Error al consultar en la BD Linea 58: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                        exit();
+                    }
+                }
+                else{
+                    echo "Error al consultar en la BD Linea 85: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                    exit();
+                }
+            }
+        }
+
+        public function restarItem($id){
+            $usuario=$_SESSION['username'];
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                $query = sprintf("SELECT cantidad FROM productos WHERE id='%s'",
+                    $conexion->real_escape_string($id));
+                $result = $conexion->query($query);
+                if($result){
+                    $row= $result->fetch_assoc();
+                    $cantidad=$row['cantidad'];
+                    $cantidad--;
+                    $query=sprintf("UPDATE productos SET cantidad = '$cantidad' WHERE id ='%s'",
+                        $conexion->real_escape_string($id));
+                    $result = $conexion->query($query);
+                    if ($result == FALSE) {
+                        echo "Error al consultar en la BD Linea 58: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                        exit();
+                    }
+                }
+                else{
+                    echo "Error al consultar en la BD Linea 85: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                    exit();
+                }
+            }
+        }
+
         public function tramitar(){
             $usuario=$_SESSION['username'];
             //Cambiar el estado de los productos a comprados
