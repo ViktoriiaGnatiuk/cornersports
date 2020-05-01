@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,13 +24,15 @@
 									$result = $conexion->query($query);
 									$row = mysqli_fetch_assoc($result);
 									$_SESSION['nombre']=$row['nombre'];
+									$_SESSION['imagen']=$row['imagen'];
+									$img1=$_SESSION['imagen'];
+									echo "<img src=\"/cornersports/img/$img1\" width=\"150\" height=\"150\">";
 								}
 							?>
-							<img src="img/entenadores/sergio.jpeg" width="150" height="150">
 							<div id="entrenador">
 								<?php
 									$nombre=$_SESSION['nombre'];
-									echo "$nombre";
+									echo "<a href=\"entrenadores.php?id=2\" class=\"button2\">$nombre</a>";
 								?>
 								</br>
 								<fieldset class="val-fieldset"><legend>Calificación:</legend><span class="valoracion val-40"></span></fieldset>
@@ -53,13 +54,14 @@
 									$result = $conexion->query($query);
 									$row = mysqli_fetch_assoc($result);
 									$_SESSION['nombre']=$row['nombre'];
+									$img2=$_SESSION['imagen'];
+									echo "<img src=\"/cornersports/img/$img2\" width=\"150\" height=\"130\">";
 								}
 							?>
-							<img src="img/entrenadores/antonio.jpeg" width="150" height="130">
 							<div id="entrenador">
 								<?php
 									$nombre=$_SESSION['nombre'];
-									echo "$nombre";
+									echo "<a href=\"entrenadores.php?id=3\" class=\"button2\">$nombre</a>";
 								?>
 								</br>
 								<fieldset class="val-fieldset"><legend>Calificación:</legend><span class="valoracion val-45"></span></fieldset>
