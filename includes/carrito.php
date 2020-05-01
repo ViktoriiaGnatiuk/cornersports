@@ -97,8 +97,21 @@
             }
         }
 
-        public function removeItem($usuario, $nombre){
-
+        public function removeItem($id){
+            $usuario=$_SESSION['username'];
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                $query="DELETE FROM productos WHERE id='$id'";
+                $result = $conexion->query($query);
+                if ($result == FALSE) {
+                    echo "Error al consultar en la BD Linea 85: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                    exit();
+                }
+            }
         }
         public function getSize(){
             $usuario=$_SESSION['username'];

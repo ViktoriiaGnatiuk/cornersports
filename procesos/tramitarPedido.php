@@ -6,6 +6,7 @@ require_once __DIR__ . '/../includes/carrito.php';
 <html>
     <head>
         <title>Tramite compra</title>
+        <script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
         <script>
             function getCantidad(id){
                 return document.getElementById(id).innerHTML; 
@@ -23,17 +24,20 @@ require_once __DIR__ . '/../includes/carrito.php';
                 $carrito = new carrito();
                 $items=$carrito->getCarrito();
                 $size=$carrito->getSize();
-                $i=0;
-                while($i < $size){
-                    $id=$items[$i]['id'];
-                    $nombre="cantidad".$id;
-                    $cantidad=getCantidad($nombre);
-                    echo "$cantidad";
-                    $carrito->actualizarCantidad($id, $cantidad);
-                    ++$i;
+                if($size==0){
+                    $_SESSION['errorCarrito']="No puede tramitar un carrito vacio";
+                    header('Location: http://localhost/cornersports/includes/carroCompra.php');
                 }
-                $carrito->tramitar();
-                echo"<center/><h2>Su compra se ha realizado con exito, gracias por su pedido</h2>";
+                $i=0;
+                   /* while($i < $size){
+                        $id=$items[$i]['id'];
+                        $nombre="cantidad".$id;
+                        $cantidad=getCantidad($nombre);
+                        $carrito->actualizarCantidad($id, $cantidad);
+                        ++$i;
+                    }*/
+                    $carrito->tramitar();
+                    echo"<center/><h2>Su compra se ha realizado con exito, gracias por su pedido</h2>";
             ?>
         </div>
         <?php

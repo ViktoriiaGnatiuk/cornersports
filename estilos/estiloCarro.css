@@ -67,7 +67,7 @@
 
 .precioItem{
     font-size: 24px;
-    width: 100px;
+    width: 120px;
     font-weight: bold;
 }
 
@@ -138,4 +138,8 @@
 
 .tramitar:active{
 	background-color: gold;
+}
+
+.errorCarro{
+    color: red;
 }

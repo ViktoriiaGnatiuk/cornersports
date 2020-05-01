@@ -21,7 +21,14 @@
             <div class="carro">
                 <p class="tituloCarro"> Carro de la compra</p>
                 <?php
-                
+                    if(isset($_SESSION['errorCarrito'])){
+                        $mensaje=$_SESSION['errorCarrito'];
+                        unset($_SESSION['errorCarrito']);
+                        $html = <<<EOF
+                            <center/><p class="errorCarro">$mensaje</p>
+                        EOF;
+                        echo $mensaje;
+                    }
                     $carrito = new carrito();
                     $items=$carrito->getCarrito();
                     $i=0;
@@ -51,7 +58,7 @@
                                 }'>-</button>
                                 <p  class="cantidadItem" id="cantidad$id">$cantidad</p>
                                 <button class="sumaItem " onclick='document.getElementById("cantidad$id").innerHTML++'>+</button>
-                                <form action="http://localhost/cornersports/procesos/eliminarItem.php?$id" method="post">
+                                <form action="http://localhost/cornersports/procesos/eliminarItem.php?id=$id" method="post">
                                 <input type="submit" class="eliminaItem" value="Eliminar">
                                 </form>
                             </div>
