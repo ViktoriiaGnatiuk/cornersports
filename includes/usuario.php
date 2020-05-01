@@ -116,13 +116,13 @@ class Usuario
         return $usuario;
     }
     
-    private static function actualiza($usuario)
+    public static function actualiza($usuario)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
         $query=sprintf("UPDATE usuarios SET username = '%s', password='%s', nombre='%s', apellidos='%s'
         , email='%s', provincia='%s', localidad='%s', calle='%s', codPostal='%s', portal='%s'
-        , perfil='%s', entrenamiento_activo='%s' WHERE username=$usuario->username"
+        , perfil='%s' WHERE username= '%s'"
             , $conn->real_escape_string($usuario->username)
             , $conn->real_escape_string($usuario->password)
             , $conn->real_escape_string($usuario->nombre)
@@ -134,7 +134,7 @@ class Usuario
             , $conn->real_escape_string($usuario->codPostal)
             , $conn->real_escape_string($usuario->portal)
             , $conn->real_escape_string($usuario->perfil)
-            , $conn->real_escape_string($usuario->entrenamiento_activo));
+            , $conn->real_escape_string($usuario->username));
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
                 echo "No se ha podido actualizar el usuario: " . $usuario->username;
@@ -160,10 +160,10 @@ class Usuario
     private $codPostal;
     private $portal;
     private $perfil;
-    private $entrenamiento_activo;
+    private $entrenamiento_activo=NULL;
     
 
-    private function __construct(
+    public function __construct(
         $username,
         $password,
         $nombre,
@@ -224,7 +224,7 @@ class Usuario
         return $this->provincia;
     }
 
-    public function localida()
+    public function localidad()
     {
         return $this->localidad;
     }

@@ -6,7 +6,8 @@ require_once __DIR__.'/../includes/aplicacion.php';
 <html>
     <head>
         <title>Perfil</title>
-        <meta charset="UTF-8"/>
+		<link rel="stylesheet" href="estilos/estiloPerfil.css?v=<?php echo(rand()); ?>" />
+    	<script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
     </head>
     <body>
         <div id="contenedor">
@@ -16,7 +17,7 @@ require_once __DIR__.'/../includes/aplicacion.php';
             <div id="contenido2">
 				<center>		
 				<div class="a-container">
-				<div class="a-section ya-personalized">
+				<div class="ya-personalized">
 					<div class="a-row a-spacing-base">
 							<h1>Mi cuenta</h1><br><br>
 					</div>
@@ -61,25 +62,6 @@ require_once __DIR__.'/../includes/aplicacion.php';
 								</div></div>
 								</a>	
 							</div>
-							
-						<div class="ya-card-cell">
-							<a href="editar_perfil.php" class="ya-card__whole-card-link">
-							<div data-card-identifier="PaymentOptions" class="a-box ya-card--rich"><div class="a-box-inner">
-								<div class="a-row">
-									<div class="a-column a-span3">
-										<img alt="Métodos de pago" src="https://images-na.ssl-images-amazon.com/images/G/30/x-locale/cs/ya/images/Payments._CB485926314_.png">
-									</div>
-									<div class="a-column a-span9 a-span-last">
-										<h2 class="a-spacing-none ya-card__heading--rich a-text-normal">
-											Métodos de pago
-										</h2>
-										<div><span class="a-color-secondary">Editar o agregar métodos de pago</span></div>	
-									</div>
-									<br>
-								</div>
-							</div></div>
-							</a>
-						</div>	
 					</div>
 
 					<div class="ya-card-row">
