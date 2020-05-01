@@ -12,11 +12,6 @@
     <body>
         <nav>
             <label class="logo" ><img src="http://localhost/cornersports/img/logo.png" width="320" height="30"></label>
-            <?php
-                if(isset($_SESSION['loged'])){
-                    echo "Bienvenid@ ".$_SESSION['nombre'];
-                }
-            ?>
             <ul>
                 <li><a href="http://localhost/cornersports/index.php">HOME</a></li>
                 <li><a href="http://localhost/cornersports/ofertas.php">OFERTAS</a></li>
@@ -32,16 +27,16 @@
                 <li><a href="http://localhost/cornersports/contacto.php">CONTACTO</a></li>
                         <?php
                             if(isset($_SESSION['loged'])){
-                                echo"<li><a href=\"http://localhost/cornersports/vistasUsuario/perfil.php\">USUARIO</a>";
-                                echo"<ul>";
-                                echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/perfil.php\">PERFIL</a></li>";
-                                echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/pedidos.php\">PEDIDOS</a></li>";
-                                echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/entrenamientoUsuario.php\">TRAIN</a></li>";
-                                echo "<li><a href=\"http://localhost/cornersports/includes/logout.php\">SALIR</a></li>";
-                            }
+                                    echo"<li><a class=\"logo_usuario\" href=\"http://localhost/cornersports/vistasUsuario/perfil.php\"><img src=\"http://localhost/cornersports/img/usuarioOn.png\"></a>";
+                                    echo"<ul>";
+                                    echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/perfil.php\">PERFIL</a></li>";
+                                    echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/pedidos.php\">PEDIDOS</a></li>";
+                                    echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/entrenamientoUsuario.php\">TRAIN</a></li>";
+                                    echo "<li><a href=\"http://localhost/cornersports/includes/logout.php\">SALIR</a></li>";
+                                }
                             else
                             {
-                                echo"<li><a href=\"http://localhost/cornersports/login.php\">USUARIO</a>";
+                                echo"<li><a class=\"logo_usuario\" href=\"http://localhost/cornersports/login.php\"><img src=\"http://localhost/cornersports/img/usuarioOff.png\"></a>";
                                 echo"<ul>";
                                 echo "<li><a href=\"http://localhost/cornersports/login.php\">LOGIN</a></li>";
                                 echo "<li><a href=\"http://localhost/cornersports/registro.php\">REGISTRAR</a></li>";
