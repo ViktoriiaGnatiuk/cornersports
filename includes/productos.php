@@ -37,7 +37,7 @@
             return 0;
         }
 
-        public function getSizeOfertas($tipo, $precio, $descuento){
+        public function getSizeOfertas($tipo, $precio, $descuento, $palabra){
             $app = aplicacion::getSingleton();
             $conexion = $app->conexionBd();
             $tbl_name = "productos_disponibles";
@@ -46,122 +46,126 @@
             }
             else{
                 $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL'";
-                if(count($tipo)>0 && $precio!="" && $descuento!=""){
-                    $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND tipo='%s' AND precio <= $precio AND descuento >= $descuento",
-                        $conexion->real_escape_string($tipo[0]));
-                    if(isset($tipo[3])){
+                if($palabra!=""){
+                    $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' AND nombre LIKE '%$palabra%'";
+                }else{
+                    if(count($tipo)>0 && $precio!="" && $descuento!=""){
                         $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
-                         AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                         $conexion->real_escape_string($tipo[1]),
-                         $conexion->real_escape_string($tipo[2]),
-                         $conexion->real_escape_string($tipo[3]));
-                    }else if(isset($tipo[2])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s' OR tipo='%s')
-                         AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                         $conexion->real_escape_string($tipo[1]),
-                         $conexion->real_escape_string($tipo[2]));
-                    }
-                    else if(isset($tipo[1])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s')
-                         AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                         $conexion->real_escape_string($tipo[1]));
-                    }
-                }
-                else if (count($tipo)>0 && $precio!=""){
-                    $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND tipo='%s' AND precio <= $precio", $conexion->real_escape_string($tipo[0]));
-                    if(isset($tipo[3])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
-                         AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
-                         $conexion->real_escape_string($tipo[1]),
-                         $conexion->real_escape_string($tipo[2]),
-                         $conexion->real_escape_string($tipo[3]));
-                    }else if(isset($tipo[2])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s' OR tipo='%s')
-                         AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
-                         $conexion->real_escape_string($tipo[1]),
-                         $conexion->real_escape_string($tipo[2]));
-                    }
-                    else if(isset($tipo[1])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s')
-                         AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
-                         $conexion->real_escape_string($tipo[1]));
-                    }
-                }
-                else if($precio!="" && $descuento!=""){
-                    $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND precio <= $precio AND descuento >= $descuento";
-                }
-                else if(count($tipo)>0 && $descuento!="")
-                {
-                    $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND tipo='%s' AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]));
+                            AND tipo='%s' AND precio <= $precio AND descuento >= $descuento",
+                            $conexion->real_escape_string($tipo[0]));
                         if(isset($tipo[3])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
                             AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
-                             AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]),
-                             $conexion->real_escape_string($tipo[2]),
-                             $conexion->real_escape_string($tipo[3]));
+                            AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                            $conexion->real_escape_string($tipo[1]),
+                            $conexion->real_escape_string($tipo[2]),
+                            $conexion->real_escape_string($tipo[3]));
                         }else if(isset($tipo[2])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
                             AND (tipo='%s' OR tipo='%s' OR tipo='%s')
-                             AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]),
-                             $conexion->real_escape_string($tipo[2]));
+                            AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                            $conexion->real_escape_string($tipo[1]),
+                            $conexion->real_escape_string($tipo[2]));
                         }
                         else if(isset($tipo[1])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
                             AND (tipo='%s' OR tipo='%s')
-                             AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]));
+                            AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                            $conexion->real_escape_string($tipo[1]));
                         }
-                }
-                else if(count($tipo)>0)
-                {
-                    $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND tipo='%s'", $conexion->real_escape_string($tipo[0]));
-                        if(count($tipo)==4){
+                    }
+                    else if (count($tipo)>0 && $precio!=""){
+                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND tipo='%s' AND precio <= $precio", $conexion->real_escape_string($tipo[0]));
+                        if(isset($tipo[3])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                            AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')", 
-                            $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]),
-                             $conexion->real_escape_string($tipo[2]),
-                             $conexion->real_escape_string($tipo[3]));
-                        }else if(count($tipo)==3){
+                            AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
+                            AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
+                            $conexion->real_escape_string($tipo[1]),
+                            $conexion->real_escape_string($tipo[2]),
+                            $conexion->real_escape_string($tipo[3]));
+                        }else if(isset($tipo[2])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                            AND (tipo='%s' OR tipo='%s' OR tipo='%s')",
-                             $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]),
-                             $conexion->real_escape_string($tipo[2]));
+                            AND (tipo='%s' OR tipo='%s' OR tipo='%s')
+                            AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
+                            $conexion->real_escape_string($tipo[1]),
+                            $conexion->real_escape_string($tipo[2]));
                         }
-                        else if(count($tipo)==2){
+                        else if(isset($tipo[1])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                            AND (tipo='%s' OR tipo='%s')",
-                            $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]));
+                            AND (tipo='%s' OR tipo='%s')
+                            AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
+                            $conexion->real_escape_string($tipo[1]));
                         }
-                }
-                else if($descuento!="")
-                {
-                    $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND descuento >= $descuento";
-                }
-                else if($precio!="")
-                {
-                    $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND precio <= $precio";
+                    }
+                    else if($precio!="" && $descuento!=""){
+                        $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND precio <= $precio AND descuento >= $descuento";
+                    }
+                    else if(count($tipo)>0 && $descuento!="")
+                    {
+                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND tipo='%s' AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]));
+                            if(isset($tipo[3])){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
+                                AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]),
+                                $conexion->real_escape_string($tipo[3]));
+                            }else if(isset($tipo[2])){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s' OR tipo='%s')
+                                AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]));
+                            }
+                            else if(isset($tipo[1])){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s')
+                                AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]));
+                            }
+                    }
+                    else if(count($tipo)>0)
+                    {
+                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND tipo='%s'", $conexion->real_escape_string($tipo[0]));
+                            if(count($tipo)==4){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')", 
+                                $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]),
+                                $conexion->real_escape_string($tipo[3]));
+                            }else if(count($tipo)==3){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s' OR tipo='%s')",
+                                $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]));
+                            }
+                            else if(count($tipo)==2){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s')",
+                                $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]));
+                            }
+                    }
+                    else if($descuento!="")
+                    {
+                        $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND descuento >= $descuento";
+                    }
+                    else if($precio!="")
+                    {
+                        $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND precio <= $precio";
+                    }
                 }
                 $result = $conexion->query($query);
                 if(!$result){
-                    echo "Error al consultar en la BD Linea 141: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                    echo "Error al consultar en la BD Linea 167: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
                     exit();
                 }
                 return $result->num_rows;
@@ -224,7 +228,7 @@
             return $items;
         }
 
-        public function getItemsOfertas($tipo, $precio, $descuento){
+        public function getItemsOfertas($tipo, $precio, $descuento, $palabra){
             $app = aplicacion::getSingleton();
             $conexion = $app->conexionBd();
             $tbl_name = "productos_disponibles";
@@ -233,119 +237,123 @@
             }
             else{
                 $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL'";
-                if(count($tipo)>0 && $precio!="" && $descuento!=""){
-                    $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND tipo='%s' AND precio <= $precio AND descuento >= $descuento",
-                        $conexion->real_escape_string($tipo[0]));
-                    if(isset($tipo[3])){
+                if($palabra!=""){
+                    $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' AND nombre LIKE '%$palabra%'";
+                }else{
+                    if(count($tipo)>0 && $precio!="" && $descuento!=""){
                         $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
-                            AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                            $conexion->real_escape_string($tipo[1]),
-                            $conexion->real_escape_string($tipo[2]),
-                            $conexion->real_escape_string($tipo[3]));
-                    }else if(isset($tipo[2])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s' OR tipo='%s')
-                            AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                            $conexion->real_escape_string($tipo[1]),
-                            $conexion->real_escape_string($tipo[2]));
-                    }
-                    else if(isset($tipo[1])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s')
-                            AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                            $conexion->real_escape_string($tipo[1]));
-                    }
-                }
-                else if (count($tipo)>0 && $precio!=""){
-                    $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND tipo='%s' AND precio <= $precio", $conexion->real_escape_string($tipo[0]));
-                    if(isset($tipo[3])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
-                         AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
-                         $conexion->real_escape_string($tipo[1]),
-                         $conexion->real_escape_string($tipo[2]),
-                         $conexion->real_escape_string($tipo[3]));
-                    }else if(isset($tipo[2])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s' OR tipo='%s')
-                         AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
-                         $conexion->real_escape_string($tipo[1]),
-                         $conexion->real_escape_string($tipo[2]));
-                    }
-                    else if(isset($tipo[1])){
-                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND (tipo='%s' OR tipo='%s')
-                         AND precio < $precio", $conexion->real_escape_string($tipo[0]),
-                         $conexion->real_escape_string($tipo[1]));
-                    }
-                    
-                }
-                else if($precio!="" && $descuento!=""){
-                    $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND precio <= $precio AND descuento >= $descuento";
-                }
-                else if(count($tipo)>0 && $descuento!="")
-                {
-                    $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND tipo='%s' AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]));
+                            AND tipo='%s' AND precio <= $precio AND descuento >= $descuento",
+                            $conexion->real_escape_string($tipo[0]));
                         if(isset($tipo[3])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
                             AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
-                             AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]),
-                             $conexion->real_escape_string($tipo[2]),
-                             $conexion->real_escape_string($tipo[3]));
+                                AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]),
+                                $conexion->real_escape_string($tipo[3]));
                         }else if(isset($tipo[2])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
                             AND (tipo='%s' OR tipo='%s' OR tipo='%s')
-                             AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]),
-                             $conexion->real_escape_string($tipo[2]));
+                                AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]));
                         }
                         else if(isset($tipo[1])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
                             AND (tipo='%s' OR tipo='%s')
-                             AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]));
+                                AND precio <= $precio AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]));
                         }
-                }
-                else if(count($tipo)>0)
-                {
-                    $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND tipo='%s'", $conexion->real_escape_string($tipo[0]));
-                        if(count($tipo)==4){
+                    }
+                    else if (count($tipo)>0 && $precio!=""){
+                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND tipo='%s' AND precio <= $precio", $conexion->real_escape_string($tipo[0]));
+                        if(isset($tipo[3])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                            AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')", 
-                            $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]),
-                             $conexion->real_escape_string($tipo[2]),
-                             $conexion->real_escape_string($tipo[3]));
-                        }else if(count($tipo)==3){
+                            AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
+                            AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
+                            $conexion->real_escape_string($tipo[1]),
+                            $conexion->real_escape_string($tipo[2]),
+                            $conexion->real_escape_string($tipo[3]));
+                        }else if(isset($tipo[2])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                            AND (tipo='%s' OR tipo='%s' OR tipo='%s')",
-                             $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]),
-                             $conexion->real_escape_string($tipo[2]));
+                            AND (tipo='%s' OR tipo='%s' OR tipo='%s')
+                            AND precio <= $precio", $conexion->real_escape_string($tipo[0]),
+                            $conexion->real_escape_string($tipo[1]),
+                            $conexion->real_escape_string($tipo[2]));
                         }
-                        else if(count($tipo)==2){
+                        else if(isset($tipo[1])){
                             $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                            AND (tipo='%s' OR tipo='%s')",
-                            $conexion->real_escape_string($tipo[0]),
-                             $conexion->real_escape_string($tipo[1]));
+                            AND (tipo='%s' OR tipo='%s')
+                            AND precio < $precio", $conexion->real_escape_string($tipo[0]),
+                            $conexion->real_escape_string($tipo[1]));
                         }
-                }
-                else if($descuento!="")
-                {
-                    $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND descuento >= $descuento";
-                }
-                else if($precio!="")
-                {
-                    $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
-                        AND precio <= $precio";
+                        
+                    }
+                    else if($precio!="" && $descuento!=""){
+                        $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND precio <= $precio AND descuento >= $descuento";
+                    }
+                    else if(count($tipo)>0 && $descuento!="")
+                    {
+                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND tipo='%s' AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]));
+                            if(isset($tipo[3])){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')
+                                AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]),
+                                $conexion->real_escape_string($tipo[3]));
+                            }else if(isset($tipo[2])){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s' OR tipo='%s')
+                                AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]));
+                            }
+                            else if(isset($tipo[1])){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s')
+                                AND descuento >= $descuento", $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]));
+                            }
+                    }
+                    else if(count($tipo)>0)
+                    {
+                        $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND tipo='%s'", $conexion->real_escape_string($tipo[0]));
+                            if(count($tipo)==4){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s' OR tipo='%s' OR tipo='%s')", 
+                                $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]),
+                                $conexion->real_escape_string($tipo[3]));
+                            }else if(count($tipo)==3){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s' OR tipo='%s')",
+                                $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]),
+                                $conexion->real_escape_string($tipo[2]));
+                            }
+                            else if(count($tipo)==2){
+                                $query = sprintf("SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                                AND (tipo='%s' OR tipo='%s')",
+                                $conexion->real_escape_string($tipo[0]),
+                                $conexion->real_escape_string($tipo[1]));
+                            }
+                    }
+                    else if($descuento!="")
+                    {
+                        $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND descuento >= $descuento";
+                    }
+                    else if($precio!="")
+                    {
+                        $query = "SELECT * FROM $tbl_name WHERE descuento != 'NULL' 
+                            AND precio <= $precio";
+                    }
                 }
                 $result = $conexion->query($query);
                 if(!$result){

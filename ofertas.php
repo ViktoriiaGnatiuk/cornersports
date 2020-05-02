@@ -20,8 +20,10 @@
                         $prd=new productos();
                         $i=0;
                         $tipo=[];
+                        $size=0;
                         $precio="";
                         $descuento="";
+                        $palabra="";
                         if(isset($_POST['deportes'])){
                             array_push($tipo, $_POST['deportes']);
                         }
@@ -44,8 +46,15 @@
                                 $descuento=$_POST['descuento'];
                             }
                         }
-                        $size=$prd->getSizeOfertas($tipo, $precio, $descuento);
-                        $items=$prd->getItemsOfertas($tipo, $precio, $descuento);
+                        if(isset($_GET['palabra'])){
+                            $palabra=$_GET['palabra'];
+                            $size=$prd->getSizeOfertas($tipo, $precio, $descuento, $palabra);
+                            $items=$prd->getItemsOfertas($tipo, $precio, $descuento, $palabra);
+                        }
+                        else{
+                            $size=$prd->getSizeOfertas($tipo, $precio, $descuento, $palabra);
+                            $items=$prd->getItemsOfertas($tipo, $precio, $descuento, $palabra);
+                        }
                         $size1=$size/2;
                         $size2=$size;
                         while( $i < $size){
