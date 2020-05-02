@@ -85,11 +85,13 @@
 .restarItem{
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .sumaItem{
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .inferior{
@@ -119,6 +121,7 @@
     margin-left: 20px;
     padding: 2px;
     font-weight: bold;
+    cursor: pointer;
 }
 .tramitar{
 	font-family: 'Haettenschweiler';
@@ -130,6 +133,7 @@
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
     box-shadow: 0 1px 1px rgba(0,0,0,0.3); 
+    cursor: pointer;
 }
 
 .tramitar:hover{

@@ -12,6 +12,7 @@ nav{
 nav .logo{
   line-height: 60px;
   padding-left: 40px;
+  cursor: pointer;
 }
 
 nav .btn-menu {

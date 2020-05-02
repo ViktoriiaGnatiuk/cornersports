@@ -5,16 +5,14 @@ require_once __DIR__ .'/../includes/aplicacion.php';
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Procesar Entrenamiento</title>
-        <meta charset="UTF-8"/>
-    
+        <title>Procesar Entrenamiento</title
     </head>
     <body>
         <div id="contenedor">
         <?php
             include __DIR__.'/../includes/estructura/cabecera.php';
         ?>
-        <div id="contenido">
+        <div id="contenido2">
             <?php
                 $app = aplicacion::getSingleton();
                 $conexion = $app->conexionBd();
@@ -31,9 +29,10 @@ require_once __DIR__ .'/../includes/aplicacion.php';
                         $result = $conexion->query($query);
                         $row = mysqli_fetch_assoc($result);
                         if($row['entrenamiento_activo'] != NULL){
-                            echo "Lo sentimos, ya tiene un entrenamiento contratado. Si desea contratar este entrenamiento
-                            primero debe dar de baja el entrenamiento que ya tiene contratado<br/>";
-                            echo"<center/><a href=\"bajaEntrenamiento.php\">Dar de baja entrenamiento</a>";
+                            echo"<center/>";
+                            echo "Lo sentimos, ya tiene un entrenamiento contratado.<br/>";
+                            echo"Si desea contratar este entrenamiento primero debe dar de baja el entrenamiento que ya tiene contratado<br/>";
+                            echo"<center/><a class=\"baja_entr\" href=\"http://localhost/cornersports/procesos/bajaEntrenamiento.php\">Dar de baja entrenamiento</a>";
                         }else{
                             //Busca el entrenamiento seleccionado
                             $entrenamiento=$conexion->real_escape_string($_GET['id']);
@@ -43,20 +42,18 @@ require_once __DIR__ .'/../includes/aplicacion.php';
                             $count = mysqli_num_rows($result); 
                             if ($count == 1) 
                             {
-                                //Copia el nombre del entrenamiento
+                                //Copia los datos del entrenamiento
                                 $row = mysqli_fetch_assoc($result);
                                 $nombre=$row['nombre'];
-                                //Copia los dias
                                 $dias=$row['dias'];
-                                //Copia la dificultad
                                 $dificultad=$row['dificultad'];
-                                //Copia el precio
                                 $precio=$row['precio'];
-                                //Copia el id del entrenador
                                 $entrenador=$row['entrenador'];
+                                $image=$row['imagen'];
+                                $descripcion=$row['descripcion'];
                                 //Asignar día actual =0
-                                $query="INSERT INTO entrenamientos (Nombre, Precio, Entrenador, dias, dificultad, dia_actual) VALUES 
-                                ('$nombre', '$precio', '$entrenador', '$dias', '$dificultad', '0')";
+                                $query="INSERT INTO entrenamientos (nombre, precio, entrenador, dias, dificultad, dia_actual, imagen, descripcion) VALUES 
+                                ('$nombre', '$precio', '$entrenador', '$dias', '$dificultad', '0', '$image', '$descripcion')";
                                 $result = $conexion->query($query);
                                 if ($result == TRUE) {
                                     //Obtener el id del entrenamiento y asignarselo al usuario
@@ -89,7 +86,7 @@ require_once __DIR__ .'/../includes/aplicacion.php';
             
         </div>
         <?php
-            include __DIR__.'/../includes/estructura/pie.php';
+            //include __DIR__.'/../includes/estructura/pie.php';
         ?>
         </div>
     </body>

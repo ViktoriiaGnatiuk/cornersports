@@ -11,7 +11,7 @@
     </head>
     <body>
         <nav>
-            <label class="logo" ><img src="http://localhost/cornersports/img/logo.png" width="320" height="30"></label>
+            <a href="http://localhost/cornersports/index.php"><label class="logo" ><img src="http://localhost/cornersports/img/logo.png" width="320" height="30"></label></a>
             <ul>
                 <li><a href="http://localhost/cornersports/index.php">HOME</a></li>
                 <li><a href="http://localhost/cornersports/ofertas.php">OFERTAS</a></li>
