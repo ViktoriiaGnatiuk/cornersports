@@ -14,6 +14,7 @@ require_once __DIR__.'/includes/config.php';
 		<div id="contenido">
 			<div id="interior">
 					<?php 
+						$_SESSION['producto']=6;
 						include __DIR__.'/includes/scripts/script_mas_vendido.php';
 					?>
 				<div id="novedades">

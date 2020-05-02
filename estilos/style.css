@@ -47,7 +47,11 @@ div#ol-ol-bs-dr{
 	width: 40px;
 	height: 40px;
 	float: right;
-
+}
+.porcentage_oferta{
+	font-weight: bold;
+	font-size: 26px;
+	padding-top: 7px;
 }
 div#ol-centro{
 	background-color: aqua;

@@ -4,7 +4,7 @@
     
     class carrito
     {
-        public function addItem($id, $usuario){
+        public function addItem($id, $usuario, $precio_descuentado){
             $app = aplicacion::getSingleton();
             $conexion = $app->conexionBd();
             if ($conexion->connect_error) {
@@ -51,6 +51,9 @@
                         $imagen = $row['imagen'];
                         $descripcion = $row['descripcion'];
                         $precio = $row['precio'];
+                        if($precio_descuentado > 0){
+                            $precio=$precio_descuentado;
+                        }
                         $precio_alquiler = $row['precio_alquiler'];
 
                         //Vemos si el pedido tiene un producto con ese id

@@ -29,7 +29,7 @@ require_once __DIR__.'/../aplicacion.php';
                             $_SESSION['imagen']=$row['imagen'];
                         }
                     ?>
-                    <h1>20%</h1>
+                    <p class="porcentage_oferta">20%</p>
                 </div>
             </div>
             <div id="ol-centro">
@@ -41,7 +41,8 @@ require_once __DIR__.'/../aplicacion.php';
             <div id="ol-titulo">
                 <?php 
                     $nombre=$_SESSION['nombre_producto'];
-                    echo "<center/><a href=\"ofertas.php\" class=\"button2\">$nombre</a>";
+                    $id=$_SESSION['producto'];
+                    echo "<center/><a href=\"procesos/addItem.php?id=$id\" class=\"button2\">$nombre</a>";
                 ?>
             </div>
         </div>

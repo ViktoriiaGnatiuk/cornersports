@@ -6,6 +6,8 @@ require_once __DIR__.'/../includes/formularioPerfil.php';
 <html>
     <head>
         <title>Editar - Perfil</title>
+        <link rel="stylesheet" href="estilos/boton.css?">
+	    <link rel="stylesheet" href="estilos/estiloLogin.css">
     </head>
     <body>
         <div id="contenedor">

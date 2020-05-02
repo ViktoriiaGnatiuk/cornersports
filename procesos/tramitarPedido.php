@@ -28,16 +28,8 @@ require_once __DIR__ . '/../includes/carrito.php';
                     $_SESSION['errorCarrito']="No puede tramitar un carrito vacio";
                     header('Location: http://localhost/cornersports/includes/carroCompra.php');
                 }
-                $i=0;
-                   /* while($i < $size){
-                        $id=$items[$i]['id'];
-                        $nombre="cantidad".$id;
-                        $cantidad=getCantidad($nombre);
-                        $carrito->actualizarCantidad($id, $cantidad);
-                        ++$i;
-                    }*/
-                    $carrito->tramitar();
-                    echo"<center/><h2>Su compra se ha realizado con exito, gracias por su pedido</h2>";
+                $carrito->tramitar();
+                echo"<center/><h2>Su compra se ha realizado con exito, gracias por su pedido</h2>";
             ?>
         </div>
         <?php

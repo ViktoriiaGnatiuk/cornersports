@@ -12,6 +12,7 @@
     padding: 20px;
     display: flex;
     border: 1px solid black;
+    box-shadow: 0 4px 4px grey;
     background-color: whitesmoke;
 }
 .imagen{
@@ -51,7 +52,7 @@
     margin: 10px;
 	font-family: 'Haettenschweiler';
     font-size: 30px;
-    width: 100px;
+    width: 200px;
 	color: rgb(41, 8, 1);
 	background-color: white;
 	border-radius: 5px;

@@ -9,6 +9,12 @@
         $carrito=new carrito();
         $id=$_GET['id'];
         $usuario=$_SESSION['username'];
-        $carrito->addItem($id, $usuario);
-        header('Location: http://localhost/cornersports/productos.php');
+        if(isset($_GET['precio'])){
+            $precio=$_GET['precio'];
+            $carrito->addItem($id, $usuario, $precio);
+        }
+        else{
+            $carrito->addItem($id, $usuario, 0);
+        }
+        header('Location: http://localhost/cornersports/includes/carroCompra.php');
 ?>

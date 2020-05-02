@@ -53,7 +53,7 @@ require_once __DIR__.'/includes/productos.php';
 								<p>Precio</p>
 								<div class="precio"><p>$precio €</p></div>
 								<form action="procesos/addItem.php?id=$id" id="form_session" method="post">
-								<input type="submit" class="comprar" value="Añadir">
+								<input type="submit" class="comprar" value="Añadir al carrito">
 								</form>
 							</div>
 						</div>

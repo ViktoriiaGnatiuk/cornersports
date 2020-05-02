@@ -33,7 +33,8 @@ require_once __DIR__.'/../aplicacion.php';
             <div id="titulo-mas-vendido">
                 <?php
                     $nombre=$_SESSION['nombre_producto'];
-                    echo "<center/><a href=\"maquinaria.php\" class=\"button\">$nombre</a>";
+                    $id=$_SESSION['producto'];
+                    echo "<center/><a href=\"procesos/addItem.php?id=$id\" class=\"button\">$nombre</a>";
                 ?>
             </div>
         </div>
