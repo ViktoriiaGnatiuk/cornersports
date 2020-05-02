@@ -21,17 +21,6 @@ class FormularioPerfil extends Form
         $calle = $usuario->calle();
         $portal=$usuario->portal();
         $perfil=$usuario->perfil();
-        /*if ($datos) {
-            $nombreUsuario = isset($datos['username']) ? $datos['username'] : $nombreUsuario;
-            $nombre = isset($datos['nombre']) ? $datos['nombre'] : $nombre;
-            $apellidos = isset($datos['apellidos']) ? $datos['apellidos'] : $apellidos;
-            $email = isset($datos['email']) ? $datos['email'] : $email;
-            $provincia = isset($datos['provincia']) ? $datos['provincia'] : $provincia;
-            $localidad = isset($datos['localidad']) ? $datos['localidad'] : $localidad;
-            $codPostal = isset($datos['codPostal']) ? $datos['codPostal'] : $codPostal;
-            $calle = isset($datos['calle']) ? $datos['calle'] : $calle;
-            $portal = isset($datos['portal']) ? $datos['portal'] : $portal;
-        }*/
         $html = <<<EOF
         <fieldset>
             <h2>Usuario: $nombreUsuario</h2></br>
