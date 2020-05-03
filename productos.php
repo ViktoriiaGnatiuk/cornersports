@@ -66,7 +66,7 @@ require_once __DIR__.'/includes/productos.php';
 		</div>
 		<?php	
 			include __DIR__.'/includes/estructura/barraOfertas.php';
-			include __DIR__.'/includes/estructura/pie.php';
+			//include __DIR__.'/includes/estructura/pie.php';
 		?>
 	</div>
  </body>

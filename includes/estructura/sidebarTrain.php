@@ -1,4 +1,7 @@
-
+<?php
+	require_once __DIR__.' /../config.php';
+	require_once __DIR__.' /../entrenadores.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,68 +10,44 @@
     <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
 </head>
 	<body>
-		<div id="barra">
-			<div id ="contenido-lateral">
-				<div id="sidebar-right">
-					<div class="entrenador_1">
-						<center>
-							<?php 
-								$app = aplicacion::getSingleton();
-								$conexion = $app->conexionBd();
-								$tabla = "entrenadores";
-								if ($conexion->connect_error) {
-									die("La conexion falló: " . $conexion->connect_error);
-								}
-								else{
-									$query = "SELECT * FROM $tabla WHERE id = 2";
-									$result = $conexion->query($query);
-									$row = mysqli_fetch_assoc($result);
-									$_SESSION['nombre']=$row['nombre'];
-									$_SESSION['imagen']=$row['imagen'];
-									$img1=$_SESSION['imagen'];
-									echo "<img src=\"/cornersports/img/$img1\" width=\"150\" height=\"150\">";
-								}
-							?>
-							<div id="entrenador">
-								<?php
-									$nombre=$_SESSION['nombre'];
-									echo "<a href=\"entrenadores.php?id=2\" class=\"button2\">$nombre</a>";
-								?>
-								</br>
-								<fieldset class="val-fieldset"><legend>Calificación:</legend><span class="valoracion val-40"></span></fieldset>
-							</div>
-						</center>
-					</div>
-					
-					<div class="entrenador_2">
-						<center>
-							<?php 
-								$app = aplicacion::getSingleton();
-								$conexion = $app->conexionBd();
-								$tabla = "entrenadores";
-								if ($conexion->connect_error) {
-									die("La conexion falló: " . $conexion->connect_error);
-								}
-								else{
-									$query = "SELECT * FROM $tabla WHERE id = 3";
-									$result = $conexion->query($query);
-									$row = mysqli_fetch_assoc($result);
-									$_SESSION['nombre']=$row['nombre'];
-									$img2=$_SESSION['imagen'];
-									echo "<img src=\"/cornersports/img/$img2\" width=\"150\" height=\"130\">";
-								}
-							?>
-							<div id="entrenador">
-								<?php
-									$nombre=$_SESSION['nombre'];
-									echo "<a href=\"entrenadores.php?id=3\" class=\"button2\">$nombre</a>";
-								?>
-								</br>
-								<fieldset class="val-fieldset"><legend>Calificación:</legend><span class="valoracion val-45"></span></fieldset>
-							</div>
-						</center>
-					</div>
-				</div>
+		<div class="main_barra_entrenadores">
+			<div class ="barra_entrenadores">
+				<?php
+					$entr=new entrenadores();
+					$i=0;
+					$size=0;
+					$size=$entr->getSize("entrenadores");
+					$entrenadores=$entr->getEntrenadores("");
+					echo "<p class=\"titulo_entrenadores\">-ENTRENADORES-</p>";
+					while($i < $size){
+						$id = $entrenadores[$i]['id'];	
+						$imagen = $entrenadores[$i]['imagen'];
+						$especialidad = $entrenadores[$i]['especialidad'];
+						$puntuacion = $entrenadores[$i]['puntuacion'];
+						$estrellas;
+						if($puntuacion==5){
+							$estrellas="http://localhost/cornersports/img/5estrellas.png";
+						}
+						else if($puntuacion==4){
+							$estrellas="http://localhost/cornersports/img/4estrellas.png";
+						}
+						else{
+							$estrellas="http://localhost/cornersports/img/3estrellas.png";
+						}
+
+						$html = <<<EOF
+						<div class="entrenador">
+							<img class="puntuacion" src="$estrellas">
+							<a href="http://localhost/cornersports/entrenador.php?id=$id"><img class="imagen_entrenador" src="$imagen"></a>
+							<div class="especialidad"><p>ESPECIALIDAD: $especialidad</p></div>
+						</div>
+						EOF;
+						echo"$html";
+
+						++$i;
+					}
+
+				?>
 			</div>
 		</div>
 	</body>

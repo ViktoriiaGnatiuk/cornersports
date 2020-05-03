@@ -1,98 +1,184 @@
-div#entreno_1 {
-	position: relative;
-	display: inline-block;
+.titulo_entrenadores{
+	font-weight: bold;
+	font-size: 30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color:black;
+	text-shadow: 1px 2px 2px black;
 }
-div#entreno_2 {
-	position: relative;
-	display: inline-block;
-}
-div#entreno_3 {
-	position: relative;
-	display: inline-block;
-}
-div#texto-encima{
-	position: absolute;
-	top: 10px;
-	left: 10px;
-	color:#FFFFFF;
-	background-color:#A81010;
-	padding:2px 10px;
-	font-weight:bold;
-}
-div#entrenador
-{
-	bottom:25px;
-	color:#FFFFFF;
-	background-color:#EB4D1D;
-	padding:2px 10px;
-	font-weight:bold;
-}
-div#top_oferta {
-	background-color: teal;
-	min-height: 200px;
-	width: 880px;
-	margin-bottom: 10px;
-}
-div#oferta{
-	position: absolute;
-	top: 600px;
-	color:#FFFFFF;
-	background-color:#EB4D1D;
-	padding:2px 10px;
-	font-weight:bold;
-}
-div#texto-encima-oferta{
-	position: absolute;
-	top: 450px;
-	left: 420px;
-	color:#FFFFFF;
-	background-color:#A81010;
-	padding:2px 10px;
-	font-weight:bold;
-}
-div#oferta_1 {
-	background-color: violet;
-	min-height: 200px;
-	width: 440px;
-	margin-bottom: 10px;
-}
-div#oferta_2 {
-	position: absolute;
-	top: 433px;
-	left: 550px;
-	background-color: orange;
-	min-height: 200px;
-	width: 440px;
-	margin-bottom: 10px;
-}
-.val-fieldset {
-	width:100px;
-	border:none;
-	font-weight:bold;
-	font-size:12px;
-	}
-	.valoracion {
-	width: 100px;
-	height: 21px;
-	display: block;
-	background:url(http://lh5.googleusercontent.com/-Sp-iHFztZdc/UVD89O9oM1I/AAAAAAAAEU0/Xh-FBDaWyJY/s000/estrellas.png) 0 0 no-repeat;
-	}
-	.val-0 {background-position: -100px -0;}
-	.val-5 {background-position: -81px -21px;}
-	.val-10 {background-position: -81px 0;}
-	.val-15 {background-position: -61px -21px;}
-	.val-20 {background-position: -60px 0;}
-	.val-25 {background-position: -40px -21px;}
-	.val-30 {background-position: -40px 0;}
-	.val-35 {background-position: -21px -21px;}
-	.val-40 {background-position: -21px 0;} 
-	.val-45 {background-position: 0 -21px;}
-	.val-50 {background-position: 0 0;}
 
-div#pie {
-clear: both;
-padding: 20px;
-background-color: #303030;
-color: white;
-text-align: center;
+.main_entrenamientos{
+	width: 820px;
+	margin: 20px;
+}
+
+.main_barra_entrenadores{
+	padding: 10px;
+	min-height: 750px;	
+	background-color:white;
+}
+
+.barra_entrenadores{
+	background-color: whitesmoke;
+	display: inline-block;
+	width: 400px;
+	margin: 20px;
+	margin-bottom: 40px;
+	text-align: center;
+	box-shadow: 4px 4px 4px rgb(37, 37, 37);
+}
+
+.entrenador{
+	margin: 0;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 400px;
+	height: 500px;
+	background-color: whitesmoke;
+}
+
+.imagen_entrenador{
+	width: 320px;
+	height: 390px;
+	border: 2px solid black;
+	box-shadow: 0 4px 4px black;
+}
+
+.imagen_entrenador:hover{
+	border: 2px solid gold;
+	box-shadow: 0 4px 4px goldenrod;
+	width: 340px;
+	height: 420px;
+	
+}
+
+.puntuacion{
+	margin: 0;
+	text-align: center;
+	width: 280px;
+	height: 50px;
+}
+
+.especialidad{
+	font-size: 20px;
+	font-weight: bold;
+	text-shadow: 0 1px 1px black;
+}
+
+.contenido_entrenamientos{
+	padding: 10px;
+	float: left;
+	background-color: white;
+}
+
+.entrenamiento{
+	background-color: whitesmoke;
+	width: 820px;
+	height: 720px;
+	margin-bottom: 40px;
+}
+
+.nombre_entrenamiento{
+	text-align: center;
+	padding-top: 20px;
+	font-size: 30px;
+	font-weight: bold;
+	text-shadow: 1px 2px 2px rgb(41, 41, 41);
+}
+
+.imagen_entrenamiento{
+	width: 778px;
+	height: 400px;
+	margin: 20px;
+	border: 1px solid black;
+	box-shadow: 0 4px 4px black;
+}
+
+.base{
+	height: 210px;
+	display: flex;
+	
+}
+
+.info{
+	width: 590px;
+	margin-left: 10px;
+	height: 190px;
+	background-color: white;
+	border: 10px solid whitesmoke;
+}
+
+.entrenador_info{
+	width: 200px;
+	height: 210px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	text-shadow: 0px 1px 1px rgb(41, 41, 41);
+}
+
+.entrenamiento_entrenador{
+	width: 160px;
+	height: 180px;
+	border: 1px solid black;
+}
+
+.info_interior{
+	display: flex;
+	justify-content: space-between;
+	padding: 20px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.dificultad_int{
+	display: flex;
+}
+.dificultad{
+	margin-top: 20px;
+}
+
+.dificultad_icon{
+	width: 60px;
+	height: 60px;
+}
+
+.b_entrenamiento{
+	font-family: 'Haettenschweiler';
+    font-size: 18px;
+	width: 100px;
+	height: 40px;
+	margin-top: 14px;
+	color: rgb(41, 8, 1);
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px ;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+	box-shadow: 0 1px 1px black;
+	cursor: pointer;
+}
+
+.b_entrenamiento:hover{
+	background-color: rgb(248, 188, 37);
+}
+
+.b_entrenamiento:active{
+	background-color: rgb(248, 188, 37);
+}
+
+.descripcion_entrenamiento{
+	margin-left: 20px;
+	width: 550px;
+	height: 70px;
+	text-align: center;
+	border: 1px solid gray;
+	font-size: 18px;
+	padding: 5px;
+}
+
+.usuario_entr{
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 40px;
 }
