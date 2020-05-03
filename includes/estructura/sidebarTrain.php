@@ -38,7 +38,7 @@
 						$html = <<<EOF
 						<div class="entrenador">
 							<img class="puntuacion" src="$estrellas">
-							<a href="http://localhost/cornersports/entrenadores.php"><img class="imagen_entrenador" src="$imagen"></a>
+							<a href="http://localhost/cornersports/entrenador.php?id=$id"><img class="imagen_entrenador" src="$imagen"></a>
 							<div class="especialidad"><p>ESPECIALIDAD: $especialidad</p></div>
 						</div>
 						EOF;

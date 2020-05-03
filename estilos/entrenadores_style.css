@@ -1,44 +1,48 @@
-@import url('https://fonts.googleapis.com/css? family=Roboto:100,300,400,500,700');
-
-* {
-	margin : 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Roboto', sans-serif;
+.imagen_grande{
+	width: 1280px;
+	height: 700px;
+	margin: 20px;
+	border: 5px solid rgb(43, 43, 43);
 }
 
-body{
-	barckground: #f5f5f5;
+.nombre_entr{
+	font-family: 'Haettenschweiler';
+	text-shadow: 0 3px 3px rgba(0, 0, 0, 0.979);
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
 }
 
-.container-all{
-	width: 100%;
-	max-width: 1000px;
-	margin: auto;
-	padding: 60px;
-	background: white;
-	margin-top: 70px;
-	border-top: 6px solid #65d6a6;
+.puntuacion_entr{
+	width: 300px;
+	height: 60px;
+	margin-left: 520px;
 }
 
-.title{
-	font_size: 40 px;
-	margin-bottom: 60px;
+.infor_entr{
+	text-align: center;
+	margin: 20px;
+	width: 600px;
+	margin-left: 360px;
+	padding: 10px;
+	font-size: 20px;
+	border: 1px solid rgb(43, 43, 43);
 }
 
-.sub-title{
-	font-size: 30px;
-	font-weight: 400;
+.especialidad_entr{
+	font-weight: bold;
 }
 
-.container-all img{
-	width: 200px;
-	float: left;
-	margin-right: 20px;
-	margin-bottom: 20px,
+.lista_entrenamientos{
+	padding: 40px;
+	border: 2px solid black;
+	width: 1000px;
+	margin-left: 130px;
 }
 
-.container-all p{
-	font-size: 18px;
-	font_weight: 300;
+.titulo_entr{
+	font-size: 40px;
+	margin-bottom: 30px;
+	text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.979);
+	background-color: whitesmoke;
 }
