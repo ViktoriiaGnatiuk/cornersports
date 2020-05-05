@@ -12,10 +12,26 @@ nav{
 nav .logo{
   line-height: 60px;
   padding-left: 40px;
+  cursor: pointer;
 }
+
+nav .btn-menu {
+  line-height: 40px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: none;
+  transition: .3s ease all;
+}
+
+nav .btn-menu:hover {
+	border: 1px solid goldenrod;
+	color: #828282;
+}
+
 nav ul{
   float: right;
-  margin-right: 35px;
+  margin-right: 20px;
 }
 nav ul li{
   display: inline-block;
@@ -30,10 +46,10 @@ nav ul li a{
   transition: .4s;
   color: black;
 }
-nav ul li a:hover,
-nav ul li a.activar{
+nav ul li a:hover{
   color:gold;
 }
+
 nav ul li:hover > ul{
   top: 50px;
   opacity: 1;
@@ -66,4 +82,3 @@ nav ul ul ul li{
   top: -50px;
   left: 120px;
 }
-

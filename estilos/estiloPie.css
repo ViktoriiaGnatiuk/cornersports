@@ -1,0 +1,21 @@
+.mainPie{
+    display: flex;
+    padding-left: 60px;
+    background-color: whitesmoke;
+    border-top: solid 1px black;
+}
+
+.logo_pie{
+    width: 60px;
+    height: 60px;
+    margin-left: 40px;
+}
+.pieText{
+    margin-top: 20px;
+    color: darkgoldenrod;
+}
+.pieText2{
+    margin-left: 40px;
+    margin-top: 20px;
+    color: darkgoldenrod;
+}

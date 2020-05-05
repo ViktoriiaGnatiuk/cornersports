@@ -1,0 +1,149 @@
+*{
+   font-family: Georgia, 'Times New Roman', Times, serif;
+   color:  rgb(29, 28, 28);;
+}
+#boton-carro{
+    width: 30px;
+    height: 36px;
+    line-height: 40px;
+}
+#boton-carro:hover{
+    border: .5px solid goldenrod;
+}
+#boton-carro:active{
+    border: .5px solid goldenrod;
+}
+.carro{
+	border: darkgray 1px solid;
+	margin: 10px;
+	padding: 10px;
+	min-height: 570px;
+	background-color: whitesmoke;
+}
+
+.tituloCarro{
+    font-size: 26px;
+    font-weight: bold;
+	color: rgb(44, 37, 35);
+	text-align: center;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+.item{
+	display: flex;
+	padding: 10px 20px;
+    border: darkgray .5px solid;
+    width: 1200px;
+    height: 140px;
+    margin: 20px;
+    background-color: white;
+}
+
+.imagenCarro{
+    width: 120px;
+    height: 120px;
+}
+
+.datosItem{
+    display: flex;
+    margin-left: 20px;
+    padding: 20px;
+    padding-top: 40px;
+    width: 820px;
+    font-size: 20px;
+    justify-content: space-between;
+}
+
+.nombreItem{
+    font-weight: bold;
+    width: 200px;
+}
+
+.descripcionItem{
+    margin-left: 30px;
+    width: 400px;
+}
+
+.precioItem{
+    font-size: 24px;
+    width: 120px;
+    font-weight: bold;
+}
+
+.botonesCarro{
+    display: flex; 
+    padding: 60px;
+}
+
+.cantidadItem{
+    padding-left: 8px;
+    padding-right: 8px;
+	border: .5px gray solid;
+}
+
+.restarItem{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.sumaItem{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.inferior{
+	margin: 10px;
+    display: flex;
+    float: right;
+}
+
+.total{
+	display: flex;
+    width: 214px;
+    height: 30px;
+	justify-content: space-between;
+    font-size: 24px;
+    margin-top: 5px;
+    padding-left: 10px;
+    margin-right: 20px;
+    padding-right: 10px;
+    font-weight: bold;
+	color: rgb(41, 8, 1);
+	background-color: white;
+	border: darkgray 1px solid;
+}
+
+.eliminaItem{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-left: 20px;
+    padding: 2px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.tramitar{
+	font-family: 'Haettenschweiler';
+	font-size: 26px;
+	color: rgb(41, 8, 1);
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px ;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3); 
+    cursor: pointer;
+}
+
+.tramitar:hover{
+	background-color: gold;	
+}
+
+.tramitar:active{
+	background-color: gold;
+}
+
+.errorCarro{
+    color: red;
+}

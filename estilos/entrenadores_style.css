@@ -1,0 +1,48 @@
+.imagen_grande{
+	width: 1280px;
+	height: 700px;
+	margin: 20px;
+	border: 5px solid rgb(43, 43, 43);
+}
+
+.nombre_entr{
+	font-family: 'Haettenschweiler';
+	text-shadow: 0 3px 3px rgba(0, 0, 0, 0.979);
+	text-align: center;
+	font-size: 50px;
+	font-weight: bold;
+}
+
+.puntuacion_entr{
+	width: 300px;
+	height: 60px;
+	margin-left: 520px;
+}
+
+.infor_entr{
+	text-align: center;
+	margin: 20px;
+	width: 600px;
+	margin-left: 360px;
+	padding: 10px;
+	font-size: 20px;
+	border: 1px solid rgb(43, 43, 43);
+}
+
+.especialidad_entr{
+	font-weight: bold;
+}
+
+.lista_entrenamientos{
+	padding: 40px;
+	border: 2px solid black;
+	width: 1000px;
+	margin-left: 130px;
+}
+
+.titulo_entr{
+	font-size: 40px;
+	margin-bottom: 30px;
+	text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.979);
+	background-color: whitesmoke;
+}

@@ -1,62 +1,8 @@
-body {
-	background-color:whitesmoke;
-}
 
 div#contenedor {
-	background-color: whitesmoke;
+	background-color: white;
 	margin-top: 0;
 	max-width: 1400px;
-}
-
-div#barra {
-	padding: 10px;
-	float: left;
-	width: 289px;
-	height: 750px;	
-	background-color:white;
-}
-
-div#contenido-lateral {
-	padding: 10px;
-	width: 260px;
-	min-height: 700px;
-	background-color:white;
-}
-
-div#oferta-lateral {
-	background-color: white;
-	width: 250px;
-	min-height: 200px;
-	margin-bottom: 10px;
-	border: #303030 solid 1px;
-}
-
-div#ol-barra-superir{
-	background-color: gold;
-	height: 40px;
-	width: 250px;
-}
-div#ol-bs-izq{
-	background-color: white;
-	width: 180px;
-	height: 40px;
-	float: left;
-}
-div#ol-ol-bs-dr{
-	background-color: white;
-	width: 40px;
-	height: 40px;
-	float: right;
-
-}
-div#ol-centro{
-	background-color: aqua;
-	height: 140px;
-	width: 250px;
-}
-div#ol-titulo{
-	font-size: 19px;
-	background-color: linen;
 }
 
 div#contenido {
@@ -72,67 +18,91 @@ div#contenido2{
 	background-color: white;
 	padding: 10px;
 	max-width: 1600px;
-	min-height: 480px;
+	min-height: 580px;
 }
+
 div#interior {
 	padding: 10px;
 	float: left;
 	min-height: 600px;
-	width: 1000px;
+	width: 920px;
 	background-color: white;
-
 }
 
 div#top_ventas {
 	background-color: white;
-	min-height: 400px;
-	width: 1000px;
-	margin-bottom: 10px;
-	border: goldenrod solid 2px;
+	height: 400px;
+	width: 830px;
+	margin: 40px;
+	border: black solid 1px;
+	box-shadow: 2px 2px 2px rgb(58, 57, 57);
 }
 
 div#imagen-mas-vendido {
 	background-color: whitesmoke;
-	min-height: 300px;
-	width: 1000px;
+	height: 343px;
+	width: 830px;
 	border-bottom: none;
 }
 
+.img_top_ventas{
+	width: 830px;
+	height: 343px;
+}
+
 div#titulo-mas-vendido {
-	background-color:goldenrod;
-	min-height: 20px;
-	max-width: 1000px;
-	
+	background-color:rgb(216, 206, 152);
+	height: 30px;
+	width: 830px;
 	font-size: 25px;
 	font-weight:bold;
 }
 
-div#novedades {
+div#titulo-mas-vendido:hover{
+	background-color: rgb(238, 241, 211);
+}
+
+.novedades {
 	background-color: white;
-	min-height: 240px;
-	width: 1000px;
-	margin-bottom: 10px;
-	border: goldenrod solid 2px;
+	height: 240px;
+	width: 830px;
+	margin: 40px;
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
 }
 
 div#producto-min {
 	background-color: white;
-	min-height: 240px;
-	width: 240px;
+	height: 220px;
+	width: 280px;
 	border: #303030 solid 1px;
 	display: inline-block;
-	margin-left: 5px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
+
+.img_min{
+	height: 220px;
+	width: 280px
+}
+
 div#imagen-producto-min {
 	background-color: white;
 	min-height: 220px;
-	width: 220px;
+	width: 280px;
 	border-bottom: none;
 }
+
 div#titulo-producto-min {
-	background-color: goldenrod;
-	min-height: 20px;
-	width: 240px;
+	background-color: rgb(224, 215, 163);
+	height: 20px;
+	width: 279px;
+	border: #303030 solid 1px;
+}
+
+div#titulo-producto-min:hover{
+	background-color: rgb(238, 241, 211);
 }
 
 div#entrenamientos_home {
@@ -146,51 +116,48 @@ div#entrenamiento-home {
 	width: 1328px;
 	border: #303030 solid 1px;
 	font-size: 28px;
+	margin-bottom: 40px;
 }
+
+.ind_entr_tit{
+	font-weight: bold;
+	font-size: 30px;
+	margin-bottom: 20px;
+	color:black;
+	text-shadow: 1px 2px 2px rgb(110, 106, 78);
+}
+
 div#titulo-entrenamientos{
-	background-color: linen;
-}
-div#pie {
-	clear: both;
-	padding: 20px;
-	background-color: #303030;
-	color: white;
-	text-align: center;
+	background-color: whitesmoke;
 }
 
-div.saludo {
-	width: 100%;
-	text-align: right;
+.img_entr_indx{
+	width: 1328px;
+	height: 402px;
 }
 
-fieldset {
-	border: 1px solid black;
-	width: 15em;
-	margin: 0 auto;
-}
-b{
-	color: red;
-}
 legend {
 	color: #fff;
 	background: #303030;
 	border: 1px solid black;
 	padding: 2px 6px;
 } 
-h2{
-	color: black;
-	text-shadow: black;
-	font-size: 30px;
-}
+
 a.button {
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
     text-decoration: none;
 	color: initial;
-	background-color: goldenrod;
+	background-color: rgb(216, 206, 152);
 	font-weight:bold;
 }
+
+a.button:hover{
+	background-color: rgb(238, 241, 211);
+}
+
+
 a.button2 {
     -webkit-appearance: button;
     -moz-appearance: button;
@@ -198,8 +165,5 @@ a.button2 {
     text-decoration: none;
 	color: initial;
 	font-weight:bold;
-	background-color: linen;
-}
-div#formularios{
-	width: 800px;
+	background-color: whitesmoke;
 }

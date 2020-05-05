@@ -24,7 +24,7 @@ require_once __DIR__.'/../aplicacion.php';
                         $row = mysqli_fetch_assoc($result);
                         $_SESSION['nombre_entrenamiento']=$row['nombre'];
                         $img=$row['imagen'];
-                        echo "<center/><img src=\"/cornersports/img/$img\" width=\"1200\" height=\"400\">";
+                        echo "<center/><img class=\"img_entr_indx\" src=\"$img\">";
                     }
                     //mysqli_close($conexion);
                 ?>

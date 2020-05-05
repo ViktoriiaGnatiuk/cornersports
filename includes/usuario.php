@@ -23,8 +23,18 @@ class Usuario
         if ($rs) {
             if ( $rs->num_rows == 1) {
                 $fila = $rs->fetch_assoc();
-                $user = new Usuario($fila['nombreUsuario'], $fila['nombre'], $fila['password'], $fila['rol']);
-                $user->id = $fila['id'];
+                $user = new Usuario(
+                    $fila['username'],
+                    $fila['password'],
+                    $fila['nombre'],
+                    $fila['apellidos'],
+                    $fila['email'],
+                    $fila['provincia'],
+                    $fila['localidad'],
+                    $fila['calle'],
+                    $fila['codPostal'],
+                    $fila['portal'],
+                    $fila['perfil']);
                 $result = $user;
             }
             $rs->free();
@@ -35,13 +45,35 @@ class Usuario
         return $result;
     }
     
-    public static function crea($nombreUsuario, $nombre, $password, $rol)
+    public static function crea(
+        $username,
+        $password,
+        $nombre,
+        $apellidos,
+        $email,
+        $provincia,
+        $localidad,
+        $calle,
+        $codPostal,
+        $portal,
+        $perfil)
     {
-        $user = self::buscaUsuario($nombreUsuario);
+        $user = self::buscaUsuario($username);
         if ($user) {
             return false;
         }
-        $user = new Usuario($nombreUsuario, $nombre, self::hashPassword($password), $rol);
+            $user = new Usuario(
+                $username,
+                self::hashPassword($password),
+                $nombre,
+                $apellidos,
+                $email,
+                $provincia,
+                $localidad,
+                $calle,
+                $codPostal,
+                $portal,
+                $perfil);
         return self::guarda($user);
     }
     
@@ -62,11 +94,19 @@ class Usuario
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("INSERT INTO Usuarios(nombreUsuario, nombre, password, rol) VALUES('%s', '%s', '%s', '%s')"
-            , $conn->real_escape_string($usuario->nombreUsuario)
-            , $conn->real_escape_string($usuario->nombre)
+        $query=sprintf("INSERT INTO usuarios(username, password, nombre, apellidos, email, provincia, localidad, 
+        calle, codPostal, portal, perfil) VALUES('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')"
+            , $conn->real_escape_string($usuario->username)
             , $conn->real_escape_string($usuario->password)
-            , $conn->real_escape_string($usuario->rol));
+            , $conn->real_escape_string($usuario->nombre)
+            , $conn->real_escape_string($usuario->apellidos)
+            , $conn->real_escape_string($usuario->email)
+            , $conn->real_escape_string($usuario->provincia)
+            , $conn->real_escape_string($usuario->localidad)
+            , $conn->real_escape_string($usuario->calle)
+            , $conn->real_escape_string($usuario->codPostal)
+            , $conn->real_escape_string($usuario->portal)
+            , $conn->real_escape_string($usuario->perfil));
         if ( $conn->query($query) ) {
             $usuario->id = $conn->insert_id;
         } else {
@@ -76,19 +116,28 @@ class Usuario
         return $usuario;
     }
     
-    private static function actualiza($usuario)
+    public static function actualiza($usuario)
     {
         $app = Aplicacion::getSingleton();
         $conn = $app->conexionBd();
-        $query=sprintf("UPDATE Usuarios U SET nombreUsuario = '%s', nombre='%s', password='%s', rol='%s' WHERE U.id=%i"
-            , $conn->real_escape_string($usuario->nombreUsuario)
-            , $conn->real_escape_string($usuario->nombre)
+        $query=sprintf("UPDATE usuarios SET username = '%s', password='%s', nombre='%s', apellidos='%s'
+        , email='%s', provincia='%s', localidad='%s', calle='%s', codPostal='%s', portal='%s'
+        , perfil='%s' WHERE username= '%s'"
+            , $conn->real_escape_string($usuario->username)
             , $conn->real_escape_string($usuario->password)
-            , $conn->real_escape_string($usuario->rol)
-            , $usuario->id);
+            , $conn->real_escape_string($usuario->nombre)
+            , $conn->real_escape_string($usuario->apellidos)
+            , $conn->real_escape_string($usuario->email)
+            , $conn->real_escape_string($usuario->provincia)
+            , $conn->real_escape_string($usuario->localidad)
+            , $conn->real_escape_string($usuario->calle)
+            , $conn->real_escape_string($usuario->codPostal)
+            , $conn->real_escape_string($usuario->portal)
+            , $conn->real_escape_string($usuario->perfil)
+            , $conn->real_escape_string($usuario->username));
         if ( $conn->query($query) ) {
             if ( $conn->affected_rows != 1) {
-                echo "No se ha podido actualizar el usuario: " . $usuario->id;
+                echo "No se ha podido actualizar el usuario: " . $usuario->username;
                 exit();
             }
         } else {
@@ -100,21 +149,44 @@ class Usuario
     }
     
     private $id;
-
-    private $nombreUsuario;
-
-    private $nombre;
-
+    private $username;
     private $password;
+    private $nombre;
+    private $apellidos;
+    private $email;
+    private $provincia;
+    private $localidad;
+    private $calle;
+    private $codPostal;
+    private $portal;
+    private $perfil;
+    private $entrenamiento_activo=NULL;
+    
 
-    private $rol;
-
-    private function __construct($nombreUsuario, $nombre, $password, $rol)
+    public function __construct(
+        $username,
+        $password,
+        $nombre,
+        $apellidos,
+        $email,
+        $provincia,
+        $localidad,
+        $calle,
+        $codPostal,
+        $portal,
+        $perfil)
     {
-        $this->nombreUsuario= $nombreUsuario;
-        $this->nombre = $nombre;
-        $this->password = $password;
-        $this->rol = $rol;
+        $this->username= $username;
+        $this->password= $password;
+        $this->nombre= $nombre;
+        $this->apellidos= $apellidos;
+        $this->email= $email;
+        $this->provincia= $provincia;
+        $this->localidad= $localidad;
+        $this->calle= $calle;
+        $this->codPostal= $codPostal;
+        $this->portal= $portal;
+        $this->perfil= $perfil;
     }
 
     public function id()
@@ -122,14 +194,64 @@ class Usuario
         return $this->id;
     }
 
-    public function rol()
+    public function username()
     {
-        return $this->rol;
+        return $this->username;
     }
 
-    public function nombreUsuario()
+    public function password()
     {
-        return $this->nombreUsuario;
+        return $this->password;
+    }
+
+    public function nombre()
+    {
+        return $this->nombre;
+    }
+
+    public function apellidos()
+    {
+        return $this->apellidos;
+    }
+
+    public function email()
+    {
+        return $this->email;
+    }
+
+    public function provincia()
+    {
+        return $this->provincia;
+    }
+
+    public function localidad()
+    {
+        return $this->localidad;
+    }
+
+    public function calle()
+    {
+        return $this->calle;
+    }
+
+    public function codPostal()
+    {
+        return $this->codPostal;
+    }
+
+    public function portal()
+    {
+        return $this->portal;
+    }
+
+    public function perfil()
+    {
+        return $this->perfil;
+    }
+
+    public function entrenamiento_activo()
+    {
+        return $this->entrenamiento_activo;
     }
 
     public function compruebaPassword($password)

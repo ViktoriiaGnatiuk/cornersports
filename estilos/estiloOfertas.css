@@ -1,52 +1,79 @@
-.oferta{
-	position: relative;
-	color:#FFFFFF;
-	background-color:white;
-	padding:2px 10px;
-	font-weight:bold;
+
+.interior_ofertas{
+	padding: 10px;
+	min-height: 600px;
+	width: 1000px;
+	background-color: white;
+	display: flex;
 }
-.val-fieldset {
-			width:100px;
-			border:none;
-			font-weight:bold;
-			font-size:12px;
-			}
-			.valoracion {
-			width: 100px;
-			height: 21px;
-			display: block;
-			background:url(http://lh5.googleusercontent.com/-Sp-iHFztZdc/UVD89O9oM1I/AAAAAAAAEU0/Xh-FBDaWyJY/s000/estrellas.png) 0 0 no-repeat;
-			}
-			.val-0 {background-position: -100px -0;}
-			.val-5 {background-position: -81px -21px;}
-			.val-10 {background-position: -81px 0;}
-			.val-15 {background-position: -61px -21px;}
-			.val-20 {background-position: -60px 0;}
-			.val-25 {background-position: -40px -21px;}
-			.val-30 {background-position: -40px 0;}
-			.val-35 {background-position: -21px -21px;}
-			.val-40 {background-position: -21px 0;} 
-			.val-45 {background-position: 0 -21px;}
-			.val-50 {background-position: 0 0;}
-			.oferta {
-				position: relative;
-				bottom:10px;
-				color:red;
-				background-color:white;
-				padding:2px 5px;
-				font-weight:bold;
-				font-style: italic;
-				
-			}
-			.contenido
-			{
-				position: relative;
-				bottom:10px;
-				color:black;
-				background-color:white;
-				padding:1px 5px;
-				font-weight:bold;
-				text-align: center;
-				font-style: italic;
-			
-			}
+
+.columna{
+	margin: 40px;
+	margin-left: 90px;
+}
+
+.producto_oferta{
+	width: 300px;
+	height: 340px;
+	padding: 20px;
+	margin-bottom: 40px;
+	text-align: center;
+	border: 1px solid black;
+	box-shadow: 0 4px 4px grey;
+    background-color: whitesmoke;
+}
+.nombreOferta{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	background-color: white;
+}
+
+.imagen_oferta{
+	width: 300px;
+    height: 260px;
+}
+
+.inf{
+	display: flex;
+	background-color: rgb(230, 253, 101);
+	font-weight: bold;
+	font-size: 24px;
+	justify-content: space-between;
+}
+
+.precio_oferta{
+	margin-left: 20px;
+	padding-right: 20px;
+}
+
+.descuento{
+	margin-right: 20px;
+	background-color: rgb(241, 255, 162);
+	border: .5px solid black;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.comprarOferta{
+	font-family: 'Haettenschweiler';
+    font-size: 18px;
+	width: 200px;
+	margin-top: 4px;
+	color: rgb(41, 8, 1);
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px ;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+	box-shadow: 0 1px 1px black;
+	cursor: pointer;
+}
+
+.comprarOferta:hover{
+	background-color: rgb(241, 255, 162);	
+}
+
+.comprarOferta:active{
+	background-color: rgb(241, 255, 162);
+}
