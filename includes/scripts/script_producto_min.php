@@ -24,7 +24,7 @@ require_once __DIR__.'/../aplicacion.php';
                         $row = mysqli_fetch_assoc($result);
                         $_SESSION['nombre_producto']=$row['nombre'];
                         $img=$row['imagen'];
-                        echo "<img src=\"$img\" width=\"220\" height=\"220\">";
+                        echo "<img class=\"img_min\" src=\"$img\">";
                     }
                 ?>
             </div>

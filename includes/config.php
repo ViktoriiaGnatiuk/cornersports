@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="http://localhost/cornersports/estilos/style.css">
+        <link rel="stylesheet" href="http://localhost/cornersports/estilos/style.css?v=<?php echo(rand()); ?>" />
+        <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
         <meta charset="UTF-8"/>
     </head>
     <body>

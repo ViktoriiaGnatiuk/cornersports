@@ -1,0 +1,94 @@
+.barra_ofertas {
+	padding: 10px;
+	float: left;
+	width: 340px;
+    min-height: 750px;
+    margin-right: 20px;
+    text-align: center;	
+	background-color:white;
+}
+
+.int_b_ofertas{
+    margin-top: 40px;
+    padding: 20px;
+    min-height: 750px;
+    background-color:whitesmoke;
+    box-shadow: 4px 4px 4px rgb(37, 37, 37);
+}
+
+.titulo_b_ofertas{
+    font-weight: bold;
+	font-size: 30px;
+	margin-bottom: 20px;
+	color:rgb(106, 110, 78);
+	text-shadow: 1px 2px 2px black;
+}
+
+.b_oferta {
+	background-color: white;
+	width: 300px;
+	height: 300px;
+	margin-bottom: 20px;
+	border: #303030 solid 1px;
+	box-shadow: 0px 3px 3px rgb(37, 37, 37);
+}
+
+.ol-barra-superir{
+	height: 60px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ol-bs-izq{
+	width: 180px;
+    height: 39px;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    font-size: 28px;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    background-color: rgb(247, 253, 213);
+}
+
+.ol-bs-dr{
+    text-align: center;
+    width: 100px;
+    font-weight: bold;
+    height: 54px;
+    padding-top: 5px;
+    font-size: 40px;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+	background-color: rgb(229, 253, 120);
+}
+
+.ol-centro{
+	height: 200px;
+	width: 300px;
+}
+
+.b_b_oferta{
+    font-family: 'Haettenschweiler';
+    font-size: 20px;
+	width: 200px;
+	height: 30px;
+	color: rgb(41, 8, 1);
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px ;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+	box-shadow: 0 1px 1px black;
+	cursor: pointer;
+}
+
+.b_b_oferta:hover{
+    width: 240px;
+	background-color: rgb(229, 253, 120);
+}
+
+.b_b_oferta:active{
+	background-color: rgb(229, 253, 120);
+}
