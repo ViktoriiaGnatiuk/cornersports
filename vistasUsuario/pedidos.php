@@ -58,6 +58,16 @@ require_once __DIR__ . '/../includes/productos.php';
 						++$i;
 					}
 					echo "</table>";
+					$html = <<<EOF
+					<div class="info">
+						<div class="info_interior">
+							<form action="http://localhost/cornersports/procesos/devoluciones.php" id="form_session" method="post">
+								<input type="submit" class="b_pedido" value="DEVOLVER">
+							</form>
+						</div>
+					</div>
+					EOF;
+					echo"$html";
 				?>
             </div>
             <?php
