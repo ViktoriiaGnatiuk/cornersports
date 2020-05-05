@@ -17,27 +17,31 @@ require_once __DIR__.'/includes/config.php';
 							$_SESSION['producto']=6;
 							include __DIR__.'/includes/scripts/script_mas_vendido.php';
 						?>
-					<div id="novedades">
-						<center><h2>NUESTROS PRODUCTOS</h2></center>
+						<center><h2>NOVEDADES</h2></center>
+					<div class="novedades">
 						<?php
 							$_SESSION['producto']=5;
 							include __DIR__.'/includes/scripts/script_producto_min.php';
-							$_SESSION['producto']=6;
+							$_SESSION['producto']=11;
 							include __DIR__.'/includes/scripts/script_producto_min.php';
+						?>
+					</div>
+					<div class="novedades">
+						<?php
 							$_SESSION['producto']=7;
 							include __DIR__.'/includes/scripts/script_producto_min.php';
-							$_SESSION['producto']=5;
+							$_SESSION['producto']=8;
 							include __DIR__.'/includes/scripts/script_producto_min.php';
 						?>
 					</div>
 				</div>
 			</div>
 			<?php
-				include __DIR__.'/includes/estructura/barraOfertas.php';	
+				include __DIR__.'/includes/scripts/script_barra_ofertas.php';	
 			?>
 			<div id="contenido2">
 				<div id="entrenamientos_home">
-					<center><h2>ENTRENA CON NOSOTROS</h2></center>
+					<center><p class="ind_entr_tit">ENTRENA CON NOSOTROS</p></center>
 					<?php
 						$_SESSION['entrenamiento']=10;
 						include __DIR__.'/includes/scripts/script_entrenamiento.php';

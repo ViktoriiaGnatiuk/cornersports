@@ -245,13 +245,15 @@
                 if($result){
                     $row= $result->fetch_assoc();
                     $cantidad=$row['cantidad'];
-                    $cantidad--;
-                    $query=sprintf("UPDATE productos SET cantidad = '$cantidad' WHERE id ='%s'",
-                        $conexion->real_escape_string($id));
-                    $result = $conexion->query($query);
-                    if ($result == FALSE) {
-                        echo "Error al consultar en la BD Linea 58: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
-                        exit();
+                    if($cantidad > 1){
+                        $cantidad--;
+                        $query=sprintf("UPDATE productos SET cantidad = '$cantidad' WHERE id ='%s'",
+                            $conexion->real_escape_string($id));
+                        $result = $conexion->query($query);
+                        if ($result == FALSE) {
+                            echo "Error al consultar en la BD Linea 58: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                            exit();
+                        }
                     }
                 }
                 else{
