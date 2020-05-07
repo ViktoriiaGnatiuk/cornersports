@@ -118,29 +118,65 @@
         }
 
         public function getSize(){
-            $usuario=$_SESSION['username'];
-            $idPedido=0;
-            $app = aplicacion::getSingleton();
-            $conexion = $app->conexionBd();
-            if ($conexion->connect_error) {
-                die("La conexion falló: " . $conexion->connect_error);
-            }
-            else{
+            if(isset($_SESSION['loged'])){
+                $usuario=$_SESSION['username'];
                 $idPedido=0;
-                $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username='%s'",  $conexion->real_escape_string($usuario));
-                $result = $conexion->query($query);
-                $row = $result->fetch_assoc();
-                if($row['pedido_activo']==NULL){
-                    return 0;
+                $app = aplicacion::getSingleton();
+                $conexion = $app->conexionBd();
+                if ($conexion->connect_error) {
+                    die("La conexion falló: " . $conexion->connect_error);
                 }
-                $idPedido=$row['pedido_activo'];
+                else{
+                    $idPedido=0;
+                    $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username='%s'",  $conexion->real_escape_string($usuario));
+                    $result = $conexion->query($query);
+                    $row = $result->fetch_assoc();
+                    if($row['pedido_activo']==NULL){
+                        return 0;
+                    }
+                    $idPedido=$row['pedido_activo'];
 
-                //Buscar todos los productos que esten asociados con el numero de pedido
-                $query = sprintf("SELECT * FROM productos WHERE pedido='%s'",  $conexion->real_escape_string($idPedido));
-                $result = $conexion->query($query);
-                return $result->num_rows;
+                    //Buscar todos los productos que esten asociados con el numero de pedido
+                    $query = sprintf("SELECT * FROM productos WHERE pedido='%s'",  $conexion->real_escape_string($idPedido));
+                    $result = $conexion->query($query);
+                    return $result->num_rows;
+                }
+            }else{
+                return 0;
             }
+        }
 
+        public function getSizeReal(){
+            if(isset($_SESSION['loged'])){
+                $usuario=$_SESSION['username'];
+                $idPedido=0;
+                $app = aplicacion::getSingleton();
+                $conexion = $app->conexionBd();
+                if ($conexion->connect_error) {
+                    die("La conexion falló: " . $conexion->connect_error);
+                }
+                else{
+                    $idPedido=0;
+                    $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username='%s'",  $conexion->real_escape_string($usuario));
+                    $result = $conexion->query($query);
+                    $row = $result->fetch_assoc();
+                    if($row['pedido_activo']==NULL){
+                        return 0;
+                    }
+                    $idPedido=$row['pedido_activo'];
+
+                    //Buscar todos los productos que esten asociados con el numero de pedido
+                    $query = sprintf("SELECT * FROM productos WHERE pedido='%s'",  $conexion->real_escape_string($idPedido));
+                    $result = $conexion->query($query);
+                    $size=0;
+                    while($row= $result->fetch_assoc()){
+                        $size+=$row['cantidad'];
+                    }
+                    return $size;
+                }
+            }else{
+                return 0;
+            }
         }
 
         public function getCarrito(){

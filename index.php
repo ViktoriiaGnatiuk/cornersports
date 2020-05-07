@@ -12,6 +12,7 @@ require_once __DIR__.'/includes/config.php';
 				include __DIR__.'/includes/estructura/cabecera.php';
 			?>
 			<div id="contenido">
+				
 				<div id="interior">
 						<?php 
 							$_SESSION['producto']=6;

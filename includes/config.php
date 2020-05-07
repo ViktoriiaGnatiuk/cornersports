@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="http://localhost/cornersports/estilos/style.css?v=<?php echo(rand()); ?>" />
         <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
         <meta charset="UTF-8"/>
+        <link href="http://localhost/cornersports/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     </head>
     <body>
     </body>

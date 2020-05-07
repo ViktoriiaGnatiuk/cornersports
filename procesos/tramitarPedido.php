@@ -12,6 +12,8 @@ require_once __DIR__ . '/../includes/carrito.php';
                 return document.getElementById(id).innerHTML; 
             }
         </script>
+        <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarro.css?v=<?php echo(rand()); ?>" />
+    <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
     </head>
     <body>
         <div id="contenedor">
@@ -25,7 +27,7 @@ require_once __DIR__ . '/../includes/carrito.php';
                 $items=$carrito->getCarrito();
                 $size=$carrito->getSize();
                 if($size==0){
-                    $_SESSION['errorCarrito']="No puede tramitar un carrito vacio";
+                    $_SESSION['errorCarrito']="<p class=\"errorCarro\">No puede tramitar un carrito vacio</p>";
                     header('Location: http://localhost/cornersports/includes/carroCompra.php');
                 }
                 $carrito->tramitar();

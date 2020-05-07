@@ -1,3 +1,13 @@
+.aviso{
+	color: red;
+	text-align: center;
+	padding: 10px;
+	border: 1px solid black;
+	margin-top: 20px;
+	margin-left: 60px;
+	margin-right: 40px;
+	font-weight: bold;
+}
 
 div#contenedor {
 	background-color: white;

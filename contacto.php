@@ -4,7 +4,9 @@ require_once __DIR__.'/includes/aplicacion.php';
 ?>
 <!DOCTYPE html>
 <html>
-<head></head>
+<head>
+  <title>CONTACTO</title>
+</head>
 <body>
   <div id="contenedor">
     <?php

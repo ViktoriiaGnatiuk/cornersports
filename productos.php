@@ -6,7 +6,7 @@ require_once __DIR__.'/includes/productos.php';
 <html>
  <head>
 	<meta charset="utf-8">
-	<title>Productos</title>
+	<title>PRODUCTOS</title>
 	<link rel="stylesheet" href="estilos/estiloProductos.css?v=<?php echo(rand()); ?>" />
     <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
  </head>
