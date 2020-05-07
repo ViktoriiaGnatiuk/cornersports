@@ -44,8 +44,18 @@
                         ?>
                     </ul>
                 </li>
-                <li><a id="boton-carro" href="http://localhost/cornersports/includes/carroCompra.php"><img src="http://localhost/cornersports/img/carro24.png" width="30" height="30"></a></li>
+                <?php
+                    require_once __DIR__.'/../carrito.php';
+                     $carrito = new carrito();
+                     $size=$carrito->getSizeReal();
+                     $html = <<<EOF
+                     <li><a id="boton-carro" href="http://localhost/cornersports/includes/carroCompra.php"><img src="http://localhost/cornersports/img/carro24.png" width="30" height="30">[$size]</a></li>
+                     EOF;
+                     echo"$html";
+                ?>
              </ul>
         </nav>
+        <div class="aviso"><h3>¡AVISO!</h3> <p>Esta página web fue desarollada por alumnos de la Universidad Complutene de Madrid
+				para la asignatura Aplicaciones Web.</p><p>Es para un uso exclusivamente educativo.</p></div>
     </body>
 </html>

@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>CARRITO</title>
     <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarro.css?v=<?php echo(rand()); ?>" />
     <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
     </head>
@@ -25,7 +26,7 @@
                             $mensaje=$_SESSION['errorCarrito'];
                             unset($_SESSION['errorCarrito']);
                             $html = <<<EOF
-                                <center/><p class="errorCarro">$mensaje</p>
+                                <p class="errorCarro">$mensaje</p>
                             EOF;
                             echo $mensaje;
                         }
@@ -43,12 +44,6 @@
                             $imagen = $items[$i]['imagen'];
                             $cantidad = $items[$i]['cantidad'];
                             $total+=$precio*$cantidad;
-                           /* <button class="restarItem" onclick='
-                                    if(document.getElementById("cantidad$id").innerHTML > 0){
-                                        document.getElementById("cantidad$id").innerHTML--
-                                    }'>-</button>
-                                    <button class="sumaItem " onclick='document.getElementById("cantidad$id").innerHTML++'>+</button>
-                                    */
                             $html = <<<EOF
                             <div class="item" id="$i">
                                 <img class="imagenCarro" src="$imagen">

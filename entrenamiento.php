@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Entrenamientos</title>
+        <title>ENTRENAMIENTOS</title>
         <link rel="stylesheet" href="estilos/estiloEntrenamiento.css?v=<?php echo(rand()); ?>" />
         <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
     </head>

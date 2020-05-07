@@ -3,15 +3,16 @@
    color:  rgb(29, 28, 28);;
 }
 #boton-carro{
-    width: 30px;
+    width: 50px;
     height: 36px;
     line-height: 40px;
+    border: black solid 1px;
 }
 #boton-carro:hover{
-    border: .5px solid goldenrod;
+    border: 1px solid goldenrod;
 }
 #boton-carro:active{
-    border: .5px solid goldenrod;
+    border: 1px solid goldenrod;
 }
 .carro{
 	border: darkgray 1px solid;
@@ -66,7 +67,7 @@
 }
 
 .precioItem{
-    font-size: 24px;
+    font-size: 22px;
     width: 120px;
     font-weight: bold;
 }
@@ -145,5 +146,8 @@
 }
 
 .errorCarro{
+    text-align: center;
     color: red;
+    font-weight: bold;
+    font-size: 20px;
 }

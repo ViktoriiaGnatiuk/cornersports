@@ -14,7 +14,7 @@
             <?php
                 include __DIR__.'/includes/estructura/cabecera.php';
             ?>
-            <div id="contenido">
+              <div id="contenido">
                 <div class="interior_ofertas">
                     <?php
                         $prd=new productos();

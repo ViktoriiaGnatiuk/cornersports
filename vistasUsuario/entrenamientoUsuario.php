@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<title>Entrenamientos</title>
+		<title>Entrenamiento</title>
 		<link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloEntrenamiento.css?v=<?php echo(rand()); ?>" />
         <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
 		
