@@ -26,7 +26,7 @@ require_once __DIR__ .'/../includes/aplicacion.php';
                 $row = mysqli_fetch_assoc($result);
                 $id=$row['pedido'];
                 //Establece a NULL el entrenamiento activo del usuario
-                $query="UPDATE pedidos SET estado = 'SIN_TRAMITAR' WHERE id = '$id'";
+                $query="UPDATE pedidos SET estado = 'DEVUELTO' WHERE id = '$id'";
                 $result = $conexion->query($query);
                 if ($result == TRUE) {
                     //Borra el entrenamiento dado de baja de la tabla de entrenamientos

@@ -18,6 +18,7 @@ require_once __DIR__ . '/../includes/productos.php';
 				<?php 
 					$prd=new productos();
 					$i=0;
+					$j=0;
 					$size=$prd->getSizeByUser();
 					$items=$prd->getItemsByUser();
 					$html = <<<EOF
@@ -58,16 +59,20 @@ require_once __DIR__ . '/../includes/productos.php';
 						++$i;
 					}
 					echo "</table>";
-					$html = <<<EOF
-					<div class="info">
-						<div class="info_interior">
-							<form action="http://localhost/cornersports/procesos/devoluciones.php" id="form_session" method="post">
-								<input type="submit" class="b_pedido" value="DEVOLVER">
-							</form>
+					while( $j < $size){
+						$nombre = $items[$j]['nombre'];
+						$html = <<<EOF
+						<div class="info">
+							<div class="info_interior">
+								<form action="http://localhost/cornersports/procesos/devoluciones.php" id="form_session" method="post">
+									<input type="submit" class="b_pedido" value="DEVOLVER $nombre">
+								</form>
+							</div>
 						</div>
-					</div>
-					EOF;
-					echo"$html";
+						EOF;
+						echo"$html";
+						++$j;
+					}
 				?>
             </div>
             <?php
