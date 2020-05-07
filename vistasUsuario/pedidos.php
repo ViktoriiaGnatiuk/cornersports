@@ -32,6 +32,7 @@ require_once __DIR__ . '/../includes/productos.php';
 						<th class="casilla">Precio</th>
 						<th class="casilla">Estado</th>
 						<th class="casilla">Decripcion</th>
+						<th class="casilla">Acciones</th>
 						</tr>
 					EOF;
 					echo"$html";
@@ -47,32 +48,28 @@ require_once __DIR__ . '/../includes/productos.php';
 						
 						$html = <<<EOF
 							<tr>
-							<td class="casilla">$id</td>
 							<td class="casilla">$pedido</td>
+							<td class="casilla">$id</td>
 							<td class="casilla">$nombre</td>
 							<td class="casilla">$precio</td>
 							<td class="casilla">$estado</td>
 							<td class="casilla">$descripcion</td>
-							</tr>
 						EOF;
 						echo"$html";
+						if($estado!= "DEVUELTO"){
+							$html = <<<EOF
+							<td class="casilla">
+							<form action="http://localhost/cornersports/procesos/devoluciones.php?id=$id id="form_session" method="post">
+								<input type="submit" class="b_pedido" value="DEVOLVER">
+							</form>
+							</td>
+							EOF;
+							echo"$html";
+						}
+						echo"</tr>";
 						++$i;
 					}
 					echo "</table>";
-					while( $j < $size){
-						$nombre = $items[$j]['nombre'];
-						$html = <<<EOF
-						<div class="info">
-							<div class="info_interior">
-								<form action="http://localhost/cornersports/procesos/devoluciones.php" id="form_session" method="post">
-									<input type="submit" class="b_pedido" value="DEVOLVER $nombre">
-								</form>
-							</div>
-						</div>
-						EOF;
-						echo"$html";
-						++$j;
-					}
 				?>
             </div>
             <?php

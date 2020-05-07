@@ -308,27 +308,38 @@
                 die("La conexion falló: " . $conexion->connect_error);
             }
             else{
-            $query=sprintf("UPDATE productos SET estado='%s' WHERE usuario='%s'"
-                , $conexion->real_escape_string("pagado")
-                , $conexion->real_escape_string($usuario));
+                $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username='%s'",
+                    $conexion->real_escape_string($usuario));
                 $result = $conexion->query($query);
-                if($result){
-                    //Cambiar la fecha_entrega y estado en la tabla pedidos.
-                    $query=sprintf("UPDATE pedidos SET estado='%s' WHERE usuario='%s'"
-                        , $conexion->real_escape_string("PAGADO")
-                        , $conexion->real_escape_string($usuario));
+                if($result){    
+                    $row= $result->fetch_assoc();
+                    $id=$row['pedido_activo'];
+                    $query=sprintf("UPDATE productos SET estado='%s' WHERE pedido='%s'"
+                        , $conexion->real_escape_string("pagado")
+                        , $conexion->real_escape_string($id));
                     $result = $conexion->query($query);
                     if($result){
-                        //Eliminar valor del campo pedido_activo en la tabla usuarios.
-                        $query=sprintf("UPDATE usuarios SET pedido_activo=NULL WHERE username='%s'"
+                        //Cambiar la fecha_entrega y estado en la tabla pedidos.
+                        $query=sprintf("UPDATE pedidos SET estado='%s' WHERE usuario='%s'"
+                            , $conexion->real_escape_string("PAGADO")
                             , $conexion->real_escape_string($usuario));
-                         $result = $conexion->query($query);
-                         if(!$result){
-                            echo "Error al consultar en la BD Linea 202: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                        $result = $conexion->query($query);
+                        if($result){
+                            //Eliminar valor del campo pedido_activo en la tabla usuarios.
+                            $query=sprintf("UPDATE usuarios SET pedido_activo=NULL WHERE username='%s'"
+                                , $conexion->real_escape_string($usuario));
+                            $result = $conexion->query($query);
+                            if(!$result){
+                                echo "Error al consultar en la BD Linea 202: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                                exit();
+                            }
+                        }else{
+                            echo "Error al consultar en la BD Linea 206: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
                             exit();
-                         }
-                    }else{
-                        echo "Error al consultar en la BD Linea 206: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                        }
+                    }
+                    else{
+                        echo "Error al consultar en la BD Linea 211: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
                         exit();
                     }
                 }
@@ -336,6 +347,7 @@
                     echo "Error al consultar en la BD Linea 211: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
                     exit();
                 }
+                
             }
         }
     }
