@@ -17,27 +17,14 @@ require_once __DIR__ .'/../includes/aplicacion.php';
             <?php
                 $app = aplicacion::getSingleton();
                 $conexion = $app->conexionBd();
-                $tbl_name = "usuarios";
-
-                $usuario=$_SESSION['username'];
-                //Obtener el id del entrenamiento activo
-                $query = "SELECT pedido FROM productos WHERE usuario = '$usuario'";
-                $result = $conexion->query($query);
-                $row = mysqli_fetch_assoc($result);
-                $id=$row['pedido'];
-                //Establece a NULL el entrenamiento activo del usuario
-                $query="UPDATE pedidos SET estado = 'DEVUELTO' WHERE id = '$id'";
+                $id=$_GET['id'];
+                $query=sprintf("UPDATE productos SET estado = 'DEVUELTO' WHERE id ='%s'",
+                        $conexion->real_escape_string($id));
                 $result = $conexion->query($query);
                 if ($result == TRUE) {
-                    //Borra el entrenamiento dado de baja de la tabla de entrenamientos
-                    $query="DELETE FROM productos WHERE pedido='$id'";
-                    $result = $conexion->query($query);
-                    if ($result == TRUE) {
-                        echo"<center/>";
-                        echo "El producto se ha devuelto correctamente.<br/>";
-                    }else{
-                        echo "Error al devolver el producto." . $query . "<br>" . $conexion->error;
-                    }
+                    echo"<center/>";
+                    echo "<h3> Gracias.</h3><h3>Su producto se ha devuelto correctamente.</h3><h3>En un periodo de 5 días recibira el rembolso en su cuenta bancaria.</h3><br/>";
+                    echo"<a href=\"http://localhost/cornersports/vistasUsuario/pedidos.php\">Volver a pedidos</a>";
                 }
                 else{
                     echo "Error al devolver el producto." . $query . "<br>" . $conexion->error;

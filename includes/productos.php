@@ -208,7 +208,7 @@
                 die("La conexion falló: " . $conexion->connect_error);
             }
             else{
-                $query = "SELECT * FROM $tbl_name WHERE usuario = '$user'";
+                $query = "SELECT * FROM $tbl_name WHERE usuario = '$user' ORDER BY pedido DESC";
                 $result = $conexion->query($query);
                 $items=[];
                 while($row= $result->fetch_assoc()){
