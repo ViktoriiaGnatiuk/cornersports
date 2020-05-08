@@ -66,7 +66,7 @@
                             $imagen = $items[$i]['imagen'];
                             $precio = $items[$i]['precio'];
                             $descuento = $items[$i]['descuento'];
-                            $descuento_cantidad=($precio*$descuento)/100;
+                            $descuento_cantidad=round($precio*$descuento)/100;
                             $precio=$precio-$descuento_cantidad;
                             $html = <<<EOF
                             <div class="producto_oferta">
