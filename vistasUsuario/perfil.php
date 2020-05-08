@@ -6,8 +6,8 @@ require_once __DIR__.'/../includes/aplicacion.php';
 <html>
     <head>
         <title>Perfil</title>
-		<link rel="stylesheet" href="estilos/estiloPerfil.css?v=<?php echo(rand()); ?>" />
-    	<script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+		<link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloPerfil.css?v=<?php echo(rand()); ?>" />
+		<script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
     </head>
     <body>
         <div id="contenedor">
@@ -15,12 +15,13 @@ require_once __DIR__.'/../includes/aplicacion.php';
                 include __DIR__.'/../includes/estructura/cabecera.php';
             ?>
             <div id="contenido2">
-				<center>		
+				<center/>		
 				<div class="a-container">
-				<div class="ya-personalized">
-					<div class="a-row a-spacing-base">
+				<div class="a-row a-spacing-base">
 							<h1>Mi cuenta</h1><br><br>
 					</div>
+				<div class="ya-personalized">
+					
 					<div class="ya-card-row">
 						
 						<div class="ya-card-cell">
@@ -36,7 +37,6 @@ require_once __DIR__.'/../includes/aplicacion.php';
 								</h2>
 								<div><span class="a-color-secondary">Editar inicio de sesión, nombre o contraseña</span></div></div>
 							</div>
-							<br>
 							</div></div>
 							</a>	
 						</div>
@@ -57,7 +57,6 @@ require_once __DIR__.'/../includes/aplicacion.php';
 										</h2>
 										<div><span class="a-color-secondary">Editar direcciones y preferencias de envío para pedidos</span></div>
 									</div>
-									<br>
 								</div>
 								</div></div>
 								</a>	
@@ -86,7 +85,6 @@ require_once __DIR__.'/../includes/aplicacion.php';
 					</div>
 				</div>
 				</div>
-				</center>
             </div>
             <?php
                 include __DIR__.'/../includes/estructura/pie.php';

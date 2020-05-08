@@ -5,7 +5,7 @@ require_once __DIR__.'/usuario.php';
 class FormularioPerfil extends Form
 {
     public function __construct() {
-        parent::__construct('formRegistro');
+        parent::__construct('formPerfil');
     }
     
     protected function generaCamposFormulario($datos)
@@ -21,54 +21,45 @@ class FormularioPerfil extends Form
         $calle = $usuario->calle();
         $portal=$usuario->portal();
         $perfil=$usuario->perfil();
+
         $html = <<<EOF
         <fieldset>
-            <h2>Usuario: $nombreUsuario</h2></br>
-            <br/><h1>Datos personales</h1>
-            <p>Nombre:</p>
-            <div class="">	
-            <input name="nombre" type="text" class="field" value="$nombre"> <br/>
+            <p class="titulo_reg" >Usuario: $nombreUsuario</p>
+            <div class="form_reg"> 
+                <div class="bloque_reg">
+                    <p class="titulo2_reg">Datos personales</p>	
+                    <p>Nombre:</p>
+                    <input id="nombre_reg" name="nombre" type="text" class="field" value="$nombre" required>
+                    <p>Apellidos:</p>
+                    <input id="apell_reg" name="apellidos" type="text" class="field" value="$apellidos" required>
+                    <p>Correo electrónico:</p>
+                    <input id="email_reg" name="email" type="text" class="field" placeholder="nombre@ejemplo.com" value="$email" pattern=".+@.+." required>
+                </div>
+                <div class="bloque_reg">
+                    <p class="titulo2_reg">Dirección</p>
+                    <p>Provincia:</p>
+                    <input id="prov_reg" name="provincia" type="text" class="field" placeholder="Madrid" value="$provincia" required>
+                    <p>Localidad:</p>
+                    <input id="local_reg" name="localidad" type="text" class="field" placeholder="Alcalá de Henares" value="$localidad" required>
+                    <p>Codigo postal:</p>
+                    <input id="codPos_reg" name="codPostal" type="text" class="field" placeholder="28801" value="$codPostal" required  minlength="5" maxlength="5">
+                    <p>Calle:</p>
+                    <input id="calle_reg" name="calle" type="text" class="field" placeholder="C/Alcalá" value="$calle" required>
+                    <p>Portal, puerta, escalera...:</p>
+                    <input id="portal_reg" name="portal" type="text" class="field" placeholder="17, 3ºB" value="$portal" required>
+                </div>
+                <div class="bloque_reg">
+                    <p class="titulo2_reg" >Datos de usuario</p>
+                    <input name="perfil" type="hidden" value="$perfil">
+                     <p>Contraseña:</p>
+                    <input id="pass_reg" name="password" type="password" class="field" placeholder="*******" required minlength="6">
+                    <p>Confirmar contraseña:</p>
+                    <input id="pass_reg2" name="password2" type="password" class="field" placeholder="*******" required minlength="6">
+                </div>
             </div>
-            <p>Apellidos:</p>
-            <div class="">	
-            <input name="apellidos" type="text" class="field" value="$apellidos"> <br/>
+            <div class="botones_reg">
+                <input id="reg_boton" type="submit" class="boton_reg" value="Aceptar">
             </div>
-            <p>Correo electrónico:</p>
-            <div class="">	
-            <input name="email" type="text" class="field" placeholder="nombre@ejemplo.com" value="$email" <br/>
-            </div>
-            <br/><h1>Dirección</h1>
-            <p>Provincia:</p>
-            <div class="">	
-            <input name="provincia" type="text" class="field" placeholder="Madrid" value="$provincia" <br/>
-            </div>
-            <p>Localidad:</p>
-            <div class="">	
-            <input name="localidad" type="text" class="field" placeholder="Alcalá de Henares" value="$localidad"> <br/>
-            </div>
-            <p>Codigo postal:</p>
-            <div class="">	
-            <input name="codPostal" type="text" class="field" placeholder="28801" value="$codPostal"> <br/>
-            </div>
-            <p>Calle:</p>
-            <div class="">	
-            <input name="calle" type="text" class="field" value="$calle"> <br/>
-            </div>
-            <p>Portal, puerta, escalera...:</p>
-            <div class="">	
-            <input name="portal" type="text" class="field" placeholder="17, 3ºB" value="$portal"> <br/>
-            </div>
-            <br/><h1>Datos de usuario</h1>
-            <p>Contraseña:</p>
-            <div class="">
-            <input name="password" type="password" class="field" placeholder="*******"> <br/>
-            </div>
-            <p>Confirmar contraseña:</p>
-            <div class="">
-            <input name="password2" type="password" class="field" placeholder="*******"> <br/>
-            </div></br>
-            <input name="perfil" type="hidden" value="$perfil">
-            <input type="submit" class="btn btn-green" value="Aceptar"> <br/><br/>
         </fieldset>
         EOF;
         return $html;

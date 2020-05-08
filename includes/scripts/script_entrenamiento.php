@@ -31,7 +31,7 @@ require_once __DIR__.'/../aplicacion.php';
                 <div id="titulo-entrenamientos">
                     <?php
                         $nombre=$_SESSION['nombre_entrenamiento'];
-                        echo "<center/><a href=\"entrenamiento.php\" class=\"button2\">$nombre</a>";
+                        echo "<center/><a class=\"button2\"href=\"entrenamiento.php\">$nombre</a>";
                     ?>
                 </div>
             </div>

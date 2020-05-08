@@ -149,16 +149,14 @@ abstract class Form
     private function generaListaErrores($errores)
     {
         $html='';
-        $html .="<div class=error>";
         $numErrores = count($errores);
         if (  $numErrores == 1 ) {
             $html .= "<ul><li>".$errores[0]."</li></ul>";
         } else if ( $numErrores > 1 ) {
             $html .= "<ul><li>";
-            $html .= implode("</li><li>-", $errores);
+            $html .= implode("</li><li>", $errores);
             $html .= "</li></ul>";
         }
-        $html .="</div>";
         return $html;
     }
 }
