@@ -12,7 +12,7 @@ require_once __DIR__.'/includes/formularioContacto.php';
        ?>
        <div id="contenido2">
         <center>
-        <?
+        <?php
           $form=new formularioContacto();
           $form->gestiona();
         ?>
