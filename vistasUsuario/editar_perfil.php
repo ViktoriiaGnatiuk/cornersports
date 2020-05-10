@@ -22,6 +22,7 @@ require_once __DIR__.'/../includes/formularioPerfil.php';
                     <img alt="Inicio de sesión y seguridad" src="https://images-na.ssl-images-amazon.com/images/G/30/x-locale/cs/ya/images/sign-in-lock._CB485931467_.png">
                     <img alt="Direcciones" src="https://images-na.ssl-images-amazon.com/images/G/30/x-locale/cs/ya/images/address-map-pin._CB485934191_.png">
                     <?php
+                        $_SESSION['user_mod'] = $_SESSION['username'];
                         $form = new FormularioPerfil(); 
                         $form->gestiona();
                     ?>

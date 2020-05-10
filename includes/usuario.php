@@ -44,7 +44,18 @@ class Usuario
         }
         return $result;
     }
-    
+    public static function eliminaUsuario($username){
+        $app = aplicacion::getSingleton();
+        $conn = $app->conexionBd();
+        $query=sprintf("DELETE FROM usuarios WHERE username='%s'", $conn->real_escape_string($username));
+        $result = $conn->query($query);
+        if ($result == FALSE) {
+            echo "Error al eliminar el usuario." . $query . "<br>" . $conexion->error;
+            return false;
+        }
+        return true;
+    }
+
     public static function crea(
         $username,
         $password,

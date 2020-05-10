@@ -10,7 +10,7 @@ class FormularioPerfil extends Form
     
     protected function generaCamposFormulario($datos)
     {
-        $nombreUsuario = $_SESSION['username'];
+        $nombreUsuario = $_SESSION['user_mod'];
         $usuario=Usuario::buscaUsuario($nombreUsuario);
         $nombre = $usuario->nombre();
         $apellidos = $usuario->apellidos();
@@ -70,7 +70,7 @@ class FormularioPerfil extends Form
     {
         $result = array();
         
-        $nombreUsuario = $_SESSION['username'];
+        $nombreUsuario = $_SESSION['user_mod'];
 
         $nombre = isset($datos['nombre']) ? $datos['nombre'] : '';
         if ( empty($nombre)) {
@@ -129,5 +129,7 @@ class FormularioPerfil extends Form
             Usuario::actualiza($user);
             echo"<center/><h1> Tu datos han sido actualizados correctamente </h1>";
         }
+        return $result;
     }
 }
+?>
