@@ -64,6 +64,22 @@ class FormularioRegistro extends Form
                     <input id="pass_reg" name="password" type="password" class="field" placeholder="*******" required minlength="6">
                     <p>Confirmar contraseña:</p>
                     <input id="pass_reg2" name="password2" type="password" class="field" placeholder="*******" required minlength="6">
+        
+        EOF;
+        $html2;
+        if(isset($_SESSION['loged']) && $_SESSION['perfil'] == "admin"){
+            $html2 = <<<EOF
+                <p>Perfil</p>
+                <center/>
+                <select class="field" name="perfil">
+                <option class="field" value="usuario">Usuario</option>
+                <option class="field" value="admin">Administrador</option>
+                <option class="field" value="entrenador">Entrenador</option>
+                <option class="field" value="colaborador">Colaborador</option>
+                </select>
+            EOF;
+        }
+        $html3 = <<<EOF
                 </div>
             </div>
             <div class="botones_reg">
@@ -76,6 +92,7 @@ class FormularioRegistro extends Form
             </div>
         </fieldset>
         EOF;
+        $html = $html.$html2.$html3;
         return $html;
     }
     
@@ -98,7 +115,12 @@ class FormularioRegistro extends Form
             $result[] = "Los passwords deben coincidir";
         }
         $condAcept=$datos['condAcept'];
+
         $perfil='usuario';
+        if(isset($_SESSION['loged']) && $_SESSION['perfil'] == "admin"){
+            $perfil = $datos['perfil'] ;
+        }
+        
 
         if (count($result) === 0) {
             $user = Usuario::crea($nombreUsuario, $password, $nombre, $apellidos,
@@ -106,7 +128,8 @@ class FormularioRegistro extends Form
             if ( ! $user ) {
                 $result[] = "El usuario ya existe";
             } else {
-                $result = 'index.php';
+                $_SESSION['error'] = "<h3>Su cuenta se ha registrado correctamente</h3>";
+                $result = 'login.php';
             }
         }
         return $result;

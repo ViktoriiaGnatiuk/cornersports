@@ -30,6 +30,9 @@
                                     echo"<li><a class=\"logo_usuario\" href=\"http://localhost/cornersports/vistasUsuario/perfil.php\"><img src=\"http://localhost/cornersports/img/usuarioOn.png\"></a>";
                                     echo"<ul>";
                                     echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/perfil.php\">PERFIL</a></li>";
+                                    if($_SESSION['perfil'] == "admin"){
+                                        echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/admin.php\">ADMINISTRAR</a></li>";
+                                    }
                                     echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/pedidos.php\">PEDIDOS</a></li>";
                                     echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/entrenamientoUsuario.php\">TRAIN</a></li>";
                                     echo "<li><a href=\"http://localhost/cornersports/includes/logout.php\">SALIR</a></li>";

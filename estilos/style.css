@@ -41,11 +41,15 @@ div#interior {
 
 div#top_ventas {
 	background-color: white;
-	height: 400px;
+	height: 408px;
 	width: 830px;
 	margin: 40px;
 	border: black solid 1px;
 	box-shadow: 2px 2px 2px rgb(58, 57, 57);
+}
+
+.novedades_bloque{
+	margin-top: 80px;
 }
 
 div#imagen-mas-vendido {
@@ -72,6 +76,21 @@ div#titulo-mas-vendido:hover{
 	background-color: rgb(238, 241, 211);
 }
 
+.tit_nov{
+	font-weight: bold;
+	font-size: 30px;
+	color:rgb(106, 110, 78);
+	text-shadow: 1px 2px 2px black;
+}
+
+.tit_nov2{
+	font-weight: bold;
+	font-size: 30px;
+	margin-top: 40px;
+	color:rgb(106, 110, 78);
+	text-shadow: 1px 2px 2px black;
+}
+
 .novedades {
 	background-color: white;
 	height: 240px;
@@ -79,7 +98,7 @@ div#titulo-mas-vendido:hover{
 	margin: 40px;
 	margin-top: 10px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 }
 
 div#producto-min {
@@ -88,8 +107,6 @@ div#producto-min {
 	width: 280px;
 	border: #303030 solid 1px;
 	display: inline-block;
-	margin-left: 20px;
-	margin-right: 20px;
 }
 
 .img_min{
@@ -117,7 +134,8 @@ div#titulo-producto-min:hover{
 
 div#entrenamientos_home {
 	background-color: white;
-	min-height: 800px;
+	margin-top: 60px;
+	float: left;
 }
 
 div#entrenamiento-home {
@@ -201,4 +219,31 @@ a.button2:hover{
 
 .registrar:hover{
 	color: rgb(156, 253, 30);
+}
+
+.boton_basic{
+	font-family: 'Haettenschweiler';
+    font-size: 20px;
+	width: 400px;
+	margin-top: 10px;
+	color: rgb(41, 8, 1);
+	background-color: whitesmoke;
+	border-radius: 5px;
+	padding: 5px ;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+	box-shadow: 0 1px 1px black;
+	cursor: pointer;
+}
+
+.boton_basic:hover{
+	background-color: goldenrod;
+}
+
+.boton_basic:active{
+	background-color: goldenrod;
+}
+
+.consola_admin{
+	text-align: center;
 }

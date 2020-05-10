@@ -9,7 +9,7 @@ require_once __DIR__.'/../aplicacion.php';
     </head>
     <body>
         <div id="top_ventas">
-            <center><h2>NUESTRO PRODUCTO ESTRELLA</h2></center>
+            <center><p class="tit_nov">NUESTRO PRODUCTO ESTRELLA</p></center>
             <div id="imagen-mas-vendido">
                 <?php
                     $app = aplicacion::getSingleton();
