@@ -1,17 +1,11 @@
 <?php
 require_once __DIR__.'/../includes/config.php';
-require_once __DIR__ . '/../includes/carrito.php';
+require_once __DIR__ .'/../includes/carrito.php';
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tramite compra</title>
-        <script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
-        <script>
-            function getCantidad(id){
-                return document.getElementById(id).innerHTML; 
-            }
-        </script>
+        <title>Tramitar compra</title>
         <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarro.css?v=<?php echo(rand()); ?>" />
     <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
     </head>

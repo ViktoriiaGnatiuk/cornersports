@@ -1,0 +1,122 @@
+#tramitar_pedido{
+margin: 60px;
+}
+.titulo_tramitar{
+    text-align: center;
+    font-weight: bold;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.item_tramitar{
+    height: 82px;
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-bottom: 1px solid lightgray;
+}
+.inf_productos_tramitar{
+    display: flex;
+    justify-content: space-between;
+}
+#codigo_descuento{
+    margin-left: 640px;
+    padding-top: 2px;
+}
+#cod_desc{
+    width: 160px;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+	color: rgb(41, 8, 1);
+	background-color: white;
+	border: darkgray 1px solid;
+}
+.aplicar{
+    font-size: 18px;
+    font-weight: bold;
+	color: rgb(41, 8, 1);
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px ;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3); 
+    cursor: pointer;
+}
+.aplicar:hover {
+    background-color: whitesmoke;
+}
+.txt_item_tramitar{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 30px;
+}
+.txt_item_nombre{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 30px;
+    width: 400px;
+    margin-left: 100px;
+}
+.txt_item_unidad{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 30px;
+    width: 60px;
+    margin-left: 200px;
+}
+.txt_item_precio{
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 30px;
+    width: 80px;
+    margin-left: 160px;
+}
+
+.contender_tramitar{
+    border: 1px solid grey;
+    width: 1208px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.contender_tramitar2{
+    width: 1250px;
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+}
+.imagen_tramitar{
+    width: 80px;
+    height: 80px;
+}
+.tarjetas{
+    display: flex;
+    margin-left: 480px;
+
+}
+.imagen_tarjeta{
+    width: 60px;
+    height: 40px;
+}
+.tipo_entrega{
+    display: inline-block;
+    width: 400px;
+    font-size: 18px;
+}
+.celda{
+    display: flex;
+    margin: 10px;
+}
+.contenedor_pago{
+    border: 1px solid grey;
+    width: 1208px;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+.metodo_pago{
+    padding-left: 410px;
+    margin: 20px;
+}

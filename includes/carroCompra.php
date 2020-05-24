@@ -43,7 +43,8 @@
                             $descripcion = $items[$i]['descripcion'];
                             $imagen = $items[$i]['imagen'];
                             $cantidad = $items[$i]['cantidad'];
-                            $total+=$precio*$cantidad;
+                            $precio = $precio*$cantidad;
+                            $total+=$precio;
                             $html = <<<EOF
                             <div class="item" id="$i">
                                 <img class="imagenCarro" src="$imagen">
