@@ -3,6 +3,7 @@
     padding-left: 60px;
     background-color: whitesmoke;
     border-top: solid 1px black;
+    float: left;
 }
 
 .logo_pie{

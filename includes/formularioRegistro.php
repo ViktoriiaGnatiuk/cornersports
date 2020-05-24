@@ -41,7 +41,7 @@ class FormularioRegistro extends Form
                     <p>Apellidos:</p>
                     <input id="apell_reg" name="apellidos" type="text" class="field" value="$apellidos" required>
                     <p>Correo electrónico:</p>
-                    <input id="email_reg" name="email" type="text" class="field" placeholder="nombre@ejemplo.com" value="$email" pattern=".+@.+." required>
+                    <input id="email_reg" name="email" type="text" class="field" placeholder="nombre@ejemplo.com" value="$email" required>
                 </div>
                 <div class="bloque_reg">
                     <p class="titulo2_reg">Dirección</p>
@@ -66,7 +66,7 @@ class FormularioRegistro extends Form
                     <input id="pass_reg2" name="password2" type="password" class="field" placeholder="*******" required minlength="6">
         
         EOF;
-        $html2;
+        $html2="";
         if(isset($_SESSION['loged']) && $_SESSION['perfil'] == "admin"){
             $html2 = <<<EOF
                 <p>Perfil</p>
@@ -125,7 +125,7 @@ class FormularioRegistro extends Form
         if (count($result) === 0) {
             $user = Usuario::crea($nombreUsuario, $password, $nombre, $apellidos,
             $email, $provincia, $localidad, $calle, $codPostal, $portal, $perfil);
-            if ( ! $user ) {
+            if ( !$user ) {
                 $result[] = "El usuario ya existe";
             } else {
                 $_SESSION['error'] = "<h3>Su cuenta se ha registrado correctamente</h3>";

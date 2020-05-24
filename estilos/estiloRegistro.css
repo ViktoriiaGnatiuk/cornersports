@@ -14,7 +14,7 @@ fieldset{
 .titulo2_reg{
     font-size: 28px;
     margin: 10px;
-    border-bottom: solid 1px goldenrod;
+    border-bottom: solid 1px rgb(147, 218, 32);
 }
 .field{
     width: 260px;

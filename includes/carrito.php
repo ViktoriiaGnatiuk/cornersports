@@ -4,6 +4,10 @@
     
     class carrito
     {
+        public function cambiarTotal($descuento){
+
+        }
+
         public function addItem($id, $usuario, $precio_descuentado){
             $app = aplicacion::getSingleton();
             $conexion = $app->conexionBd();
@@ -299,7 +303,7 @@
             }
         }
 
-        public function tramitar(){
+        public function tramitar($precio){
             $usuario=$_SESSION['username'];
             //Cambiar el estado de los productos a comprados
             $app = aplicacion::getSingleton();
