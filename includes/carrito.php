@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__.' /config.php';
-    require_once __DIR__ . '/aplicacion.php';
+    require_once __DIR__ .'/aplicacion.php';
     
     class carrito
     {
@@ -302,8 +302,27 @@
                 }
             }
         }
-
-        public function tramitar($precio){
+        public function setPrecio($precio){
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                $usuario=$_SESSION['username'];
+                $query=sprintf("UPDATE pedidos SET precio='%s' WHERE usuario='%s' AND estado='%s'"
+                , $conexion->real_escape_string($precio)
+                , $conexion->real_escape_string($usuario)
+                , $conexion->real_escape_string("SIN_TRAMITAR"));
+                $result = $conexion->query($query);
+                if(!$result){
+                    echo "Error al consultar en la BD Linea 313: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                    return false;
+                }
+                return true;
+            }
+        }
+        public function tramitar(){
             $usuario=$_SESSION['username'];
             //Cambiar el estado de los productos a comprados
             $app = aplicacion::getSingleton();

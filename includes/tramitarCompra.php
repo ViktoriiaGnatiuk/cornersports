@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__.'/config.php';
+if(!isset($_SESSION['loged'])){
+    header('Location: ../index.php');
+}
 require_once __DIR__ .'/carrito.php';
 require_once __DIR__.'/usuario.php';
 ?>
@@ -7,9 +10,9 @@ require_once __DIR__.'/usuario.php';
 <html>
     <head>
         <title>Tramitar pedido</title>
-        <link rel="stylesheet" href="http://localhost/cornersports/estilos/estilo_tramitar_pedido.css?v=<?php echo(rand()); ?>" />
-        <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
-        <script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
+        <link rel="stylesheet" href="../estilos/estilo_tramitar_pedido.css"/>
+        <script src="../js/jquery-3.5.0.js"></script>
+	    <script type="text/javascript" src="../js/tramitarPedido.js"></script>
         <script>
 
         </script>
@@ -55,11 +58,12 @@ require_once __DIR__.'/usuario.php';
                         }
                         $html = <<<EOF
                             <div class="inf_productos_tramitar">
-                                <form action="http://localhost/cornersports/procesos/aplicarDescuento.php" id="codigo_descuento" method="post">
+                                <div id="codigo_descuento">
                                     <input id="cod_desc" name="cod_desc" class="field" placeholder="Código descuento">
                                     <input type="submit" class="aplicar" value="Aplicar">
-                                </form>
-                                <div class="total"> <p>Total:</p> <p>$total €</p></div>
+                                </div>
+                                <p id="total_real" hidden>$total</p>
+                                <div class="total_tr"> <p>Total:&nbsp&nbsp</p><p id="tr_t">$total</p><p>€</p></div>
                             </div>
                         EOF;
                         echo"$html";
@@ -69,14 +73,15 @@ require_once __DIR__.'/usuario.php';
                 <div class="contender_tramitar">
                     <p class="titulo_tramitar">Tipo de entrega</p>
                     <div class="tipo_entrega">
+                        <form action="../procesos/tramitarPedido.php" id="form_tr" method="post">
                         <div class="estandar">
-                            <input id="estandar" type="radio" name="option" value="estandar">Estandar: &nbsp5 días habiles &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0 €
+                            <input class="r" id="estandar" type="radio" name="option" value="estandar" checked>Estandar: &nbsp5 días habiles &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp0 €
                         </div>
                         <div class="premium">
-                            <input id="premium" type="radio" name="option" value="premium" >Premium:  &nbsp3 días habiles &nbsp2,99 €
+                            <input class="r" id="premium" type="radio" name="option" value="premium" >Premium:  &nbsp3 días habiles &nbsp2,99 €
                         </div>
                         <div class="express">
-                            <input id="express" type="radio" name="option" value="express" >Express:  &nbsp&nbsp&nbsp&nbsp1 día habil &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp4,99 €
+                            <input class="r" id="express" type="radio" name="option" value="express" >Express:  &nbsp&nbsp&nbsp&nbsp1 día habil &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp4,99 €
                         </div>
                     </div>
                 </div>
@@ -104,27 +109,26 @@ require_once __DIR__.'/usuario.php';
                 <div class="contenedor_pago">
                     <p class="titulo_tramitar">Metodo de pago</p>
                     <div class="tarjetas">
-                        <img class="imagen_tarjeta" src="http://localhost/cornersports/img/visa.png">
-                        <img class="imagen_tarjeta" src="http://localhost/cornersports/img/mastercard.png">
-                        <img class="imagen_tarjeta" src="http://localhost/cornersports/img/6000.jpg">
-                        <img class="imagen_tarjeta" src="http://localhost/cornersports/img/america.png">
+                        <img class="imagen_tarjeta" src="../img/visa.png">
+                        <img class="imagen_tarjeta" src="../img/mastercard.png">
+                        <img class="imagen_tarjeta" src="../img/6000.jpg">
+                        <img class="imagen_tarjeta" src="../img/america.png">
                     </div>
-                    <form action="http://localhost/cornersports/procesos/tramitarPedido.php" method="POST">
                         <div class="metodo_pago">
                             <div class="celda">
-                                <p>Número de tarjeta&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p><input name="num" class="field">
+                                <p>Número de tarjeta&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p><input id="num_tarj" name="num" class="field" maxlength=16>
                             </div>
                             <div class="celda">
-                                <p>Nombre del titular&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p><input name="titular" class="field">
+                                <p>Nombre del titular&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</p><input id="titular_tr" name="titular" class="field" required>
                             </div>
                             <div class="celda">
                                 <p>Fecha de vencimiento&nbsp</p>
-                                <input type="date" id="start" name="caducidad"
+                                <input type="date" id="fecha_venc" name="caducidad"
                                     value="2020-01-01">
                             </div>
                         </div>
-                        <input type="submit" class="tramitar" value="Tramitar pedido">
-                    </form>
+                        <input type="button" id="tr_tramitar_pedido" value="Tramitar pedido">
+                        </form>
                 </div>
             </div>
         <?php
