@@ -41,7 +41,7 @@ class FormularioRegistro extends Form
                     <p>Apellidos:</p>
                     <input id="apell_reg" name="apellidos" type="text" class="field" value="$apellidos" required>
                     <p>Correo electrónico:</p>
-                    <input id="email_reg" name="email" type="text" class="field" placeholder="nombre@ejemplo.com" value="$email" required>
+                    <input id="email_reg" name="email" type="text" class="field" placeholder="nombre@ejemplo.com" value="$email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,4}$" required>
                 </div>
                 <div class="bloque_reg">
                     <p class="titulo2_reg">Dirección</p>

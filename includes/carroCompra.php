@@ -74,7 +74,7 @@
                         </div>
                             <div class="inferior">
                             <div class="total"> <p>Total:</p> <p>$total €</p></div>
-                            <form action="http://localhost/cornersports/procesos/tramitarPedido.php" id="form_session" method="post">
+                            <form action="http://localhost/cornersports/includes/tramitarCompra.php" id="form_session" method="post">
                             <input type="submit" class="tramitar" value="Tramitar pedido">
                             </form>
                         EOF;

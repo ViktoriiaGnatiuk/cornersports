@@ -9,6 +9,8 @@ require_once __DIR__.'/../includes/formularioPerfil.php';
         <link rel="stylesheet" href="http://localhost/cornersports/estilos/boton.css">
 		<link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloRegistro.css?v=<?php echo(rand()); ?>" />
         <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+        <script type="text/javascript" src="../js/jquery-3.5.0.js"></script>
+	    <script type="text/javascript" src="../js/validarRegistro.js"></script>
     </head>
     <body>
         <div id="contenedor">
