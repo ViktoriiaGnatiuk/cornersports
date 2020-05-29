@@ -5,5 +5,5 @@
     $id=$_GET['id'];
     $carrito=new carrito();
     $carrito->removeItem($id);
-    header('Location: http://localhost/cornersports/includes/carroCompra.php');
+    header('Location: ../includes/carroCompra.php');
 ?>

@@ -6,8 +6,7 @@ require_once __DIR__ .'/../includes/carrito.php';
 <html>
     <head>
         <title>Tramitar compra</title>
-        <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarro.css?v=<?php echo(rand()); ?>" />
-    <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+        <link rel="stylesheet" href="../estilos/estiloCarro.css"/>
     </head>
     <body>
         <div id="contenedor">
@@ -16,7 +15,6 @@ require_once __DIR__ .'/../includes/carrito.php';
         ?>
         <div id="contenido2">
             <?php
-                
                 $carrito = new carrito();
                 $items=$carrito->getCarrito();
                 $size=$carrito->getSize();
@@ -25,7 +23,7 @@ require_once __DIR__ .'/../includes/carrito.php';
                     header('Location: http://localhost/cornersports/includes/carroCompra.php');
                 }
                 $carrito->tramitar();
-                echo"<center/><h2>Su compra se ha realizado con exito, gracias por su pedido</h2>";
+                echo "<center/><h2>Su compra se ha realizado con exito, gracias por su pedido</h2>";
             ?>
         </div>
         <?php

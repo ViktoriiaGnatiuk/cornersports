@@ -32,7 +32,7 @@ require_once __DIR__ .'/../includes/aplicacion.php';
                             echo"<center/>";
                             echo "Lo sentimos, ya tiene un entrenamiento contratado.<br/>";
                             echo"Si desea contratar este entrenamiento primero debe dar de baja el entrenamiento que ya tiene contratado<br/>";
-                            echo"<center/><a class=\"baja_entr\" href=\"http://localhost/cornersports/procesos/bajaEntrenamiento.php\">Dar de baja entrenamiento</a>";
+                            echo"<center/><a class=\"baja_entr\" href=\"bajaEntrenamiento.php\">Dar de baja entrenamiento</a>";
                         }else{
                             //Busca el entrenamiento seleccionado
                             $entrenamiento=$conexion->real_escape_string($_GET['id']);
@@ -79,14 +79,14 @@ require_once __DIR__ .'/../includes/aplicacion.php';
                     }
                     else{
                         echo "<center/>Por favor identifiquese antes de contratar un entrenamiento<br/>";
-                        echo "<center><a href=\"http://localhost/cornersports/login.php\">Identificarse</a></center>";
+                        echo "<center><a href=\"../login.php\">Identificarse</a></center>";
                     }
                 }           
             ?>
             
         </div>
         <?php
-            //include __DIR__.'/../includes/estructura/pie.php';
+            include __DIR__.'/../includes/estructura/pie.php';
         ?>
         </div>
     </body>

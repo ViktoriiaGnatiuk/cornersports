@@ -24,7 +24,7 @@ require_once __DIR__ .'/../includes/aplicacion.php';
                 if ($result == TRUE) {
                     echo"<center/>";
                     echo "<h3> Gracias.</h3><h3>Su producto se ha devuelto correctamente.</h3><h3>En un periodo de 5 días recibira el rembolso en su cuenta bancaria.</h3><br/>";
-                    echo"<a href=\"http://localhost/cornersports/vistasUsuario/pedidos.php\">Volver a pedidos</a>";
+                    echo"<a href=\"../vistasUsuario/pedidos.php\">Volver a pedidos</a>";
                 }
                 else{
                     echo "Error al devolver el producto." . $query . "<br>" . $conexion->error;

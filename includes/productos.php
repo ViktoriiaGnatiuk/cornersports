@@ -199,6 +199,30 @@
             return $items;
         }
 
+        public function getItem($id){
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            $tbl_name = "productos_disponibles";
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                $query = "SELECT * FROM $tbl_name WHERE id = '$id'";
+                $result = $conexion->query($query);
+                $item;
+                $row= $result->fetch_assoc();
+                $item= [
+                    'id' => $row['id'],
+                    'nombre' => $row['nombre'],
+                    'imagen' => $row['imagen'],
+                    'descripcion' => $row['descripcion'],
+                    'precio' => $row['precio'],
+                    'precio_alquiler' => $row['precio_alquiler'],
+                ];
+            }
+            return $item;
+        }
+
         public function getItemsByUser(){
             $user=$_SESSION['username'];
             $app = aplicacion::getSingleton();

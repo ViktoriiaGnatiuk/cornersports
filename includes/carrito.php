@@ -1,13 +1,8 @@
 <?php
-    require_once __DIR__.' /config.php';
+    require_once __DIR__.'/config.php';
     require_once __DIR__ .'/aplicacion.php';
-    
     class carrito
     {
-        public function cambiarTotal($descuento){
-
-        }
-
         public function addItem($id, $usuario, $precio_descuentado){
             $app = aplicacion::getSingleton();
             $conexion = $app->conexionBd();
@@ -236,7 +231,6 @@
                 }
                 return $pedido;
             }
-
         }
 
         public function sumarItem($id){
@@ -369,10 +363,8 @@
                 else{
                     echo "Error al consultar en la BD Linea 211: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
                     exit();
-                }
-                
+                }   
             }
         }
     }
-
 ?>

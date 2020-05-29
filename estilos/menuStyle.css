@@ -4,11 +4,15 @@
   text-decoration: none;
   list-style: none;
 }
+.menul{
+  width: 100%;
+}
 nav{
   height: 50px;
   background-color:whitesmoke;
   border: black solid 2px;
 }
+.fixed{position:fixed; top:0}
 nav .logo{
   line-height: 60px;
   padding-left: 40px;

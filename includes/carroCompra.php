@@ -1,6 +1,6 @@
 <?php
     require_once __DIR__.'/config.php';
-    require_once __DIR__ . '/carrito.php';
+    require_once __DIR__ .'/carrito.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,6 +82,9 @@
                     
                     ?>
                 </div>
+                <?php
+                include __DIR__.'/estructura/pie.php';
+                ?>
             </div>
         </div>
     </body>

@@ -1,66 +1,81 @@
-
-.pushbar-menu{
+.push{
 	border: 1px black solid;
-	margin: 2px;
-	background-color: darkgoldenrod;
-  }
-
-  .botonCerrar{
-	  background-color: darkgoldenrod;
-  }
-
-.carro{
-	border: darkgray 1px solid;
-	margin: 10px;
-	padding: 10px;
-	min-height: 470px;
-	background-color: whitesmoke;
+	background-color: rgb(194, 164, 33);
+}
+.botonCerrar_sof{
+	background-color: rgb(194, 164, 33);
 }
 
-.tituloCarro{
+.carro_sof{
+	border: darkgray 1px solid;
+	margin: 10px;
+	padding: 6px;
+	background-color: whitesmoke;
+	min-height: 470px;
+	box-shadow: 2px 2px 2px rgb(88, 88, 88);
+}
+
+.tituloCarro_sof{
 	font-family: 'Haettenschweiler';
 	font-size: 26px;
 	color: rgb(41, 8, 1);
 	text-align: center;
 	margin-bottom: 20px;
 	padding: 10px;
+	text-shadow: 1px 2px 2px rgb(128, 125, 118);
 }
 
-.item{
-	display: flex;
-	justify-content: space-between;
-	padding: 10px 20px;
+.item_sof{
+	display: inline-block;
 	border: darkgray .5px solid;
 	background-color: white;
+	padding: 10px;
 }
-
-.datosItem{
-	display: inline-block;
-	text-align: center;
-}
-
-.botonesCarro{
+.item_sup{
 	display: flex;
-	float: right;
-	margin-right: 3px;
+	margin: 0;
+	padding: 0;
+}
+.datosItem_sof{
+	display: flex;
+	text-align: center;
+	justify-content: space-between;
 }
 
-.cantidadItem{
+.precioItem_sof{
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.botonesCarro_sof{
+	display: flex;
+	margin-right: 25px;
+}
+
+.cantidadItem_sof{
 	padding-left: 8px;
 	padding-right: 8px;
 	border: .5px gray solid;
 }
 
-.inferior{
-	margin-right: 10px;
+.inferior_sof{
 	margin-left: 10px;
-	display: inline-block;
-	width: 235px;
+	margin-right: 10px;
+	float: right;
+	width: 92%;
+	max-width: 235px;
 }
 
-.total{
+.nombreItem_sof{
+	font-size: 14px;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: center;
+}
+
+.total_sof{
 	display: flex;
-	width: 214px;
 	justify-content: space-between;
 	font-size: 24px;
 	padding-left: 10px;
@@ -68,10 +83,11 @@
 	font-weight: bold;
 	color: rgb(41, 8, 1);
 	background-color: whitesmoke;
+	box-shadow: 2px 2px 2px rgb(88, 88, 88);
 	border: darkgray 1px solid;
 }
 
-.tramitar{
+.tramitar_sof{
 	margin-top: 8px;
 	font-family: 'Haettenschweiler';
 	font-size: 26px;
@@ -81,14 +97,15 @@
 	padding: 5px ;
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
-	box-shadow: 0 1px 1px rgba(0,0,0,0.3); 
+	box-shadow: 2px 2px 2px rgb(70, 70, 70); 
 	float: right;
+	cursor: pointer;
 }
 
-.tramitar:hover{
+.tramitar_sof:hover{
 	background-color: gold;	
 }
 
-.tramitar:active{
+.tramitar_sof:active{
 	background-color: gold;
 }

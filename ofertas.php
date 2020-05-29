@@ -6,8 +6,9 @@
 <html>
     <head>
         <title>OFERTAS</title>
-        <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloOfertas.css?v=<?php echo(rand()); ?>" />
-        <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+        <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloOfertas.css"/>
+        <script src="js/jquery-3.5.0.js"></script>
+	    <script type="text/javascript" src="js/carroCompra.js"></script>
     </head>
     <body>
         <div id="contenedor">
@@ -78,9 +79,8 @@
                                     <img class="imagen_oferta" src="$imagen">
                                     <div class="nombreOferta"><p>$nombre</p></div>
                                 </div>
-                                <form action="procesos/addItem.php?id=$id&precio=$precio" id="form_session" method="post">
-                                <input type="submit" class="comprarOferta" value="Añadir al carrito">
-                                </form>
+                                <input class="$id" value="$precio" hidden>
+                                <input id="$id" type="submit" class="comprarOferta" value="Añadir al carrito">
                             </div>
                             EOF;
                             echo"$html";
@@ -94,7 +94,7 @@
             </div>
             <?php
                 include __DIR__.'/includes/estructura/menuOfertas.php"';
-                //include __DIR__.'/includes/estructura/pie.php';
+                include __DIR__.'/includes/estructura/pie.php';
             ?>
         </div>
     </body>
