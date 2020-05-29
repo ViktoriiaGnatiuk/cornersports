@@ -8,6 +8,8 @@
         <title>ENTRENAMIENTOS</title>
         <link rel="stylesheet" href="estilos/estiloEntrenamiento.css?v=<?php echo(rand()); ?>" />
         <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+		<script src="js/jquery-3.5.0.js"></script>
+		<script type="text/javascript" src="js/tramitarEntrenamiento.js"></script>
     </head>
     <body>
         <div id="contenedor">
@@ -55,9 +57,7 @@
                                             </div>
                                             <p class="dificultad">Días: $dias</p>
                                             <p class="dificultad">Precio: $precio €</p>
-                                            <form action="procesos/procesarEntreno.php?id=$id" id="form_session" method="post">
-                                                <input type="submit" class="b_entrenamiento" value="CONTRATAR">
-                                            </form>
+                                            <input id="$id" type="submit" class="b_entrenamiento" value="CONTRATAR">
                                         </div>
                                         <div class="descripcion_entrenamiento">
                                             <p>$descripcion</p>
