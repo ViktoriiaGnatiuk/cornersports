@@ -6,7 +6,7 @@ require_once __DIR__ .'/carrito.php';
     <head>
          <link rel="stylesheet" href="http://localhost/cornersports/estilos/pushbar.css"/>
          <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarroSofisticado.css"/>
-        <script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
+         <script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
         <script type="text/javascript" src="http://localhost/cornersports/js/carroCompra.js"></script>
     </head>
     <body>
@@ -34,7 +34,7 @@ require_once __DIR__ .'/carrito.php';
                     $precio = $precio*$cantidad;
                     $total+=$precio;
                     $html = <<<EOF
-                    <div class="item_sof" id="$i">
+                    <div class="item_sof" producto="$id">
                     <div class="item_sup">
                         <img src="$imagen" width="60" height="60">
                         <p class="nombreItem_sof">$nombre</p>
@@ -42,11 +42,11 @@ require_once __DIR__ .'/carrito.php';
                         <div class="datosItem_sof">
                             <p class="precioItem_sof" value="$id">$precio €</p>
                             <div class="botonesCarro_sof">
-                                <button class="restarItem_sof">-</button>
+                                <button class="restarItem_sof" value="$id">-</button>
                                 <p id="$id" class="cantidadItem_sof">$cantidad</p>
-                                <button class="sumaItem_sof">+</button>
+                                <button class="sumaItem_sof" value="$id">+</button>
                             </div>
-                            <img src="http://localhost/cornersports/img/remove.png" class="eliminar_item_sof">
+                            <img class="eliminar_item_sof" src="http://localhost/cornersports/img/remove.png" data-value="$id"/>
                         </div> 
                     </div>
                     EOF;

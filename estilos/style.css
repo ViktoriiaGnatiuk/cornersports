@@ -126,6 +126,7 @@ div#titulo-producto-min {
 	height: 20px;
 	width: 279px;
 	border: #303030 solid 1px;
+	cursor: pointer;
 }
 
 div#titulo-producto-min:hover{
@@ -172,7 +173,7 @@ legend {
 	padding: 2px 6px;
 } 
 
-a.button {
+.button {
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
@@ -180,14 +181,15 @@ a.button {
 	color: initial;
 	background-color: rgb(216, 206, 152);
 	font-weight:bold;
+	cursor: pointer;
 }
 
-a.button:hover{
+.button:hover{
 	background-color: rgb(238, 241, 211);
 }
 
 
-a.button2 {
+.button2 {
     -webkit-appearance: button;
     -moz-appearance: button;
     appearance: button;
@@ -195,9 +197,10 @@ a.button2 {
 	color: initial;
 	font-weight:bold;
 	background-color: whitesmoke;
+	cursor: pointer;
 }
 
-a.button2:hover{
+.button2:hover{
 	background-color: rgb(238, 241, 211);
 }
 #titulo-entrenamientos:hover{

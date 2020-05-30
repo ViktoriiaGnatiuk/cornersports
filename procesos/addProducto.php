@@ -29,19 +29,19 @@ $precio = $item['precio'];
 $imagen = $item['imagen'];
 $precio = $precio*$cantidad;
 $html = <<<EOF
-<div class="item_sof">
+<div class="item_sof" producto="$id_real">
 <div class="item_sup">
 <img src="$imagen" width="60" height="60">
 <p class="nombreItem_sof">$nombre</p>
 </div>
 <div class="datosItem_sof">
-<p class="precioItem_sof" value="$id">$precio €</p>
+<p class="precioItem_sof">$precio €</p>
 <div class="botonesCarro_sof">
-<button class="restarItem_sof">-</button>
+<button class="restarItem_sof" value="$id_real">-</button>
 <p id="$id_real" class="cantidadItem_sof">$cantidad</p>
-<button class="sumaItem_sof">+</button>
+<button class="sumaItem_sof" value="$id_real">+</button>
 </div>
-<img src="http://localhost/cornersports/img/remove.png" class="eliminar_item_sof">
+<img class="eliminar_item_sof" src="http://localhost/cornersports/img/remove.png" data-value="$id_real"/>
 </div> 
 </div>
 EOF;
