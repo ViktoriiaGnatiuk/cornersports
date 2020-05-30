@@ -45,11 +45,12 @@
 	margin: 10px;
 	padding: 6px;
 	background-color: whitesmoke;
-	min-height: 470px;
+	min-height: 72%;
 	box-shadow: 2px 2px 2px rgb(88, 88, 88);
 }
 
 .item_sof{
+	width: 90%;
 	display: inline-block;
 	border: darkgray .5px solid;
 	background-color: white;

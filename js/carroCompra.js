@@ -5,16 +5,20 @@ function addProduct(data, status){
     }else if(data.length < 10){
         var cantidad = parseInt($("#"+data).text());
         $("#"+data).text(cantidad+1);
+        actualizarPrecioItem(data);
         $('.btn-menu').click();
     }else{
         $(".carro_sof").append(data);
         $('.btn-menu').click();
     }
+    obtenerTotal();
 }
 
 function sumarItem(data, status){
     var cantidad = parseInt($("#"+data).text());
     $("#"+data).text(cantidad+1);
+    actualizarPrecioItem(data);
+    obtenerTotal();
 }
 
 function restarItem(data, status){
@@ -23,17 +27,35 @@ function restarItem(data, status){
         eliminarProducto(data);
     }else{
         $("#"+data).text(cantidad-1);
+        actualizarPrecioItem(data);
     }
+    obtenerTotal();
 }
 function eliminarProducto(id){
     var url="http://localhost/cornersports/procesos/eliminarItem.php?id=" + id;
     $.get(url,eliminarItem);
-    
 }
 function eliminarItem(data, status){
     $("[producto="+data+"]").remove();
+    obtenerTotal();
 }
 
+function cambiarTotal(data, status){
+    $(".total_carro_sof").text(data+" €");
+}
+function obtenerTotal(){
+    var url="http://localhost/cornersports/procesos/obtenerTotal.php";
+    $.get(url,cambiarTotal);
+}
+
+function cambiarPrecioItem(data, status){
+    var data_s=data.split('_');
+    $("[precio_item_sof="+data_s[0]+"]").text(data_s[1]+ " €");
+}
+function actualizarPrecioItem(id){
+    var url="http://localhost/cornersports/procesos/obtenerPrecioItem.php?id="+id;
+    $.get(url,cambiarPrecioItem);
+}
 $(document).ready(function(){
     
     //Añade un item al carrito desde la página de productos
@@ -92,5 +114,9 @@ $(document).ready(function(){
     $('.carro_sof').on('click','.eliminar_item_sof', function(){ 
         var id = $(this).attr('data-value');
         eliminarProducto(id);
+    });
+
+    $(".tramitar_sof").click(function(){
+        location.href ="http://localhost/cornersports/includes/carroCompra.php";
     });
 });

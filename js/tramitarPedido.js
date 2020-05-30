@@ -71,6 +71,7 @@ $(document).ready(function(){
     function tramitado(data, status){
         if(data==="correcto"){
             $("#form_tr").submit();
+            $(".item_sof").remove();
         }else{
             alert("No se ha podido tramitar el pedido");
         }

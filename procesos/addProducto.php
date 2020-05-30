@@ -35,7 +35,7 @@ $html = <<<EOF
 <p class="nombreItem_sof">$nombre</p>
 </div>
 <div class="datosItem_sof">
-<p class="precioItem_sof">$precio €</p>
+<p class="precioItem_sof" precio_item_sof="$id_real">$precio €</p>
 <div class="botonesCarro_sof">
 <button class="restarItem_sof" value="$id_real">-</button>
 <p id="$id_real" class="cantidadItem_sof">$cantidad</p>

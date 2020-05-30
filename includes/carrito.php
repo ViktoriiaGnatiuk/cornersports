@@ -287,6 +287,95 @@
             }
         }
 
+        public function vaciarCarro(){
+            $usuario=$_SESSION['username'];
+            $idPedido=0;
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                $idPedido=0;
+                $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username='%s'",  $conexion->real_escape_string($usuario));
+                $result = $conexion->query($query);
+                $row = $result->fetch_assoc();
+                $idPedido=$row['pedido_activo'];
+
+                //Creamos un pedido
+                if($idPedido==NULL){
+                    $query=sprintf("INSERT INTO pedidos (usuario) VALUES ('%s')",  $conexion->real_escape_string($usuario));
+                    $result = $conexion->query($query);
+                    if ($result == TRUE) {
+                        //Obtener el id del pedido
+                        $idPedido=$conexion->insert_id;
+                        //Asignamos el id del pedido al usuario
+                        $query=sprintf("UPDATE usuarios SET pedido_activo='%s' WHERE username='%s'"
+                        , $conexion->real_escape_string($idPedido)
+                        , $conexion->real_escape_string($usuario));
+                        $result = $conexion->query($query);
+                        if($result==FALSE){
+                            echo "Error al consultar en la BD Linea 34: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                            exit();
+                        }
+                    }
+                }
+
+                //Buscar todos los productos que esten asociados con el numero de pedido
+                $query = sprintf("DELETE FROM productos WHERE pedido='%s'",  $conexion->real_escape_string($idPedido));
+                $result = $conexion->query($query);
+                if(!$result){
+                    echo "Error al consultar en la BD Linea 34: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                    exit();
+                }
+
+            }
+        }
+        public function getTotal(){
+            $usuario=$_SESSION['username'];
+            $idPedido=0;
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                $idPedido=0;
+                $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username='%s'",  $conexion->real_escape_string($usuario));
+                $result = $conexion->query($query);
+                $row = $result->fetch_assoc();
+                $idPedido=$row['pedido_activo'];
+
+                //Creamos un pedido
+                if($idPedido==NULL){
+                    $query=sprintf("INSERT INTO pedidos (usuario) VALUES ('%s')",  $conexion->real_escape_string($usuario));
+                    $result = $conexion->query($query);
+                    if ($result == TRUE) {
+                        //Obtener el id del pedido
+                        $idPedido=$conexion->insert_id;
+                        //Asignamos el id del pedido al usuario
+                        $query=sprintf("UPDATE usuarios SET pedido_activo='%s' WHERE username='%s'"
+                        , $conexion->real_escape_string($idPedido)
+                        , $conexion->real_escape_string($usuario));
+                        $result = $conexion->query($query);
+                        if($result==FALSE){
+                            echo "Error al consultar en la BD Linea 34: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                            exit();
+                        }
+                    }
+                }
+
+                //Buscar todos los productos que esten asociados con el numero de pedido
+                $query = sprintf("SELECT * FROM productos WHERE pedido='%s'",  $conexion->real_escape_string($idPedido));
+                $result = $conexion->query($query);
+                $total = 0;
+                while($row= $result->fetch_assoc()){
+                    $total =  $total + $row['precio']*$row['cantidad']; 
+                }
+                return $total;
+            }
+        }
+
         public function sumarItem($id){
             $usuario=$_SESSION['username'];
             $app = aplicacion::getSingleton();
@@ -370,6 +459,7 @@
                 return true;
             }
         }
+
         public function tramitar(){
             $usuario=$_SESSION['username'];
             //Cambiar el estado de los productos a comprados
