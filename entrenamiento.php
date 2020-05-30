@@ -55,9 +55,9 @@
                                             </div>
                                             <p class="dificultad">Días: $dias</p>
                                             <p class="dificultad">Precio: $precio €</p>
-                                            <form action="procesos/procesarEntreno.php?id=$id" id="form_session" method="post">
-                                                <input type="submit" class="b_entrenamiento" value="CONTRATAR">
-                                            </form>
+											<form action="http://localhost/cornersports/procesos/procesarEntreno.php?id=$id" id="form_session" method="post">
+												<input type="submit" class="b_entrenamiento" value="CONTRATAR">
+											</form>
                                         </div>
                                         <div class="descripcion_entrenamiento">
                                             <p>$descripcion</p>
