@@ -1,8 +1,7 @@
 <?php
 require_once __DIR__.'/../includes/config.php';
 require_once __DIR__ .'/../includes/carrito.php';
-$id=$_REQUEST['id'];
 $carrito=new carrito();
-$carrito->removeItem($id);
-echo "$id";
+$carrito->vaciarCarro();
+echo "vacio";
 ?>

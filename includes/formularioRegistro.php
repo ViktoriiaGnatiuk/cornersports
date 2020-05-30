@@ -135,3 +135,4 @@ class FormularioRegistro extends Form
         return $result;
     }
 }
+?>

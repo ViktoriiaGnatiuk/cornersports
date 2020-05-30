@@ -1,0 +1,168 @@
+.push{
+	border: 1px black solid;
+	background-color: rgb(194, 164, 33);
+}
+.btn-cerrar_sof{
+	display: flex;
+	justify-content: space-between;
+}
+.botonCerrar_sof{
+	padding: 0;
+	margin: 10px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px rgb(88, 88, 88);
+}
+
+.botonCerrar_sof:hover{
+	background-color: gold;
+}
+
+.botonCerrar_sof:active{
+	background-color: gold;
+}
+
+.botonCerrar_img{
+	margin: 0;
+	padding: 0;
+	width: 20px;
+	height: 20px;
+}
+
+.tituloCarro_sof{
+	font-size: 30px;
+	color: whitesmoke;
+	font-weight: bold;
+	text-align: center;
+	margin-right: 50px;
+	margin-top: 10px;
+	text-shadow: 1px 2px 2px rgb(29, 29, 28);
+}
+
+.carro_sof{
+	border: darkgray 1px solid;
+	margin: 10px;
+	padding: 6px;
+	background-color: whitesmoke;
+	min-height: 72%;
+	box-shadow: 2px 2px 2px rgb(88, 88, 88);
+}
+
+.item_sof{
+	width: 90%;
+	display: inline-block;
+	border: darkgray .5px solid;
+	background-color: white;
+	padding: 10px;
+}
+.item_sup{
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+.datosItem_sof{
+	display: flex;
+	text-align: center;
+	justify-content: space-between;
+	margin: 0;
+}
+
+.precioItem_sof{
+	font-size: 14px;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.botonesCarro_sof{
+	display: flex;
+	cursor: pointer;
+	font-weight: bold;
+	margin-left: 20px;
+}
+.sumaItem_sof{
+	cursor: pointer;
+	width: 11px;
+	box-shadow: 1px 0 1px rgb(88, 88, 88);
+}
+.sumaItem_sof:hover{
+	background-color: rgb(248, 167, 62);
+}
+
+.restarItem_sof{
+	cursor: pointer;
+	box-shadow: 1px 0 1px rgb(88, 88, 88);
+	width: 11px;
+}
+.restarItem_sof:hover{
+	background-color: rgb(248, 167, 62);
+}
+
+.eliminar_item_sof{
+	cursor: pointer;
+	width: 18px;
+	height: 18px;
+	margin: 2px;
+	border-radius: 20px;
+	box-shadow: 1px 1px 1px rgb(88, 88, 88);
+}
+.eliminar_item_sof:hover{
+background-color: rgb(248, 167, 62);
+}
+
+.cantidadItem_sof{
+	padding-left: 8px;
+	padding-right: 8px;
+	border: .5px gray solid;
+}
+
+.inferior_sof{
+	margin-left: 10px;
+	margin-right: 10px;
+	float: right;
+	width: 92%;
+	max-width: 235px;
+}
+
+.nombreItem_sof{
+	font-size: 14px;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: center;
+}
+
+.total_sof{
+	display: flex;
+	justify-content: space-between;
+	font-size: 24px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-weight: bold;
+	color: rgb(41, 8, 1);
+	background-color: whitesmoke;
+	box-shadow: 2px 2px 2px rgb(88, 88, 88);
+	border: darkgray 1px solid;
+}
+
+.tramitar_sof{
+	margin-top: 8px;
+	font-family: 'Haettenschweiler';
+	font-size: 26px;
+	color: rgb(41, 8, 1);
+	background-color: white;
+	border-radius: 5px;
+	padding: 5px ;
+	text-decoration: none;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+	box-shadow: 2px 2px 2px rgb(70, 70, 70); 
+	float: right;
+	cursor: pointer;
+}
+
+.tramitar_sof:hover{
+	background-color: gold;	
+}
+
+.tramitar_sof:active{
+	background-color: gold;
+}

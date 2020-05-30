@@ -34,13 +34,13 @@
                             $dificultad = $entrenamientos[$i]['dificultad'];
                             $datos_entrenador = $entr->getEntrenadores($entrenador);
                             $imagen_entrenador = $datos_entrenador[0]['imagen'];
-                            $dificultad_icon="http://localhost/cornersports/img/dificil.png";
+                            $dificultad_icon="img/dificil.png";
                             if($dificultad=="BAJA"){
-                                $dificultad_icon="http://localhost/cornersports/img/facil.png";
+                                $dificultad_icon="img/facil.png";
                             }
                             else if($dificultad=="MEDIA")
                             {
-                                $dificultad_icon="http://localhost/cornersports/img/medio.png";
+                                $dificultad_icon="img/medio.png";
                             }
                             $html = <<<EOF
                             <div class="entrenamiento">
@@ -80,7 +80,7 @@
             </div>
             <?php
                 include __DIR__.'/includes/estructura/sidebarTrain.php';
-                //include __DIR__.'/includes/estructura/pie.php';
+                include __DIR__.'/includes/estructura/pie.php';
             ?>
         </div>
     </body>

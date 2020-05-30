@@ -35,7 +35,7 @@ require_once __DIR__ .'/../includes/aplicacion.php';
                     if ($result == TRUE) {
                         echo"<center/>";
                         echo "Se ha dado de baja el entrenamiento correctamente.<br/>";
-                        echo "<a href=\"http://localhost/cornersports/entrenamiento.php\">Volver a entrenamientos</a>";
+                        echo "<a href=\"../entrenamiento.php\">Volver a entrenamientos</a>";
                     }else{
                         echo "Error al dar de baja el entrenamiento." . $query . "<br>" . $conexion->error;
                     }

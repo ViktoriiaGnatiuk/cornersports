@@ -5,10 +5,10 @@ require_once __DIR__.'/includes/productos.php';
 <!DOCTYPE html>
 <html>
  <head>
-	<meta charset="utf-8">
 	<title>PRODUCTOS</title>
 	<link rel="stylesheet" href="estilos/estiloProductos.css?v=<?php echo(rand()); ?>" />
-    <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+	<script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+	
  </head>
 
  <body>
@@ -38,7 +38,6 @@ require_once __DIR__.'/includes/productos.php';
 						$descripcion = $items[$i]['descripcion'];
 						$precio = $items[$i]['precio'];
 						$precio_alquiler = $items[$i]['precio_alquiler'];
-						
 						$html = <<<EOF
 						<div class="producto">
 							<div class="izq">
@@ -52,21 +51,19 @@ require_once __DIR__.'/includes/productos.php';
 								</div>
 								<p>Precio</p>
 								<div class="precio"><p>$precio €</p></div>
-								<form action="procesos/addItem.php?id=$id" id="form_session" method="post">
-								<input type="submit" class="comprar" value="Añadir al carrito">
-								</form>
+								<input identificador="$id" type="submit" class="comprar" value="Añadir al carrito">
 							</div>
 						</div>
 						EOF;
 						echo"$html";
 						++$i;
-					}
+					}	
 				?>
 			</div>
 		</div>
 		<?php	
 			include __DIR__.'/includes/scripts/script_barra_ofertas.php';	
-			//include __DIR__.'/includes/estructura/pie.php';
+			include __DIR__.'/includes/estructura/pie.php';
 		?>
 	</div>
  </body>

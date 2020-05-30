@@ -1,13 +1,14 @@
 <?php
     require_once __DIR__.'/config.php';
-    require_once __DIR__ . '/carrito.php';
+    require_once __DIR__ .'/carrito.php';
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <title>CARRITO</title>
-    <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarro.css?v=<?php echo(rand()); ?>" />
-    <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+    <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarro.css"/>
+    <script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
+    <script type="text/javascript" src="http://localhost/cornersports/js/carroCompra2.js"></script>
     </head>
     <body>
         <div id="contenedor">
@@ -46,24 +47,18 @@
                             $precio = $precio*$cantidad;
                             $total+=$precio;
                             $html = <<<EOF
-                            <div class="item" id="$i">
+                            <div class="item" id="$i" producto_n="$id">
                                 <img class="imagenCarro" src="$imagen">
                                 <div class="datosItem">
                                     <div class="nombreItem"><p>$nombre</p> </div>
                                     <div class="descripcionItem"><p>$descripcion</p></div>
-                                    <div class="precioItem"><p>$precio €</p></div>
+                                    <div class="precioItem"><p precio_id="$id">$precio €</p></div>
                                 </div> 
                                 <div class="botonesCarro">
-                                    <form action="http://localhost/cornersports/procesos/restarItem.php?id=$id" method="post">
-                                        <input type="submit" class="restarItem" value="-">
-                                    </form>
-                                    <p  class="cantidadItem" id="cantidad">$cantidad</p>
-                                    <form action="http://localhost/cornersports/procesos/sumarItem.php?id=$id" method="post">
-                                        <input type="submit" class="sumaItem" value="+">
-                                    </form>
-                                    <form action="http://localhost/cornersports/procesos/eliminarItem.php?id=$id" method="post">
-                                    <input type="submit" class="eliminaItem" value="Eliminar">
-                                    </form>
+                                    <input type="submit" class="restarItem" resta_id="$id" value="-">
+                                    <p class="cantidadItem" cant_id="$id">$cantidad</p>
+                                    <input type="submit" class="sumaItem" suma_id="$id" value="+">
+                                    <input type="submit" class="eliminaItem" data-value_n="$id" value="Eliminar">
                                 </div>
                             </div>
                             EOF;
@@ -73,8 +68,9 @@
                         $html = <<<EOF
                         </div>
                             <div class="inferior">
-                            <div class="total"> <p>Total:</p> <p>$total €</p></div>
-                            <form action="http://localhost/cornersports/includes/tramitarCompra.php" id="form_session" method="post">
+                            <input type="submit" class="vaciar_carro" value="Vaciar">
+                            <div class="total"> <p>Total:</p> <p class="total_n">$total €</p></div>
+                            <form action="http://localhost/cornersports/includes/tramitarCompra.php" method="post">
                             <input type="submit" class="tramitar" value="Tramitar pedido">
                             </form>
                         EOF;
@@ -82,6 +78,9 @@
                     
                     ?>
                 </div>
+                <?php
+                include __DIR__.'/estructura/pie.php';
+                ?>
             </div>
         </div>
     </body>

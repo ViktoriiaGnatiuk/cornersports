@@ -49,3 +49,4 @@ class FormularioLogin extends Form
         return $result;
     }
 }
+?>

@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloPie.css?v=<?php echo(rand()); ?>" />
-    	<script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+		<link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloPie.css"/>
 	</head>
 	<body>
 		<div class="mainPie">

@@ -41,9 +41,8 @@ require_once __DIR__.'/../productos.php';
                             </div>
                             <img class="ol-centro" src="$imagen">
                             <div class="ol-titulo">
-                                <form action="procesos/addItem.php?id=$id&precio=$precio" id="form_session" method="post">
-                                <input type="submit" class="b_b_oferta" value="$nombre">
-                                </form>
+                                <input class="$id" value="$precio" hidden>
+                                <input identificador="$id" type="submit" class="b_b_oferta" value="$nombre">
                             </div>
                         </div>
                         EOF;

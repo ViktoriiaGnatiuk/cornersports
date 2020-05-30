@@ -92,7 +92,7 @@ echo "no_logeado";
             
         </div>
         <?php
-            //include __DIR__.'/../includes/estructura/pie.php';
+            include __DIR__.'/../includes/estructura/pie.php';
         ?>
         </div>
     </body>
