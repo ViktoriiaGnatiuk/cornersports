@@ -7,8 +7,6 @@
     <head>
         <title>OFERTAS</title>
         <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloOfertas.css"/>
-        <script src="js/jquery-3.5.0.js"></script>
-	    <script type="text/javascript" src="js/carroCompra.js"></script>
     </head>
     <body>
         <div id="contenedor">
@@ -80,7 +78,7 @@
                                     <div class="nombreOferta"><p>$nombre</p></div>
                                 </div>
                                 <input class="$id" value="$precio" hidden>
-                                <input id="$id" type="submit" class="comprarOferta" value="Añadir al carrito">
+                                <input identificador="$id" type="submit" class="comprarOferta" value="Añadir al carrito">
                             </div>
                             EOF;
                             echo"$html";

@@ -2,8 +2,42 @@
 	border: 1px black solid;
 	background-color: rgb(194, 164, 33);
 }
+.btn-cerrar_sof{
+	display: flex;
+	justify-content: space-between;
+}
 .botonCerrar_sof{
-	background-color: rgb(194, 164, 33);
+	padding: 0;
+	margin: 10px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	box-shadow: 2px 2px 2px rgb(88, 88, 88);
+}
+
+.botonCerrar_sof:hover{
+	background-color: gold;
+}
+
+.botonCerrar_sof:active{
+	background-color: gold;
+}
+
+.botonCerrar_img{
+	margin: 0;
+	padding: 0;
+	width: 20px;
+	height: 20px;
+}
+
+.tituloCarro_sof{
+	font-size: 30px;
+	color: whitesmoke;
+	font-weight: bold;
+	text-align: center;
+	margin-right: 50px;
+	margin-top: 10px;
+	text-shadow: 1px 2px 2px rgb(29, 29, 28);
 }
 
 .carro_sof{
@@ -13,16 +47,6 @@
 	background-color: whitesmoke;
 	min-height: 470px;
 	box-shadow: 2px 2px 2px rgb(88, 88, 88);
-}
-
-.tituloCarro_sof{
-	font-family: 'Haettenschweiler';
-	font-size: 26px;
-	color: rgb(41, 8, 1);
-	text-align: center;
-	margin-bottom: 20px;
-	padding: 10px;
-	text-shadow: 1px 2px 2px rgb(128, 125, 118);
 }
 
 .item_sof{
@@ -40,6 +64,7 @@
 	display: flex;
 	text-align: center;
 	justify-content: space-between;
+	margin: 0;
 }
 
 .precioItem_sof{
@@ -50,7 +75,38 @@
 
 .botonesCarro_sof{
 	display: flex;
-	margin-right: 25px;
+	cursor: pointer;
+	font-weight: bold;
+	margin-left: 20px;
+}
+.sumaItem_sof{
+	cursor: pointer;
+	width: 11px;
+	box-shadow: 1px 0 1px rgb(88, 88, 88);
+}
+.sumaItem_sof:hover{
+	background-color: rgb(248, 167, 62);
+}
+
+.restarItem_sof{
+	cursor: pointer;
+	box-shadow: 1px 0 1px rgb(88, 88, 88);
+	width: 11px;
+}
+.restarItem_sof:hover{
+	background-color: rgb(248, 167, 62);
+}
+
+.eliminar_item_sof{
+	cursor: pointer;
+	width: 18px;
+	height: 18px;
+	margin: 2px;
+	border-radius: 20px;
+	box-shadow: 1px 1px 1px rgb(88, 88, 88);
+}
+.eliminar_item_sof:hover{
+background-color: rgb(248, 167, 62);
 }
 
 .cantidadItem_sof{

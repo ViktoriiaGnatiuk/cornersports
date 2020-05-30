@@ -32,10 +32,13 @@ nav .btn-menu:hover {
 	border: 1px solid goldenrod;
 	color: #828282;
 }
+nav .btn-menu:active {
+	border: none;
+}
 
 nav ul{
   float: right;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 nav ul li{
   display: inline-block;

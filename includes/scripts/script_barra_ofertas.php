@@ -42,7 +42,7 @@ require_once __DIR__.'/../productos.php';
                             <img class="ol-centro" src="$imagen">
                             <div class="ol-titulo">
                                 <input class="$id" value="$precio" hidden>
-                                <input id="$id" type="submit" class="b_b_oferta" value="$nombre">
+                                <input identificador="$id" type="submit" class="b_b_oferta" value="$nombre">
                             </div>
                         </div>
                         EOF;

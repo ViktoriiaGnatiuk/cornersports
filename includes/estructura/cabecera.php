@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarro.css"/>
 <link rel="stylesheet" href="http://localhost/cornersports/estilos/style.css"/>
 <link href="http://localhost/cornersports/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<script src="js/jquery-3.5.0.js"></script>
-<script type="text/javascript" src="js/menu_fijo.js"></script>
+<script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
+<script type="text/javascript" src="http://localhost/cornersports/js/menu_fijo.js"></script>
 </head>
 <body>
 <div class="menul">
@@ -34,7 +34,7 @@ echo"<li><a class=\"logo_usuario\" href=\"http://localhost/cornersports/vistasUs
 echo"<ul>";
 echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/perfil.php\">PERFIL</a></li>";
 if($_SESSION['perfil'] == "admin"){
-echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/admin.php\">ADMINISTRAR</a></li>";
+echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/admin.php\">ADMIN</a></li>";
 }
 echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/pedidos.php\">PEDIDOS</a></li>";
 echo "<li><a href=\"http://localhost/cornersports/vistasUsuario/entrenamientoUsuario.php\">TRAIN</a></li>";

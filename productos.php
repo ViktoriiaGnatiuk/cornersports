@@ -8,8 +8,6 @@ require_once __DIR__.'/includes/productos.php';
 	<title>PRODUCTOS</title>
 	<link rel="stylesheet" href="estilos/estiloProductos.css?v=<?php echo(rand()); ?>" />
 	<script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
-	<script src="js/jquery-3.5.0.js"></script>
-	<script type="text/javascript" src="js/carroCompra.js"></script>
  </head>
 
  <body>
@@ -72,7 +70,7 @@ require_once __DIR__.'/includes/productos.php';
 								</div>
 								<p>Precio</p>
 								<div class="precio"><p>$precio €</p></div>
-								<input id="$id" type="submit" class="comprar" value="Añadir al carrito">
+								<input identificador="$id" type="submit" class="comprar" value="Añadir al carrito">
 							</div>
 						</div>
 						EOF;

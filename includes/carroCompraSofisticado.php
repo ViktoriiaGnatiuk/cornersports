@@ -7,15 +7,16 @@ require_once __DIR__ .'/carrito.php';
          <link rel="stylesheet" href="http://localhost/cornersports/estilos/pushbar.css"/>
          <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarroSofisticado.css"/>
         <script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
+        <script type="text/javascript" src="http://localhost/cornersports/js/carroCompra.js"></script>
     </head>
     <body>
         <button class="btn-menu" data-pushbar-target="pushbar"><img src="http://localhost/cornersports/img/carro24.png" width="30" height="30"></i></button>
         <div data-pushbar-id="pushbar" class="push" data-pushbar-direction="right">
         <div class="btn-cerrar_sof">
-        <button data-pushbar-close class="botonCerrar_sof"><img src="img/cerrar.png"></button>
+        <button data-pushbar-close class="botonCerrar_sof"><img src="http://localhost/cornersports/img/cerrar.png" class="botonCerrar_img"></button>
+        <p class="tituloCarro_sof">Carrito</p>
         </div>
         <div class="carro_sof">
-        <p class="tituloCarro_sof">Carrito</p>
         <?php
             if(isset($_SESSION['loged'])){
                 //Cargar todos los productos del carro
@@ -39,12 +40,13 @@ require_once __DIR__ .'/carrito.php';
                         <p class="nombreItem_sof">$nombre</p>
                     </div>
                         <div class="datosItem_sof">
-                            <p class="precioItem_sof">$precio €</p>
+                            <p class="precioItem_sof" value="$id">$precio €</p>
                             <div class="botonesCarro_sof">
                                 <button class="restarItem_sof">-</button>
-                                <p class="cantidadItem_sof">$cantidad</p>
+                                <p id="$id" class="cantidadItem_sof">$cantidad</p>
                                 <button class="sumaItem_sof">+</button>
                             </div>
+                            <img src="http://localhost/cornersports/img/remove.png" class="eliminar_item_sof">
                         </div> 
                     </div>
                     EOF;

@@ -69,6 +69,7 @@
                                 echo "Error al consultar en la BD Linea 58: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
                                 exit();
                             }
+                            return $idProducto;
                         }
                         else{
                             //Creamos un nuevo producto y lo asociamos al pedido
@@ -87,6 +88,7 @@
                                 echo "Error al consultar en la BD Linea75: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
                                 exit();
                             }
+                            return $conexion->insert_id;
                         }
                     } else {
                         echo "Error al consultar en la BD Linea 81: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
@@ -175,6 +177,58 @@
                 }
             }else{
                 return 0;
+            }
+        }
+
+        public function getItemCarro($id){
+            $usuario=$_SESSION['username'];
+            $idPedido=0;
+            $app = aplicacion::getSingleton();
+            $conexion = $app->conexionBd();
+            if ($conexion->connect_error) {
+                die("La conexion falló: " . $conexion->connect_error);
+            }
+            else{
+                $idPedido=0;
+                $query = sprintf("SELECT pedido_activo FROM usuarios WHERE username='%s'",  $conexion->real_escape_string($usuario));
+                $result = $conexion->query($query);
+                $row = $result->fetch_assoc();
+                $idPedido=$row['pedido_activo'];
+
+                //Creamos un pedido
+                if($idPedido==NULL){
+                    $query=sprintf("INSERT INTO pedidos (usuario) VALUES ('%s')",  $conexion->real_escape_string($usuario));
+                    $result = $conexion->query($query);
+                    if ($result == TRUE) {
+                        //Obtener el id del pedido
+                        $idPedido=$conexion->insert_id;
+                        //Asignamos el id del pedido al usuario
+                        $query=sprintf("UPDATE usuarios SET pedido_activo='%s' WHERE username='%s'"
+                        , $conexion->real_escape_string($idPedido)
+                        , $conexion->real_escape_string($usuario));
+                        $result = $conexion->query($query);
+                        if($result==FALSE){
+                            echo "Error al consultar en la BD Linea 34: (" . $conexion->errno . ") " . utf8_encode($conexion->error);
+                            exit();
+                        }
+                    }
+                }
+
+                //Buscar todos los productos que esten asociados con el numero de pedido
+                $query = sprintf("SELECT * FROM productos WHERE pedido='%s' AND id='%s'",
+                $conexion->real_escape_string($idPedido), $conexion->real_escape_string($id));
+                $result = $conexion->query($query);
+                $row= $result->fetch_assoc();
+                    $item= [
+                        'id' => $row['id'],
+                        'nombre' => $row['nombre'],
+                        'precio' => $row['precio'],
+                        'precio_alquiler' => $row['precio_alquiler'],
+                        'descripcion' => $row['descripcion'],
+                        'imagen' => $row['imagen'],
+                        'cantidad' => $row['cantidad']
+                    ];
+                return $item;
             }
         }
 
