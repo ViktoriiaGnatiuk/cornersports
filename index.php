@@ -5,6 +5,8 @@ require_once __DIR__.'/includes/config.php';
 <html>
 	<head>
 		<title>HOME</title>
+		<script src="js/jquery-3.5.0.js"></script>
+		<script src="js/productos_home.js"></script>
 	</head>
 	<body>
 		<div id="contenedor">

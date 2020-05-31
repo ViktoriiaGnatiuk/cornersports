@@ -5,8 +5,6 @@ require_once __DIR__.'/../aplicacion.php';
 <!DOCTYPE html>
 <html>
 <head>
-<script src="js/jquery-3.5.0.js"></script>
-<script src="js/productos_home.js"></script>
 <link rel="stylesheet" href="estilos/estilo_novedades.css"/>
 </head>
 <body>
@@ -30,7 +28,6 @@ else{
         $id = $row['id'];
         $html = <<<EOF
         <div class="mySlides fade">
-        <div class="numbertext">$i/$size</div>
         <img class="img_nov" src="$imagen">
         <div identificador="$id" class="botonProdMin text">$nombre</div>
         </div>
