@@ -1,0 +1,18 @@
+Vicky:
+	Menú
+	Estructura
+	Home
+	Login
+	Registro
+	Perfil
+	Memoria
+	Base de datos
+
+Sergio:
+	Ofertas
+	Entrenamientos
+	Entrenamiento_usuario
+	Maquinas
+Luis:
+	Material
+Antonio:

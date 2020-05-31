@@ -1,11 +1,13 @@
 <?php
 require_once __DIR__ .'/carrito.php';
+include __DIR__.'/question_pop.php';
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="http://localhost/cornersports/estilos/pushbar.css"/>
 <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarroSofisticado.css"/>
+<link rel="stylesheet" href="http://localhost/cornersports/estilos/estilo_pop-up.css"/>
 <script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
 <script type="text/javascript" src="http://localhost/cornersports/js/carroCompra.js"></script>
 </head>
@@ -46,7 +48,7 @@ $html = <<<EOF
 <p id="$id" class="cantidadItem_sof">$cantidad</p>
 <button class="sumaItem_sof" value="$id">+</button>
 </div>
-<img class="eliminar_item_sof" src="http://localhost/cornersports/img/remove.png" data-value="$id"/>
+<img class="open eliminar_item_sof" src="http://localhost/cornersports/img/remove.png" data-value="$id"/>
 </div> 
 </div>
 EOF;
