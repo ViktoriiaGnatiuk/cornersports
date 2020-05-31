@@ -1,0 +1,10 @@
+Vicky:
+	bocetos
+	planificacion
+Sergio:
+	index
+	detalles
+Luis:
+	contacto
+Antonio:
+	miembros

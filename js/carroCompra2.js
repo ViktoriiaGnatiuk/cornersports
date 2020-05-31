@@ -73,9 +73,23 @@ $(document).ready(function(){
     });
 
     //Elimina un producto del carrito
-    $('.eliminaItem').click(function(){ 
+    $('.eliminaItem').click(function(){
+        $('#popup').fadeIn('fast');
+        $('.popup-overlay').fadeIn('fast');
+        $('.popup-overlay').height($(window).height());
+        var id = $(this).attr('data-value');
         var id = $(this).attr('data-value_n');
-        eliminarProductoN(id);
+        $(".confirmacion").click(function(){
+            eliminarProductoN(id);
+            $('#popup').fadeOut('fast');
+            $('.popup-overlay').fadeOut('fast');
+        });
+    });
+
+    $(".negacion").click(function(){
+        $('#popup').fadeOut('fast');
+        $('.popup-overlay').fadeOut('fast');
+        return false;
     });
 
     $(".tramitar_sof").click(function(){
@@ -83,7 +97,14 @@ $(document).ready(function(){
     });
 
     $(".vaciar_carro").click(function(){
-        var url="http://localhost/cornersports/procesos/vaciarCarro.php";
-        $.get(url,vaciarCarro);
+        $('#popup').fadeIn('fast');
+        $('.popup-overlay').fadeIn('fast');
+        $('.popup-overlay').height($(window).height());
+        $(".confirmacion").click(function(){
+            var url="http://localhost/cornersports/procesos/vaciarCarro.php";
+            $.get(url,vaciarCarro);
+            $('#popup').fadeOut('fast');
+            $('.popup-overlay').fadeOut('fast');
+        });
     });
 });

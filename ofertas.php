@@ -91,7 +91,7 @@
                 </div>
             </div>
             <?php
-                include __DIR__.'/includes/estructura/menuOfertas.php"';
+                include __DIR__.'/includes/estructura/menuOfertas.php';
                 include __DIR__.'/includes/estructura/pie.php';
             ?>
         </div>
