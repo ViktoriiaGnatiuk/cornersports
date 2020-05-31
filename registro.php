@@ -1,6 +1,10 @@
 <?php
 require_once __DIR__.'/includes/config.php';
 require_once __DIR__.'/includes/formularioRegistro.php';
+if(isset($_SESSION['loged']) && !($_SESSION['perfil']=="admin")){
+    header('Location: http://localhost/cornersports/index.php');
+}
+$form = new FormularioRegistro(); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,11 +23,8 @@ require_once __DIR__.'/includes/formularioRegistro.php';
         <div id="contenido2">
 				<div id="formularios">
 					<?php
-						if(isset($_SESSION['loged']) && !($_SESSION['perfil']=="admin")){
-							header('Location: http://localhost/cornersports/index.php');
-						}
-						$form = new FormularioRegistro(); 
-						$form->gestiona();
+                        $html = $form->gestiona();
+                        echo "$html";
 					?>
 				</div>
         	</div>
