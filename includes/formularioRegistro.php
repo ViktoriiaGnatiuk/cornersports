@@ -114,13 +114,10 @@ if (strcmp($password, $password2) !== 0 ) {
 $result[] = "Los passwords deben coincidir";
 }
 $condAcept=$datos['condAcept'];
-
 $perfil='usuario';
 if(isset($_SESSION['loged']) && $_SESSION['perfil'] == "admin"){
 $perfil = $datos['perfil'] ;
 }
-
-
 if (count($result) === 0) {
 $user = Usuario::crea($nombreUsuario, $password, $nombre, $apellidos,
 $email, $provincia, $localidad, $calle, $codPostal, $portal, $perfil);

@@ -22,24 +22,6 @@ function fecha_actual(){
 
 //Contrata un entrenamiento
 $(document).ready(function(){
-
-	 $(".aplicar").click(function(){
-        var valor = $("#cod_desc").val();
-        if(valor == "UCM2605" && !codigo_usado){
-            var total = parseFloat(($("#total_real").text()));
-            var descuento = total*20/100;
-            var real = truncateDecimals((total - descuento),2);
-            $("#total_real").text(real);
-            var entrega = truncateDecimals(parseFloat($("#tr_t").text()) - total, 2);
-            $("#tr_t").text(real+entrega);
-            codigo_usado = true;
-            alert("Se ha aplicado un descuento de un 20% a su pedido.");
-        }else if (valor == "UCM2605" && codigo_usado){
-            alert("Este código ya ha sido usado.");
-        }else{
-            alert("El código no es valido.");
-        }
-    });
 	
 	//Comprueba que la fecha de caducidad de la tarjeta de crédito sea correcta
     $("#fecha_venc").change(function () {
@@ -55,9 +37,23 @@ $(document).ready(function(){
     //Comprueba que todo este correcto y tramita el pedido
     function tramitado(data, status){
         if(data==="correcto"){
-            alert("Tramitación correcta");
+            $(".contender_tramitar").hide();
+            $(".contenedor_pago").hide();
+           $(".mensaje_tramitado").show();
         }else{
-            alert("No se ha podido tramitar el pedido");
+            $(".contender_tramitar").hide();
+            $(".contenedor_pago").hide();
+            $("#tramitar_pedido").append(data);
+        }
+    }
+	function cambiarFondo(id, valor, mensaje){
+        if (valor==true) {
+            $(id).css("background-color", "rgb(241, 255, 162)");
+            return true;
+        } else {
+            $(id).css("background-color", "rgb(255, 182, 182)");
+            alert(mensaje);
+            return false;
         }
     }
 	
@@ -70,10 +66,12 @@ $(document).ready(function(){
         return cambiarFondo("#titular_tr", $("#titular_tr").val() != "", mensaje);
     }
 	
-	$(".b_entrenamiento").click(function(){
+	//AJAX
+	$("#contratar_tr").click(function(){
         if(comprobarTarjeta() && comprobarTitular()){
             if(fecha_correcta){
-				var url="../procesos/cambiarPrecioPedido.php?precio=" + parseFloat($("#tr_t").text());
+                var id = $(".entrenamiento").attr('identificador');
+				var url="../procesos/procesarEntreno.php?id=" + id;
                 $.get(url,tramitado);
             }else{
                 alert("La fecha de caducidad de la tarjeta no es correcta.");

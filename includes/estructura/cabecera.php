@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 <link rel="stylesheet" href="http://localhost/cornersports/estilos/menuStyle.css"/>
 <link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloCarro.css"/>
 <link rel="stylesheet" href="http://localhost/cornersports/estilos/style.css"/>
-<link href="http://localhost/cornersports/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href="http://localhost/cornersports/img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 <script src="http://localhost/cornersports/js/jquery-3.5.0.js"></script>
 <script type="text/javascript" src="http://localhost/cornersports/js/menu_fijo.js"></script>
 </head>
 <body>
 <div class="menul">
 <nav>
-<a href="http://localhost/cornersports/index.php"><label class="logo" ><img src="http://localhost/cornersports/img/logo.png" width="320" height="30"></label></a>
+<a href="http://localhost/cornersports/index.php"><label class="logo"><img src="http://localhost/cornersports/img/logo.png" width="320" height="30"></label></a>
 <ul>
 <li><a href="http://localhost/cornersports/index.php">HOME</a></li>
 <li><a href="http://localhost/cornersports/ofertas.php">OFERTAS</a></li>
@@ -56,6 +53,6 @@ include __DIR__.'/../carroCompraSofisticado.php';
 </ul>
 </nav>
 </div>
-<div class="aviso"><h3>¡AVISO!</h3> <p>Esta página web fue desarollada por alumnos de la Universidad Complutene de Madrid para la asignatura Aplicaciones Web.</p><p>Es para un uso exclusivamente educativo.</p></div>
+<div class="aviso"><h3>¡AVISO!</h3><p>Esta página web fue desarollada por alumnos de la Universidad Complutene de Madrid para la asignatura Aplicaciones Web.</p><p>Es para un uso exclusivamente educativo.</p></div>
 </body>
 </html>

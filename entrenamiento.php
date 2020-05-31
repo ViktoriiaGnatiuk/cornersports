@@ -6,8 +6,7 @@
 <html>
     <head>
         <title>ENTRENAMIENTOS</title>
-        <link rel="stylesheet" href="estilos/estiloEntrenamiento.css?v=<?php echo(rand()); ?>" />
-        <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+        <link rel="stylesheet" href="estilos/estiloEntrenamiento.css"/>
     </head>
     <body>
         <div id="contenedor">
@@ -21,10 +20,10 @@
                         $i=0;
                         $size=0;
                         $size=$entr->getSize("entrenamientos_disponibles");
-                        $entrenamientos=$entr->getEntrenamientos("");
+                        $entrenamientos=$entr->getEntrenamientos("", false);
 
                         while($i < $size){
-                            $id = $entrenamientos[$i]['id'];	
+                            $id = $entrenamientos[$i]['id'];    
                             $imagen = $entrenamientos[$i]['imagen'];
                             $nombre = $entrenamientos[$i]['nombre'];
                             $descripcion = $entrenamientos[$i]['descripcion'];
@@ -55,9 +54,9 @@
                                             </div>
                                             <p class="dificultad">Días: $dias</p>
                                             <p class="dificultad">Precio: $precio €</p>
-											<form action="http://localhost/cornersports/procesos/procesarEntreno.php?id=$id" id="form_session" method="post">
-												<input type="submit" class="b_entrenamiento" value="CONTRATAR">
-											</form>
+                                            <form action="includes/tramitarEntrenamiento.php?id=$id" id="form_session" method="post">
+                                                <input type="submit" class="b_entrenamiento" value="CONTRATAR">
+                                            </form>
                                         </div>
                                         <div class="descripcion_entrenamiento">
                                             <p>$descripcion</p>

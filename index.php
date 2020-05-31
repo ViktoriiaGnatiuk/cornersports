@@ -5,6 +5,8 @@ require_once __DIR__.'/includes/config.php';
 <html>
 	<head>
 		<title>HOME</title>
+		<script src="js/jquery-3.5.0.js"></script>
+		<script src="js/productos_home.js"></script>
 	</head>
 	<body>
 		<div id="contenedor">
@@ -12,34 +14,18 @@ require_once __DIR__.'/includes/config.php';
 				include __DIR__.'/includes/estructura/cabecera.php';
 			?>
 			<div id="contenido">
-				
 				<div id="interior">
 						<?php 
 							$_SESSION['producto']=6;
 							include __DIR__.'/includes/scripts/script_mas_vendido.php';
 						?>
+					<center><p class="tit_nov" >NOVEDADES</p></center>
 					<div class="novedades_bloque">
-						<center><p class="tit_nov" >NOVEDADES</p></center>
-						<div class="novedades">
-							<?php
-								$_SESSION['producto']=5;
-								include __DIR__.'/includes/scripts/script_producto_min.php';
-								$_SESSION['producto']=11;
-								include __DIR__.'/includes/scripts/script_producto_min.php';
-								$_SESSION['producto']=9;
-								include __DIR__.'/includes/scripts/script_producto_min.php';
-							?>
-						</div>
-						<div class="novedades">
-							<?php
-								$_SESSION['producto']=7;
-								include __DIR__.'/includes/scripts/script_producto_min.php';
-								$_SESSION['producto']=8;
-								include __DIR__.'/includes/scripts/script_producto_min.php';
-								$_SESSION['producto']=13;
-								include __DIR__.'/includes/scripts/script_producto_min.php';
-							?>
-						</div>
+						<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+						<?php
+						include __DIR__.'/includes/scripts/script_producto_min.php';
+						?>
+       					<a class="next" onclick="plusSlides(1)">&#10095;</a>
 					</div>
 				</div>
 			</div>
