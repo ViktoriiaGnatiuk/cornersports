@@ -24,7 +24,7 @@
                         $entrenamientos=$entr->getEntrenamientos("");
 
                         while($i < $size){
-                            $id = $entrenamientos[$i]['id'];	
+                            $id = $entrenamientos[$i]['id'];    
                             $imagen = $entrenamientos[$i]['imagen'];
                             $nombre = $entrenamientos[$i]['nombre'];
                             $descripcion = $entrenamientos[$i]['descripcion'];
@@ -34,13 +34,13 @@
                             $dificultad = $entrenamientos[$i]['dificultad'];
                             $datos_entrenador = $entr->getEntrenadores($entrenador);
                             $imagen_entrenador = $datos_entrenador[0]['imagen'];
-                            $dificultad_icon="img/dificil.png";
+                            $dificultad_icon="http://localhost/cornersports/img/dificil.png";
                             if($dificultad=="BAJA"){
-                                $dificultad_icon="img/facil.png";
+                                $dificultad_icon="http://localhost/cornersports/img/facil.png";
                             }
                             else if($dificultad=="MEDIA")
                             {
-                                $dificultad_icon="img/medio.png";
+                                $dificultad_icon="http://localhost/cornersports/img/medio.png";
                             }
                             $html = <<<EOF
                             <div class="entrenamiento">
@@ -55,7 +55,7 @@
                                             </div>
                                             <p class="dificultad">Días: $dias</p>
                                             <p class="dificultad">Precio: $precio €</p>
-                                            <form action="procesos/procesarEntreno.php?id=$id" id="form_session" method="post">
+                                            <form action="http://localhost/cornersports/procesos/procesarEntreno.php?id=$id" id="form_session" method="post">
                                                 <input type="submit" class="b_entrenamiento" value="CONTRATAR">
                                             </form>
                                         </div>
@@ -80,7 +80,7 @@
             </div>
             <?php
                 include __DIR__.'/includes/estructura/sidebarTrain.php';
-                include __DIR__.'/includes/estructura/pie.php';
+                //include __DIR__.'/includes/estructura/pie.php';
             ?>
         </div>
     </body>
