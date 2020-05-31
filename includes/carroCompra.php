@@ -59,7 +59,7 @@ $html = <<<EOF
 <input type="submit" class="restarItem" resta_id="$id" value="-">
 <p class="cantidadItem" cant_id="$id">$cantidad</p>
 <input type="submit" class="sumaItem" suma_id="$id" value="+">
-<input type="submit" class="eliminaItem" data-value_n="$id" value="Eliminar">
+<input type="submit" class="open eliminaItem" data-value_n="$id" value="Eliminar">
 </div>
 </div>
 EOF;

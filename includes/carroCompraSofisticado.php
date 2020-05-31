@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/carrito.php';
-include __DIR__.'/question_pop.php';
+//include __DIR__.'/question_pop.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,6 @@ include __DIR__.'/question_pop.php';
 <?php
 $total=0;
 if(isset($_SESSION['loged'])){
-//Cargar todos los productos del carro
 $carrito = new carrito();
 $items=$carrito->getCarrito();
 $i=0;
@@ -49,7 +48,7 @@ $html = <<<EOF
 <button class="sumaItem_sof" value="$id">+</button>
 </div>
 <img class="open eliminar_item_sof" src="http://localhost/cornersports/img/remove.png" data-value="$id"/>
-</div> 
+</div>
 </div>
 EOF;
 echo "$html";
@@ -57,12 +56,10 @@ echo "$html";
 }
 }
 $html = <<<EOF
-</div>
-<div class="inferior_sof">
+</div><div class="inferior_sof">
 <div class="total_sof"><p>Total:</p><p class="total_carro_sof">$total €</p></div>
 <button class="tramitar_sof">Tramitar pedido</button>
-</div>
-</div>
+</div></div>
 EOF;
 echo "$html";
 ?>
