@@ -16,11 +16,11 @@ $this->action = htmlentities($_SERVER['PHP_SELF']);
 public function gestiona()
 {   
 if ( ! $this->formularioEnviado($_POST) ) {
-return $this->generaFormulario();
+echo $this->generaFormulario();
 } else {
 $result = $this->procesaFormulario($_POST);
 if ( is_array($result) ) {
-return $this->generaFormulario($result, $_POST);
+echo $this->generaFormulario($result, $_POST);
 } else {
 header('Location: '.$result);
 exit();

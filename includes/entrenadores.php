@@ -69,7 +69,7 @@
             return $items;
         }
 
-        public function getEntrenamientos($id){
+        public function getEntrenamientos($id, $disponible){
             $app = aplicacion::getSingleton();
             $conexion = $app->conexionBd();
             $tbl_name = "entrenamientos_disponibles";
@@ -78,8 +78,10 @@
             }
             else{
                 $query = "SELECT * FROM $tbl_name";
-                if($id!=""){
+                if($disponible){
                     $tbl_name = "entrenamientos";
+                    $query = "SELECT * FROM $tbl_name WHERE id='$id'";
+                }else if($id != ""){
                     $query = "SELECT * FROM $tbl_name WHERE id='$id'";
                 }
                 $result = $conexion->query($query);
@@ -146,10 +148,13 @@
 					$row = mysqli_fetch_assoc($result);
 					$entr=$row['entrenamiento_activo'];
 					if($row['entrenamiento_activo'] != NULL){
-						echo"<center/>";
-						echo "Lo sentimos, ya tiene un entrenamiento contratado.<br/>";
-						echo"Si desea contratar este entrenamiento primero debe dar de baja el entrenamiento que ya tiene contratado<br/>";
-						echo"<center/><a class=\"baja_entr\" href=\"http://localhost/cornersports/procesos/bajaEntrenamiento.php\">Dar de baja entrenamiento</a>";
+$html = <<<EOF
+<center/>
+<h2>Lo sentimos, ya tiene un entrenamiento contratado.</h2><br/>
+<h2>Si desea contratar este entrenamiento primero debe dar de baja el entrenamiento que ya tiene contratado</h2><br/>
+<center/><a class="baja_entr" href="http://localhost/cornersports/procesos/bajaEntrenamiento.php">Dar de baja entrenamiento</a>
+EOF;
+                        return "$html";
 					}else{
 						//Busca el entrenamiento seleccionado
 						$entrenamiento=$conexion->real_escape_string($id);
@@ -192,7 +197,7 @@
 						}
 						else{
 							echo "Se ha producido un error, no existe el entrenamiento seleccionado en la base de datos<br/>";
-						}
+                        }
 					}
 				}
 			}

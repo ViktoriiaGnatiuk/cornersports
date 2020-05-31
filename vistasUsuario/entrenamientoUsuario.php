@@ -6,9 +6,7 @@
 <html>
     <head>
 		<title>Entrenamiento</title>
-		<link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloEntrenamiento.css?v=<?php echo(rand()); ?>" />
-        <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
-		
+		<link rel="stylesheet" href="http://localhost/cornersports/estilos/estiloEntrenamiento.css"/>
     </head>
     <body>
         <div id="contenedor">
@@ -37,7 +35,7 @@
 						//Busca el entrenamiento seleccionado
 						$id_entrenamiento=$row['entrenamiento_activo'];
 						$entr=new entrenadores();
-                        $entrenamientos=$entr->getEntrenamientos($id_entrenamiento);
+                        $entrenamientos=$entr->getEntrenamientos($id_entrenamiento, true);
 						$imagen = $entrenamientos[0]['imagen'];
 						$nombre = $entrenamientos[0]['nombre'];
 						$descripcion = $entrenamientos[0]['descripcion'];

@@ -26,8 +26,7 @@ require __DIR__.'/includes/estructura/cabecera.php';
 <div id="contenido2">
 <div id="formularios">
 <?php
-$html = $form->gestiona();
-echo "$html";
+$form->gestiona();
 ?>
 </div>
 </div>

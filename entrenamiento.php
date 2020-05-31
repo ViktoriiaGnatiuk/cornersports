@@ -6,8 +6,7 @@
 <html>
     <head>
         <title>ENTRENAMIENTOS</title>
-        <link rel="stylesheet" href="estilos/estiloEntrenamiento.css?v=<?php echo(rand()); ?>" />
-        <script src="/js/mi_script.js?v=<?php echo(rand()); ?>"></script>
+        <link rel="stylesheet" href="estilos/estiloEntrenamiento.css"/>
     </head>
     <body>
         <div id="contenedor">
@@ -21,7 +20,7 @@
                         $i=0;
                         $size=0;
                         $size=$entr->getSize("entrenamientos_disponibles");
-                        $entrenamientos=$entr->getEntrenamientos("");
+                        $entrenamientos=$entr->getEntrenamientos("", false);
 
                         while($i < $size){
                             $id = $entrenamientos[$i]['id'];    
@@ -34,13 +33,13 @@
                             $dificultad = $entrenamientos[$i]['dificultad'];
                             $datos_entrenador = $entr->getEntrenadores($entrenador);
                             $imagen_entrenador = $datos_entrenador[0]['imagen'];
-                            $dificultad_icon="http://localhost/cornersports/img/dificil.png";
+                            $dificultad_icon="img/dificil.png";
                             if($dificultad=="BAJA"){
-                                $dificultad_icon="http://localhost/cornersports/img/facil.png";
+                                $dificultad_icon="img/facil.png";
                             }
                             else if($dificultad=="MEDIA")
                             {
-                                $dificultad_icon="http://localhost/cornersports/img/medio.png";
+                                $dificultad_icon="img/medio.png";
                             }
                             $html = <<<EOF
                             <div class="entrenamiento">
@@ -55,7 +54,7 @@
                                             </div>
                                             <p class="dificultad">Días: $dias</p>
                                             <p class="dificultad">Precio: $precio €</p>
-                                            <form action="http://localhost/cornersports/procesos/procesarEntreno.php?id=$id" id="form_session" method="post">
+                                            <form action="includes/tramitarEntrenamiento.php?id=$id" id="form_session" method="post">
                                                 <input type="submit" class="b_entrenamiento" value="CONTRATAR">
                                             </form>
                                         </div>
@@ -80,7 +79,7 @@
             </div>
             <?php
                 include __DIR__.'/includes/estructura/sidebarTrain.php';
-                //include __DIR__.'/includes/estructura/pie.php';
+                include __DIR__.'/includes/estructura/pie.php';
             ?>
         </div>
     </body>
