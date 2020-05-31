@@ -3,7 +3,7 @@ require_once __DIR__.'/config.php';
 if(!isset($_SESSION['loged'])){
     header('Location: ../index.php');
 }
-require_once __DIR__ .'/entrenadores.php';
+require_once __DIR__ .'/../includes/entrenadores.php';
 require_once __DIR__.'/usuario.php';
 ?>
 <!DOCTYPE html>
@@ -24,12 +24,12 @@ require_once __DIR__.'/usuario.php';
         ?>
             <div id="tramitar_pedido">
                 <div class="contender_tramitar">
-                    
                     <?php
                         $entrenadores = new entrenadores();
+						$idEnt=$_GET["id"];
                         $i=0;
-                        $size=$entrenadores->getSize("entrenamientos_disponibles");
-						$items=$entrenadores->getEntrenadores($id);
+                        $size=$entrenadores->getSize("entrenamientos");
+						$items=$entrenadores->getEntrenamientos($idEnt);
                         echo"<p class=\"titulo_tramitar\">Entrenamientos</p>";
                         $total=0;
                         while($i < $size){
@@ -83,7 +83,7 @@ require_once __DIR__.'/usuario.php';
                                     value="2020-01-01">
                             </div>
                         </div>
-                        <input type="button" id="$id" class="b_entrenamiento" value="Tramitar pedido">
+                        <input type="button" id="tr_tramitar_pedido" value="Tramitar pedido">
                         </form>
                 </div>
             </div>
