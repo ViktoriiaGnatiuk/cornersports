@@ -152,7 +152,7 @@ $html = <<<EOF
 <center/>
 <h2>Lo sentimos, ya tiene un entrenamiento contratado.</h2><br/>
 <h2>Si desea contratar este entrenamiento primero debe dar de baja el entrenamiento que ya tiene contratado</h2><br/>
-<center/><a class="baja_entr" href="http://localhost/cornersports/procesos/bajaEntrenamiento.php">Dar de baja entrenamiento</a>
+<center/><a class="baja_entr" href="../procesos/bajaEntrenamiento.php">Dar de baja entrenamiento</a>
 EOF;
                         return "$html";
 					}else{

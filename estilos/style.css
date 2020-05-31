@@ -100,7 +100,6 @@ div#titulo-mas-vendido:hover{
 	display: flex;
 	justify-content: space-around;
 }
-
 div#producto-min {
 	background-color: white;
 	height: 220px;
@@ -119,18 +118,6 @@ div#imagen-producto-min {
 	min-height: 220px;
 	width: 280px;
 	border-bottom: none;
-}
-
-div#titulo-producto-min {
-	background-color: rgb(224, 215, 163);
-	height: 20px;
-	width: 279px;
-	border: #303030 solid 1px;
-	cursor: pointer;
-}
-
-div#titulo-producto-min:hover{
-	background-color: rgb(238, 241, 211);
 }
 
 div#entrenamientos_home {

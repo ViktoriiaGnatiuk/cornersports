@@ -1,0 +1,8 @@
+Funcionalidades implementadas:
+	Validación de registro con JQuery y Ajax
+	Menu fijo que se desplaza con el usuario
+	Carrito lateral implementado con JQuery y Ajax
+	Carro normal implementado con JQuery y Ajax
+	Transición de productos en la página home
+	Tramitación de la contratación de entrenamientos
+	Tramitación de pedido

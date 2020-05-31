@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ .'/carrito.php';
-//include __DIR__.'/question_pop.php';
+include __DIR__.'/question_pop.php';
 ?>
 <!DOCTYPE html>
 <html>
