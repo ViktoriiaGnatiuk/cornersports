@@ -60,6 +60,16 @@ $(document).ready(function(){
             alert("No se ha podido tramitar el pedido");
         }
     }
+	function cambiarFondo(id, valor, mensaje){
+        if (valor==true) {
+            $(id).css("background-color", "rgb(241, 255, 162)");
+            return true;
+        } else {
+            $(id).css("background-color", "rgb(255, 182, 182)");
+            alert(mensaje);
+            return false;
+        }
+    }
 	
 	function comprobarTarjeta(){
         var mensaje = "Introduzca un número de tarjeta válido";
@@ -70,7 +80,8 @@ $(document).ready(function(){
         return cambiarFondo("#titular_tr", $("#titular_tr").val() != "", mensaje);
     }
 	
-	$(".b_entrenamiento").click(function(){
+	//AJAX
+	$("#tr_tramitar_pedido").click(function(){
         if(comprobarTarjeta() && comprobarTitular()){
             if(fecha_correcta){
 				var url="../procesos/cambiarPrecioPedido.php?precio=" + parseFloat($("#tr_t").text());
